@@ -1,0 +1,50 @@
+{
+  "name": "@avocode/avocode-email-tagsinput",
+  "version": "1.0.0-alpha",
+  "description": "React input component that handles creation and removal of tags based on matching email regex.",
+  "main": "lib/index.js",
+  "modules": "dist/avocode-email-tagsinput.js",
+  "scripts": {
+    "build": "npx gulp --package avocode-email-tagsinput --gulpfile ../../scripts/gulpfile.js && npx webpack --mode=production",
+    "flow": "npx flow",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "input",
+    "element",
+    "tag",
+    "tags",
+    "email",
+    "slatejs"
+  ],
+  "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@avocode/better-react-tagsinput": "1.0.0-alpha",
+    "classnames": "^2.2.6",
+    "slate": "^0.45.0"
+  },
+  "peerDependencies": {
+    "immutable": "^3.8.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "css-loader": "^3.2.0",
+    "enzyme": "^3.10.0",
+    "flow-bin": "^0.104.0",
+    "gulp": "^4.0.2",
+    "immutable": "^3.8.1",
+    "jest": "^24.8.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "slate-react": "^0.22.8",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
+  }
+}

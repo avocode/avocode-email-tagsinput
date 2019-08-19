@@ -1,0 +1,58 @@
+code {
+  background-color: lightgrey;
+  font-size: 1.1rem;
+}
+
+.app-container {
+  margin: 10px;
+  display: flex;
+}
+
+.app-container__header {
+  margin: 10px;
+  flex: 2;
+}
+
+.app-container__api {
+  margin: 10px;
+  flex: 1;
+}
+
+.nav, .subnav {
+  padding-left: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 10px;
+  font-size:1.2rem;
+}
+
+.subnav-item {
+  display: inline-block;
+  margin-right: 5px;
+  font-size:1.1rem;
+}
+
+.api-view {
+  max-height: 100vh;
+  overflow: auto;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.api-view__loading {
+  animation-duration: 0.3s;
+  animation-name: opacity;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-delay: 1s;
+}

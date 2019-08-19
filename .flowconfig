@@ -1,0 +1,12 @@
+[ignore]
+.*/node_modules/immutable/.*.js.flow
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

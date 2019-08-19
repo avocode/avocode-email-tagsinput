@@ -1,0 +1,41 @@
+.tag {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid #d9d9d9;
+  background-color: #ededed;
+  white-space: nowrap;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+.tag__label {
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.tag__remove-button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  border: none;
+  background: transparent;
+  min-width: 5px;
+  min-height: 15px;
+  cursor: pointer;
+}
+
+.tag__remove-button::before {
+  position: absolute;
+  bottom: 0px;
+  left: 6px;
+  content: "\00D7";
+  font-size: 0.9rem;
+}
+
+.tag--focused {
+  border: 1px solid black;
+}
+

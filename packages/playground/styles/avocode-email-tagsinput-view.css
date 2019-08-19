@@ -1,0 +1,43 @@
+.tagsinput--email-collapsible {
+  width: 400px;
+  height: 26px;
+  overflow: hidden;
+  border: none;
+}
+
+.tagsinput--email-collapsible--focused {
+  height: 200px;
+}
+
+.avocode-tags-input-collapsible--email-collapsible {
+  width: 450px;
+}
+
+.tagsinput--custom-email-collapsible {
+  width: 400px;
+  height: 26px;
+  overflow: hidden;
+  border: none;
+}
+
+.avocode-tags-input-collapsible--custom-email-collapsible {
+  flex-direction: column;
+  flex-flow: row-reverse;
+  width: 500px;
+  justify-content: space-between;
+}
+
+.tagsinput--custom-email-collapsible--focused {
+  height: 200px;
+}
+
+.email-collapsible-custom-counter {
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 1.2rem;
+  background-color: pink;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
