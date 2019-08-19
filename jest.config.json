@@ -1,0 +1,13 @@
+{
+  "transform": {
+    "^.+\\.js$": "<rootDir>/jest.transform.js"
+  },
+  "roots": [ "packages/" ],
+  "transformIgnorePatterns": [
+     "/node_modules/*",
+     "/node_modules/jsdom",
+     "/node_modules/react-dom",
+     "/node_modules/*-*",
+     "/dist/*-*"
+   ]
+}

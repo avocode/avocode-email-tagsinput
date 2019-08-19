@@ -1,0 +1,12 @@
+.avocode-email-tagsinput-counter {
+  margin: 5px;
+  padding: 5px;
+  background-color:#ededed;
+  border: 1px solid #ededed;
+  cursor: pointer;
+}
+
+.avocode-email-tagsinput-counter:hover,
+.avocode-email-tagsinput-counter:active {
+  border: 1px solid black;
+}

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+static/
+!static/.gitkeep
+npm-debug.log
+.DS_Store
+coverage/
+.vscode/
+.idea/
+*.swp
+*.swo

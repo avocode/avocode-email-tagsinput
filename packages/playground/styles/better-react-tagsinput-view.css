@@ -1,0 +1,13 @@
+.tag--basic-state--error {
+  border: 1px solid red;
+}
+
+.tagsinput--collapsible {
+  width: 400px;
+  height: 26px;
+  overflow: hidden;
+}
+
+.tagsinput--collapsible--focused {
+  height: 160px;
+}

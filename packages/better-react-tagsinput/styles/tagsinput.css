@@ -1,0 +1,8 @@
+.tagsinput {
+  border: 1px solid #ededed;
+  padding: 5px 5px 0 5px;
+}
+
+.tagsinput--focused {
+  border-color: black;
+}
