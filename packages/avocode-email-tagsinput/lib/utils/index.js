@@ -1,7 +1,7 @@
 // @flow
-import { utils } from 'better-react-tagsinput'
+import { utils } from '@avocode/better-react-tagsinput'
 
-import type { Tags } from 'better-react-tagsinput'
+import type { Tags } from '@avocode/better-react-tagsinput'
 
 const VALIDATION_EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 

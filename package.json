@@ -7,7 +7,8 @@
     "publish:package": "npx lerna run publish --stream --scope",
     "publish": "npm publish dist/",
     "flow": "npx lerna run flow --stream --scope better-react-tagsinput && npx lerna run flow --stream --scope avocode-email-tagsinput",
-    "start": "npx lerna run start --scope playground --stream"
+    "start": "npx lerna run start --scope playground --stream",
+    "start:all": "npx concurrently \"npx lerna run copy-api-docs --scope playground\" \"npx lerna run build:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"npm start\""
   },
   "license": "ISC",
   "devDependencies": {
@@ -18,6 +19,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.9.0",
+    "concurrently": "^4.1.2",
     "gulp": "^4.0.2",
     "lerna": "^3.16.4",
     "mini-css-extract-plugin": "^0.8.0",

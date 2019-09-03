@@ -2,12 +2,11 @@
   "name": "@avocode/avocode-email-tagsinput",
   "version": "1.0.2-alpha",
   "description": "React input component that handles creation and removal of tags based on matching email regex.",
-  "main": "lib/index.js",
-  "modules": "dist/avocode-email-tagsinput.js",
+  "main": "dist/avocode-email-tagsinput.js",
   "scripts": {
-    "build": "npx gulp --package avocode-email-tagsinput --gulpfile ../../scripts/gulpfile.js && npx webpack --mode=production",
+    "build": "npx webpack --mode=production",
+    "build:watch": "npx webpack --mode=production --watch",
     "flow": "npx flow",
-    "publish": "npm publish dist/",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +18,9 @@
     "tags",
     "email",
     "slatejs"
+  ],
+  "files": [
+    "dist/"
   ],
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
   "license": "ISC",

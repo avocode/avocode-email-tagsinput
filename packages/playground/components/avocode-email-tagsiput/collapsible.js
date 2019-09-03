@@ -1,5 +1,5 @@
 import React from 'react'
-import AvocodeEmailTagsInput, { utils } from 'avocode-email-tagsinput'
+import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 
 export default class Collapsible extends React.PureComponent {
   state = {

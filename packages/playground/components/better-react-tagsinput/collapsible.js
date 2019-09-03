@@ -1,5 +1,5 @@
 import React from 'react'
-import TagsInput, { CollapsibleTagsInput, utils } from 'better-react-tagsinput'
+import TagsInput, { CollapsibleTagsInput, utils } from '@avocode/better-react-tagsinput'
 
 export default class Collapsible extends React.PureComponent {
   state = {

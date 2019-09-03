@@ -1,12 +1,12 @@
 // @flow
 
 import React from 'react'
-import TagsInput, { CollapsibleTagsInput } from 'better-react-tagsinput'
+import TagsInput, { CollapsibleTagsInput } from '@avocode/better-react-tagsinput'
 import classNames from 'classnames'
 import * as utils from './utils'
 import Counter from './components/counter'
 
-import type { Name, Query, Tags } from 'better-react-tagsinput'
+import type { Name, Query, Tags } from '@avocode/better-react-tagsinput'
 import type { Editor } from 'slate-react'
 
 import '../styles/index.css'

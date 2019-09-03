@@ -1,5 +1,5 @@
 import React from 'react'
-import TagsInput, { utils } from 'better-react-tagsinput'
+import TagsInput, { utils } from '@avocode/better-react-tagsinput'
 
 export default class Controlled extends React.PureComponent {
   state = {

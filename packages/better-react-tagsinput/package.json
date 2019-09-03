@@ -2,12 +2,12 @@
   "name": "@avocode/better-react-tagsinput",
   "version": "1.0.2-alpha",
   "description": "React input element that allows you to insert and delete tags.",
-  "main": "lib/index.js",
+  "main": "dist/better-react-tagsinput.js",
   "scripts": {
-    "build": "npx gulp --package better-react-tagsinput --gulpfile ../../scripts/gulpfile.js && npx webpack --mode=production",
+    "build": "npx webpack --mode=production",
+    "build:watch": "npx webpack --mode=production --watch",
     "flow": "npx flow",
     "prepublish": "npm run build",
-    "publish": "npm publish dist/",
     "test": "npx jest --no-cache --config ../../jest.config.json"
   },
   "keywords": [
@@ -17,6 +17,9 @@
     "tags",
     "tag",
     "slatejs"
+  ],
+  "files": [
+    "dist/"
   ],
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
   "license": "ISC",
