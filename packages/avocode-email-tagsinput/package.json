@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npx gulp --package avocode-email-tagsinput --gulpfile ../../scripts/gulpfile.js && npx webpack --mode=production",
     "flow": "npx flow",
+    "publish": "npm publish dist/",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
