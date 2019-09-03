@@ -7,6 +7,7 @@
     "build": "npx gulp --package better-react-tagsinput --gulpfile ../../scripts/gulpfile.js && npx webpack --mode=production",
     "flow": "npx flow",
     "prepublish": "npm run build",
+    "publish": "npm publish dist/",
     "test": "npx jest --no-cache --config ../../jest.config.json"
   },
   "keywords": [
