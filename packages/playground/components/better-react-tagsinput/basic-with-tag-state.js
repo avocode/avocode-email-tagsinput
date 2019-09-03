@@ -1,5 +1,5 @@
 import React from 'react'
-import TagsInput from 'better-react-tagsinput'
+import TagsInput from '@avocode/better-react-tagsinput'
 
 export default class BasicWithTagState extends React.PureComponent {
   render() {

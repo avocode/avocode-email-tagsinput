@@ -29,6 +29,9 @@ module.exports = (cb) => {
   const distPkg = {
     ...pkg,
     main: `${packageName}.js`,
+    scripts: {
+      publish: "npm publish"
+    }
   }
 
   const distPkgPath = path.join(

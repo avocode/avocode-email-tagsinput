@@ -1,5 +1,5 @@
 import React from 'react'
-import AvocodeEmailTagsInput from 'avocode-email-tagsinput'
+import AvocodeEmailTagsInput from '@avocode/avocode-email-tagsinput'
 
 export default class Unique extends React.PureComponent {
   render() {

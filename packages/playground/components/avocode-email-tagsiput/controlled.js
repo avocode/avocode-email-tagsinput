@@ -1,5 +1,5 @@
 import React from 'react'
-import AvocodeEmailTagsInput, { utils } from 'avocode-email-tagsinput'
+import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 
 export default class Controlled extends React.PureComponent {
   state = { tags: [ { value: 'test@test.com' }, { value: 'test2@test.com' } ], query: '' }

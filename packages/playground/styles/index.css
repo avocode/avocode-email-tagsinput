@@ -1,3 +1,6 @@
 @import 'playground.css';
 @import 'better-react-tagsinput-view.css';
 @import 'avocode-email-tagsinput-view.css';
+
+@import '../node_modules/@avocode/better-react-tagsinput/dist/main.css';
+@import '../node_modules/@avocode/avocode-email-tagsinput/dist/main.css';

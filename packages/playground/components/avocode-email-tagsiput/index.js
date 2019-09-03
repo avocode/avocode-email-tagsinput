@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import { utils } from 'better-react-tagsinput'
+import { utils } from '@avocode/better-react-tagsinput'
 
 import Basic from './basic'
 import Controlled from './controlled'
