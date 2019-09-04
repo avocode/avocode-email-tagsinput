@@ -36,14 +36,14 @@ export default class TagsPlugin implements PluginFactory {
   }
 
   renderNode = (props: Object, editor: Editor, next: Function) => {
-    const { node } = props
+    const { node, attributes, children } = props
     const data = node.get('data')
 
     switch (node.type) {
       case TAG_PLUGIN_NODE_ID:
         return (
           <Tag
-            {...props}
+            {...attributes}
             id={node.key}
             name={this._name}
             contents={data.get('tagContents')}
@@ -51,7 +51,7 @@ export default class TagsPlugin implements PluginFactory {
             data={data.get('data') || EMPTY_TAG_DATA}
             onRemoveButtonClick={editor.removeTag}
           >
-            {props.children}
+            {children}
           </Tag>
         )
       default:
