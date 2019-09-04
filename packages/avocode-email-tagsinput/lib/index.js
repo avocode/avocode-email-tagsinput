@@ -140,6 +140,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     editor: Editor,
     next: Function
   ) => {
+    next()
+
     this.setState({ focused: false })
   }
 
@@ -148,6 +150,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     editor: Editor,
     next: Function
   ) => {
+    next()
+
     this.setState({ focused: true })
   }
 
@@ -172,8 +176,10 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
     if (this.props.collapsible) {
       return (
-        <div className={classNames('avocode-tags-input-collapsible', {
-          [`avocode-tags-input-collapsible--${this.props.name}`]: this.props.name,
+        <div className={classNames('avocode-email-tagsinput-collapsible', {
+          [`avocode-email-tagsinput-collapsible--${this.props.name}`]: this.props.name,
+          [`avocode-email-tagsinput-collapsible--focused`]: focused,
+          [`avocode-email-tagsinput-collapsible--${this.props.name}--focused`]: this.props.name && focused,
         })}
         >
           <CollapsibleTagsInput
@@ -200,16 +206,25 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     }
 
     return (
-      <TagsInput
-        {...this.props}
-        name={this.props.name}
-        query={this.state.query}
-        tags={this.state.tags}
-        onQueryChangedRequest={this._handleQueryChange}
-        onTagAddedRequest={this._handleAddTag}
-        onTagDeleteRequest={this._handleDeleteTag}
-        onPasteRequest={this.props.onPasteRequest}
-      />
+      <div className={classNames('avocode-email-tagsinput', {
+        [`avocode-email-tagsinput--${this.props.name}`]: this.props.name,
+        [`avocode-email-tagsinput--focused`]: focused,
+        [`avocode-email-tagsinput--${this.props.name}--focused`]: this.props.name && focused,
+      })}
+      >
+        <TagsInput
+          {...this.props}
+          name={this.props.name}
+          query={this.state.query}
+          tags={this.state.tags}
+          onQueryChangedRequest={this._handleQueryChange}
+          onTagAddedRequest={this._handleAddTag}
+          onTagDeleteRequest={this._handleDeleteTag}
+          onPasteRequest={this.props.onPasteRequest}
+          onFocus={this._handleFocus}
+          onBlur={this._handleBlur}
+        />
+      </div>
     )
   }
 }

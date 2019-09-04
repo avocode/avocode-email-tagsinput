@@ -173,6 +173,32 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     next()
   }
 
+  _handleBlur = (
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+    editor: Editor,
+    next: Function
+  ) => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event, editor, next)
+      return
+    }
+
+    next()
+  }
+
+  _handleFocus = (
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+    editor: Editor,
+    next: Function
+  ) => {
+    if (this.props.onFocus) {
+      this.props.onFocus(event, editor, next)
+      return
+    }
+
+    next()
+  }
+
   render() {
     const isFocused = this.state.value.selection.isFocused
 
@@ -189,8 +215,8 @@ export default class TagsInput extends React.PureComponent<Props, State> {
           plugins={this.state.plugins}
           schema={schema}
           onChange={this._handleChange}
-          onBlur={this.props.onBlur}
-          onFocus={this.props.onFocus}
+          onBlur={this._handleBlur}
+          onFocus={this._handleFocus}
           ref={this.props.setRef}
           onClick={this._handleOnClick}
         />
