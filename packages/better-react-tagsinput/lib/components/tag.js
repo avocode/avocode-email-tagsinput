@@ -32,7 +32,7 @@ export default class TagComponent extends React.PureComponent<Props> {
       : this.props.state
 
     return (
-      <div
+      <span
         tabIndex={1}
         contentEditable={false}
         className={classNames(TAG_PLUGIN_NODE_ID, {
@@ -43,7 +43,7 @@ export default class TagComponent extends React.PureComponent<Props> {
           [`${TAG_PLUGIN_NODE_ID}--${stateName}--focused`]: this.props.isFocused && this.props.state,
         })}
       >
-        <div
+        <span
           className={classNames(`${TAG_PLUGIN_NODE_ID}__label`, {
             [`${TAG_PLUGIN_NODE_ID}__label--${this.props.name}`]: this.props.name,
             [`${TAG_PLUGIN_NODE_ID}__label--${stateName}`]: this.props.state,
@@ -51,7 +51,7 @@ export default class TagComponent extends React.PureComponent<Props> {
         >
           {this.props.contents}
           {this.props.children}
-        </div>
+        </span>
         <button
           className={classNames(`${TAG_PLUGIN_NODE_ID}__remove-button`, {
             [`${TAG_PLUGIN_NODE_ID}__remove-button--${this.props.name}`]: this.props.name,
@@ -59,7 +59,7 @@ export default class TagComponent extends React.PureComponent<Props> {
           })}
           onClick={this._handleOnRemoveButtonClick}
         />
-      </div>
+      </span>
     )
   }
 }

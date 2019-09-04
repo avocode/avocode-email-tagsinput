@@ -44,6 +44,7 @@ export default class TagsPlugin implements PluginFactory {
         return (
           <Tag
             {...attributes}
+            isFocused={props.isFocused}
             id={node.key}
             name={this._name}
             contents={data.get('tagContents')}
