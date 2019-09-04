@@ -155,7 +155,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     this.setState({ focused: true })
   }
 
-  _handleCounterClick = () => {
+  _handleInputClick = () => {
     if (this._input) {
       this._input.focus()
     }
@@ -170,17 +170,18 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
         <Counter
           name={this.props.name}
           count={tagCount}
-          onClick={this._handleCounterClick}
+          onClick={this._handleInputClick}
         />
       )
 
     if (this.props.collapsible) {
       return (
         <div className={classNames('avocode-email-tagsinput-collapsible', {
-          [`avocode-email-tagsinput-collapsible--${this.props.name}`]: this.props.name,
-          [`avocode-email-tagsinput-collapsible--focused`]: focused,
-          [`avocode-email-tagsinput-collapsible--${this.props.name}--focused`]: this.props.name && focused,
-        })}
+            [`avocode-email-tagsinput-collapsible--${this.props.name}`]: this.props.name,
+            [`avocode-email-tagsinput-collapsible--focused`]: focused,
+            [`avocode-email-tagsinput-collapsible--${this.props.name}--focused`]: this.props.name && focused,
+          })}
+          onClick={this._handleInputClick}
         >
           <CollapsibleTagsInput
             {...this.props}

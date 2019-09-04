@@ -1,9 +1,15 @@
 .tagsinput {
-  border: 1px solid #ededed;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ededed;
   padding: 3px;
 }
 
 .tagsinput--focused {
   border-color: black;
+}
+
+.collapsible-tagsinput {
+  height: 100%;
 }
 
