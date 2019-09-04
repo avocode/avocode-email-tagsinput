@@ -138,11 +138,11 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
 
   render() {
     return (
-      <div className={classNames('collapsible-tagsinput'), {
+      <div className={classNames('collapsible-tagsinput', {
           [`collapsible-tagsinput--${this.props.name}`]: this.props.name,
           'collapsible-tagsinput--collapsed': this.state.collapsed,
           [`collapsible-tagsinput--${this.props.name}--collapsed`]: this.state.collapsed,
-        }}
+        })}
       >
         <TagsInput
           {...this.props}
