@@ -7,6 +7,7 @@
     "build": "npx webpack --mode=production",
     "build:watch": "npx webpack --mode=production --watch",
     "flow": "npx flow",
+    "publish": "npm publish",
     "prepublish": "npm run build",
     "test": "npx jest --no-cache --config ../../jest.config.json"
   },
