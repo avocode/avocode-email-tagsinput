@@ -78,15 +78,17 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
     next: Function
   ) => {
-    next()
+    if (!this.props.onBlur) {
+      next()
+    }
 
     this._countTags()
 
-    if (this.props.onBlur) {
-      this.props.onBlur(event, editor, next)
-    }
-
-    this.setState({ collapsed: true })
+    this.setState({ collapsed: true }, () => {
+      if (this.props.onBlur) {
+        this.props.onBlur(event, editor, next)
+      }
+    })
   }
 
   _handleFocus = (
@@ -94,15 +96,17 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
     next: Function
   ) => {
-    next()
+    if (!this.props.onFocus) {
+      next()
+    }
 
     this._countTags()
 
-    if (this.props.onFocus) {
-      this.props.onFocus(event, editor, next)
-    }
-
-    this.setState({ collapsed: false })
+    this.setState({ collapsed: false }, () => {
+      if (this.props.onFocus) {
+        this.props.onFocus(event, editor, next)
+      }
+    })
   }
 
   _getTagNodes(): HTMLCollection<HTMLElement> | Array<*> {

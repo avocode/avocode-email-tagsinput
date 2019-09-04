@@ -9,7 +9,7 @@
   height: 200px;
 }
 
-.avocode-tags-input-collapsible--email-collapsible {
+.avocode-email-tagsinput-collapsible--email-collapsible {
   width: 450px;
 }
 
@@ -20,7 +20,7 @@
   border: none;
 }
 
-.avocode-tags-input-collapsible--custom-email-collapsible {
+.avocode-email-tagsinput-collapsible--custom-email-collapsible {
   flex-direction: column;
   flex-flow: row-reverse;
   width: 500px;
