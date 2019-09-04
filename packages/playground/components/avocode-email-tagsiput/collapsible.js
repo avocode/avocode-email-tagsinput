@@ -46,6 +46,12 @@ export default class Collapsible extends React.PureComponent {
     })
   }
 
+  _addRandomTag = (event) => {
+    this._handleTagAdd(
+      event,
+      String(`value-${Date.now().toString()}@avocode.com`)
+    )
+  }
 
   render() {
     const codeSnippet = "\
@@ -59,6 +65,12 @@ export default class Collapsible extends React.PureComponent {
         <p>
           Passing <code>collapsible=true</code> will render the input as collapsible that will
           display counter by default
+        </p>
+
+        <p>
+          Add random tag programatically with this button.
+          <br />
+          <button onClick={this._addRandomTag}>Add +</button>
         </p>
 
         <strong>Props</strong>
