@@ -10,7 +10,14 @@ import type { PluginFactory } from '../index.js.flow'
 
 const ARROW_LEFT_KEY_CODE = 37
 const ARROW_RIGHT_KEY_CODE = 39
-const KEY_CODES = [ ARROW_LEFT_KEY_CODE , ARROW_RIGHT_KEY_CODE ]
+const ARROW_UP_KEY_CODE = 38
+const ARROW_DOWN_KEY_CODE = 40 
+const KEY_CODES = [
+  ARROW_LEFT_KEY_CODE,
+  ARROW_RIGHT_KEY_CODE,
+  ARROW_UP_KEY_CODE,
+  ARROW_DOWN_KEY_CODE,
+]
 
 export default class KeyboardNavigationPlugin implements PluginFactory {
 
@@ -25,6 +32,10 @@ export default class KeyboardNavigationPlugin implements PluginFactory {
     const currentNode = document.getNode(key)
 
     switch (event.keyCode) {
+      case ARROW_UP_KEY_CODE:
+      case ARROW_DOWN_KEY_CODE:
+        event.preventDefault()
+        return next()
       case ARROW_LEFT_KEY_CODE:
         const previousNode = document.getPreviousNode(key)
 
@@ -36,7 +47,9 @@ export default class KeyboardNavigationPlugin implements PluginFactory {
             editor
               .moveFocusTo(previousInlineTextNode.key)
               .moveAnchorTo(previousInlineTextNode.key) :
-            next()
+            editor
+              .moveFocusTo(currentNode.key)
+              .moveAnchorTo(currentNode.key)
         }
         return next()
       case ARROW_RIGHT_KEY_CODE:

@@ -1,0 +1,29 @@
+/* DOC=styled */
+.tagsinput--styled {
+  font-size: 18px;
+  height: 30px;
+  border-color: green;
+}
+
+.tagsinput--styled--focused {
+  border-color: orange;
+}
+
+.tag--styled {
+  outline: 1px solid green;
+  border: none;
+  background-color: rgba(29, 224, 255, 0.13);
+  text-transform: uppercase;
+}
+
+.tag--styled--focused {
+  outline: 2px solid orange;
+  border: none;
+  background-color: rgba(29, 224, 255, 0.7);
+  color: white;
+}
+
+.tag__label--styled {
+  font-size: 16px;
+  font-style: italic;
+}

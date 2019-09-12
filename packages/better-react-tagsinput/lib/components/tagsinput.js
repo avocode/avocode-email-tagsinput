@@ -140,12 +140,12 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   _handleDeleteTag = (
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,
-    queryNodeDeleted: boolean,
+    queryNodeText?: Query,
   ) => {
     this.props.onTagDeleteRequest(event, indices)
 
-    if (queryNodeDeleted) {
-      this.props.onQueryChangedRequest('')
+    if (this.props.query !== queryNodeText) {
+      this.props.onQueryChangedRequest(queryNodeText || '')
     }
   }
 

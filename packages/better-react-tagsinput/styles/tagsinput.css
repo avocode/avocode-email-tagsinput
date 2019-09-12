@@ -13,3 +13,14 @@
   height: 100%;
 }
 
+/* HACK: This will need to be sorted by
+ * creating separate custom node for query
+ * part of the input */
+.tagsinput > div > div > span:only-child,
+.tagsinput > div > div > span:last-child {
+  display: inline-block;
+}
+.tagsinput > div > div > span:only-child {
+  padding: 3px;
+}
+
