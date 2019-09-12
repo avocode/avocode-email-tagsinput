@@ -11,9 +11,9 @@ import { createPlugins } from './plugins/factory'
 export default TagsInput
 
 export {
+  CollapsibleTagsInput,
   schema,
   plugins,
   utils,
   createPlugins,
-  CollapsibleTagsInput,
 }
