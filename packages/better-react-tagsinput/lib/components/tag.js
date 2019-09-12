@@ -4,7 +4,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
-import type { Name, Query, Tag } from '../index.js.flow'
+import type { Name, Query, Tag } from '../types.js'
 
 type Props = {
   id: string,

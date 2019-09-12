@@ -6,7 +6,7 @@ import { TAG_PLUGIN_NODE_ID } from './tags'
 
 import type { Editor } from 'slate-react'
 import type { Node } from 'slate'
-import type { PluginFactory } from '../index.js.flow'
+import type { PluginFactory } from '../types.js'
 
 const ARROW_LEFT_KEY_CODE = 37
 const ARROW_RIGHT_KEY_CODE = 39

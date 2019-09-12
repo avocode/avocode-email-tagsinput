@@ -5,7 +5,7 @@ import Tag from '../components/tag'
 
 import type { Editor } from 'slate-react'
 import type { Selection, Value } from 'slate'
-import type { AddTagKeyCodes, Name, PluginFactory, Query, Tags } from '../index.js.flow'
+import type { AddTagKeyCodes, Name, PluginFactory, Query, Tags } from '../types.js'
 
 export const TAG_PLUGIN_NODE_ID = 'tag'
 const BACKSPACE_KEY_CODE = 8

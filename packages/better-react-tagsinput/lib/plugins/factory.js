@@ -3,7 +3,7 @@
 import TagsPlugin from './tags'
 import KeyboardNavigationPlugin from './keyboard-navigation'
 
-import type { Plugin, FactoryPluginOptions } from '../index.js.flow'
+import type { Plugin, FactoryPluginOptions } from '../types.js'
 
 const createPlugins = (
   options: FactoryPluginOptions

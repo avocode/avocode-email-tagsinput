@@ -8,7 +8,7 @@ import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
 import type { Editor } from 'slate'
 import type { Props as TagsInputProps } from './tagsinput'
-import type { AddTagKeyCodes, Query } from '../index.js.flow'
+import type { AddTagKeyCodes, Query } from '../types.js'
 
 type Props = TagsInputProps & {
   addTagKeyCodes?: AddTagKeyCodes,
@@ -147,7 +147,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
   _scrollToTop = () => {
     const editorNode = this._input ? ReactDOM.findDOMNode(this._input) : null
 
-    if (!editorNode) {
+    if (!editorNode || !(editorNode instanceof Element)) {
       return
     }
 
