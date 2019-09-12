@@ -4,9 +4,13 @@
   "description": "React input element that allows you to insert and delete tags.",
   "main": "dist/better-react-tagsinput.js",
   "scripts": {
-    "build": "npx webpack --mode=production",
+    "build": "npm run build:clean && npm run copy-public-flow-types && npm run flow:libdef && npx webpack --mode=production",
+    "build:clean": "rm -rf dist && mkdir dist",
     "build:watch": "npx webpack --mode=production --watch",
+    "copy-public-flow-types": "cp lib/types.js dist/",
     "flow": "npx flow",
+    "flow:libdef": "npx flow-copy-source -v lib/ dist/",
+    "flow:libdef:watch": "npx flow-copy-source -vw lib/ dist/",
     "publish": "npm publish",
     "prepublish": "npm run build",
     "test": "npx jest --no-cache --config ../../jest.config.json"
@@ -40,6 +44,7 @@
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "flow-bin": "^0.104.0",
+    "flow-copy-source": "^2.0.8",
     "immutable": "^3.8.1",
     "jest": "^24.8.0",
     "react": "^15.4.2",

@@ -4,7 +4,8 @@
   "description": "React input component that handles creation and removal of tags based on matching email regex.",
   "main": "dist/avocode-email-tagsinput.js",
   "scripts": {
-    "build": "npx webpack --mode=production",
+    "build": "npm run build:clean && npx webpack --mode=production",
+    "build:clean": "rm -r dist/",
     "build:watch": "npx webpack --mode=production --watch",
     "flow": "npx flow",
     "publish": "npm publish",

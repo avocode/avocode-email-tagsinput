@@ -8,7 +8,7 @@
     "publish": "npm publish dist/",
     "flow": "npx lerna run flow --stream --scope @avocode/better-react-tagsinput && npx lerna run flow --stream --scope @avocode/avocode-email-tagsinput",
     "start": "npx lerna run start --scope playground --stream",
-    "start:all": "npx concurrently \"npx lerna run copy-api-docs --scope playground\" \"npx lerna run build:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"npm start\""
+    "start:all": "npx concurrently \"npx lerna run copy-api-docs --scope playground\" \"npx lerna run build:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"npm start\""
   },
   "license": "ISC",
   "devDependencies": {

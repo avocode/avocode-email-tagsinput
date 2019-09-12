@@ -1,23 +1,6 @@
 // @flow
 
-import TagsInput from './index'
-import CollapsibleTagsInput from './components/collapsible-tagsinput'
-import schema from './schema'
-import * as plugins from './plugins'
-import * as utils from './utils'
-import { createPlugins } from './plugins/factory'
-
-import type { Editor } from 'slate-react'
-
-export default TagsInput
-
-export {
-  CollapsibleTagsInput,
-  schema,
-  plugins,
-  utils,
-  createPlugins,
-}
+import { Editor } from 'slate-react'
 
 export type Query = string
 export type Tag = {|
