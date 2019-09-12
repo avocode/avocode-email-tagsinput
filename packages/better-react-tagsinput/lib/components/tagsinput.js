@@ -21,7 +21,7 @@ import type {
   Query,
   Tag,
   Tags,
-} from '../index.js.flow'
+} from '../types.js'
 
 export type Props = {
   query: string,

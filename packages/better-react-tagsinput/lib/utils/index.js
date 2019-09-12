@@ -3,7 +3,7 @@
 import { Point, Value, Selection } from 'slate'
 import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
-import type { Query, Tags } from '../index.js.flow'
+import type { Query, Tags } from '../types.js'
 
 const parseValue = (
   tags: Tags,
