@@ -18,7 +18,7 @@ export default class TagsPlugin implements PluginFactory {
   _addKeys: AddTagKeyCodes
   _name: Name
   _onTagAddedRequest: (event: SyntheticKeyboardEvent<*>, text: Query) => void
-    _onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeDeleted: false) => void
+    _onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeText?: Query) => void
   _onPasteRequest: ?(event: SyntheticClipboardEvent<*>) => void
 
   constructor(options: {
@@ -94,15 +94,15 @@ export default class TagsPlugin implements PluginFactory {
     const currentTagNodeIndex = this._getTagNodeIndex(editor, event, id)
 
     if (this._onTagDeleteRequest) {
-      this._onTagDeleteRequest(event, [ currentTagNodeIndex ], false)
+      this._onTagDeleteRequest(event, [ currentTagNodeIndex ])
     }
   }
 
   _handleRemoveTags = (selection: Selection, value: Value, event: SyntheticKeyboardEvent<*>, next: Function) => {
-    const { indices, queryNodeDeleted } = this._getTagNodeIndicesBySelection(selection, value)
+    const { indices, queryNodeText } = this._getTagNodeIndicesBySelection(selection, value)
 
     if (this._onTagDeleteRequest) {
-      this._onTagDeleteRequest(event, indices, queryNodeDeleted)
+      this._onTagDeleteRequest(event, indices, queryNodeText)
       return
     }
     return next()
@@ -123,9 +123,11 @@ export default class TagsPlugin implements PluginFactory {
       .toJS()
 
     const queryNode = value.document.nodes.first().nodes.last()
-    const queryNodeDeleted = selectedNodes.includes(queryNode)
+    const queryNodeText = queryNode ?
+      queryNode.text.substring(0, selection.start.offset) + queryNode.text.substring(selection.end.offset) :
+      ''
 
-    return { indices, queryNodeDeleted }
+    return { indices, queryNodeText }
   }
 
   _handleRemoveTagByKeyPress = (event: SyntheticKeyboardEvent<*>, editor: Editor, next: Function) => {

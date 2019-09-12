@@ -48,6 +48,6 @@ export type FactoryPluginOptions = {
   name: Name,
   onTagAddedRequest: 
 (event: SyntheticKeyboardEvent<*>, text: Query) => void,
-  onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeDeleted: boolean) => void,
+  onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeText?: Query) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
 }

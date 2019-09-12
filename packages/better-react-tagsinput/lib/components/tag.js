@@ -26,6 +26,12 @@ export default class TagComponent extends React.PureComponent<Props> {
     this.props.onRemoveButtonClick(event, this.props.id)
   }
 
+  _handleOnMouseDown = (event: SyntheticMouseEvent<*>) => {
+    // NOTE: We need to prevent blur event from hapenning when this component
+    //       is rendered in CollapsibleTagsInput
+    event.preventDefault()
+  }
+
   render() {
     const stateName = this.props.name
       ? `${this.props.name}--${this.props.state}`
@@ -33,7 +39,6 @@ export default class TagComponent extends React.PureComponent<Props> {
 
     return (
       <span
-        tabIndex={1}
         contentEditable={false}
         className={classNames(TAG_PLUGIN_NODE_ID, {
           [`${TAG_PLUGIN_NODE_ID}--${this.props.name}`]: this.props.name,
@@ -58,6 +63,7 @@ export default class TagComponent extends React.PureComponent<Props> {
             [`${TAG_PLUGIN_NODE_ID}__remove-button--${stateName}`]: this.props.state,
           })}
           onClick={this._handleOnRemoveButtonClick}
+          onMouseDown={this._handleOnMouseDown}
         />
       </span>
     )
