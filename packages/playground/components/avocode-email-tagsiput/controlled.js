@@ -17,7 +17,7 @@ export default class Controlled extends React.PureComponent {
     this.setState({ query })
   }
 
-  _handleTagDelete = (event, indices) => {
+  _handleTagDelete = (indices, event) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,

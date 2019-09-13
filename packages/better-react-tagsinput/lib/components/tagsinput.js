@@ -33,8 +33,8 @@ export type Props = {
   onQueryChangedRequest: (query: Query) => void,
   onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
-    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,
+    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
   ) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
   onBlur?: ?(
@@ -138,11 +138,11 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   }
 
   _handleDeleteTag = (
-    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,
+    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     queryNodeText?: Query,
   ) => {
-    this.props.onTagDeleteRequest(event, indices)
+    this.props.onTagDeleteRequest(indices, event)
 
     if (this.props.query !== queryNodeText) {
       this.props.onQueryChangedRequest(queryNodeText || '')

@@ -34,7 +34,7 @@ export default class Paste extends React.PureComponent {
     })
   }
 
-  _handleTagDeleted = (event, indices) => {
+  _handleTagDeleted = (indices, event) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
