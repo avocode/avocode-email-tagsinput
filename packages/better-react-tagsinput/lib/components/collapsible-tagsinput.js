@@ -14,7 +14,7 @@ type Props = TagsInputProps & {
   addTagKeyCodes?: AddTagKeyCodes,
   offset?: number,
   onQueryChangedRequest: (query: Query) => void,
-  onTagAddedRequest: (event: SyntheticKeyboardEvent<*>, text: Query) => void,
+  onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,

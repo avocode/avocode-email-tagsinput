@@ -8,7 +8,7 @@
     "build:clean": "rm -rf dist && mkdir dist",
     "build:watch": "npx webpack --mode=production --watch",
     "copy-public-flow-types": "cp lib/types.js dist/",
-    "flow": "npx flow",
+    "flow": "npm run flow:libdef && npm run copy-public-flow-types && npx flow",
     "flow:libdef": "npx flow-copy-source -v lib/ dist/",
     "flow:libdef:watch": "npx flow-copy-source -vw lib/ dist/",
     "publish": "npm publish",
