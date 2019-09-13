@@ -18,7 +18,11 @@ export default class TagsPlugin implements PluginFactory {
   _addKeys: AddTagKeyCodes
   _name: Name
   _onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void
-    _onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeText?: Query) => void
+  _onTagDeleteRequest: (
+    indices: Array<number>,
+    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
+    queryNodeText?: Query,
+  ) => void
   _onPasteRequest: ?(event: SyntheticClipboardEvent<*>) => void
 
   constructor(options: {
@@ -94,7 +98,7 @@ export default class TagsPlugin implements PluginFactory {
     const currentTagNodeIndex = this._getTagNodeIndex(editor, event, id)
 
     if (this._onTagDeleteRequest) {
-      this._onTagDeleteRequest(event, [ currentTagNodeIndex ])
+      this._onTagDeleteRequest([ currentTagNodeIndex ], event)
     }
   }
 
@@ -102,7 +106,7 @@ export default class TagsPlugin implements PluginFactory {
     const { indices, queryNodeText } = this._getTagNodeIndicesBySelection(selection, value)
 
     if (this._onTagDeleteRequest) {
-      this._onTagDeleteRequest(event, indices, queryNodeText)
+      this._onTagDeleteRequest(indices, event, queryNodeText)
       return
     }
     return next()

@@ -38,7 +38,7 @@ Callback that is triggered when user types in the input. The argument is the val
 
 Callback that is triggered if any of the `addTagKeyCodes` keys has been pressed. The event object is passed as first argument. Second argument is the text value of new tag.
 
-### `onTagDeleteRequest: (event: Event, indices: Array<number>)`
+### `onTagDeleteRequest: (indices: Array<number>, event: Event)`
 
 Callback that is triggered when tag / tags are deleted. This can happen by clicking on remove icon on the tag itself or when user deletes the tag via keyboard (by pressing any of the `removeTagKeyCodes`). `indices` is array of indices of the tags that are about to be deleted. It can be single index (if remove icon is clicked) or multiple (by selecting multiple tags with keyboard).
 

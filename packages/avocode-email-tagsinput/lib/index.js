@@ -20,7 +20,10 @@ type Props = {
   renderCounter?: (attributes: { focused: boolean, tagCount: number }) => React$Node,
   onQueryChangedRequest?: (query: Query) => void,
   onTagAddedRequest?: (query: Query, event: SyntheticKeyboardEvent<*>) => void,
-  onTagDeleteRequest?: (event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>, indices: Array<number>) => void,
+  onTagDeleteRequest?: (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
   onBlur?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
@@ -112,8 +115,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   }
 
   _handleDeleteTag = (
+    indices: Array<number>,
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    indices: Array<number>
   ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
@@ -126,7 +129,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
       }
     }, () => {
       if (this.props.onTagDeleteRequest) {
-        this.props.onTagDeleteRequest(event, indices)
+        this.props.onTagDeleteRequest(indices, event)
       }
     })
   }

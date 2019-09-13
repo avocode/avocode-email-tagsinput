@@ -16,8 +16,8 @@ type Props = TagsInputProps & {
   onQueryChangedRequest: (query: Query) => void,
   onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
-    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,
+    event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
   ) => void,
   onTagCountUpdateRequest?: ?(count: number) => void,
   setRef?: ?(node: ?React$ElementRef<*>) => mixed,
