@@ -33,18 +33,20 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
   }
 
-  state = { collapsed: false }
+  state = { collapsed: true }
 
   _input: ?React$ElementRef<*>
+  _hiddenTagNodes: Array<HTMLElement> = []
+  _tagNodes: HTMLCollection<HTMLElement> | Array<*> = []
 
-  componentWillReceiveProps(nextProps: Props) {
-    // NOTE: Should update counter if external changes
-    //       are triggered but only in collapsed state
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (
-      !this.state.collapsed &&
-      this.props.tags.length !== nextProps.tags.length
+      this.state.collapsed &&
+      this.props.tags.length !== prevProps.tags.length
     ) {
+      this._updateTagNodeCache()
       this._countTags()
+      this._scrollToBottom()
     }
   }
 
@@ -61,34 +63,35 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
   }
 
   _countTags = () => {
-    const tagNodes = this._getTagNodes()
-    const hiddenTagNodes = this._getNodesWithDifferentOffset(
-      tagNodes,
-      this.props.offset
-    )
-    const count = hiddenTagNodes.length
+    const count = this._hiddenTagNodes.length
 
     if (this.props.onTagCountUpdateRequest) {
       this.props.onTagCountUpdateRequest(count)
     }
   }
 
+  _updateTagNodeCache() {
+    const tagNodes = this._getTagNodes()
+    const hiddenTagNodes = this._getNodesWithDifferentOffset(
+      tagNodes,
+      this.props.offset
+    )
+
+    this._hiddenTagNodes = hiddenTagNodes
+    this._tagNodes = tagNodes
+  }
+
   _handleBlur = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function
   ) => {
-    if (!this.props.onBlur) {
-      next()
-    }
-
-    this._countTags()
-
     this.setState({ collapsed: true }, () => {
-      this._scrollToTop()
+      this._updateTagNodeCache()
+      this._countTags()
+      this._scrollToBottom()
 
       if (this.props.onBlur) {
-        this.props.onBlur(event, editor, next)
+        this.props.onBlur(event, editor)
       }
     })
   }
@@ -96,19 +99,14 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
   _handleFocus = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function
   ) => {
-    if (!this.props.onFocus) {
-      next()
-    }
-
-    this._countTags()
-
     this.setState({ collapsed: false }, () => {
+      this._updateTagNodeCache()
+      this._countTags()
       this._scrollToBottom()
 
       if (this.props.onFocus) {
-        this.props.onFocus(event, editor, next)
+        this.props.onFocus(event, editor)
       }
     })
   }
@@ -136,37 +134,28 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     nodes: HTMLCollection<HTMLElement> | Array<*>,
     offset: ?number,
   ): Array<HTMLElement> {
-    const firstNodeOffsetTop = nodes[0] && nodes[0].offsetTop || 0
-    const offsetTop = Number.isFinite(offset) || firstNodeOffsetTop
+    const lastNodeOffsetTop = nodes[nodes.length - 1] && nodes[nodes.length - 1].offsetTop || 0
+    const offsetTop = Number.isFinite(offset) || lastNodeOffsetTop
 
     return Array.from(nodes).filter((node) => {
       return node.offsetTop !== offsetTop
     })
   }
 
-  _scrollToTop = () => {
-    const editorNode = this._input ? ReactDOM.findDOMNode(this._input) : null
-
-    if (!editorNode || !(editorNode instanceof Element)) {
-      return
-    }
-
-    editorNode.scrollIntoView()
+  _handleInitialLoad = () => {
+    this._updateTagNodeCache()
+    this._countTags()
+    this._scrollToBottom()
   }
 
   _scrollToBottom = () => {
-    const tagNodes = this._getTagNodes()
-    const hiddenTagNodes = this._getNodesWithDifferentOffset(
-      tagNodes,
-      this.props.offset
-    )
-    const lastHiddenTagNode = hiddenTagNodes[hiddenTagNodes.length - 1]
+    const lastTagNode = this._tagNodes[this._tagNodes.length - 1]
 
-    if (!lastHiddenTagNode) {
+    if (!lastTagNode) {
       return
     }
 
-    lastHiddenTagNode.scrollIntoView()
+    lastTagNode.scrollIntoView()
   }
 
   render() {
@@ -185,7 +174,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
           onTagAddedRequest={this.props.onTagAddedRequest}
           onTagDeleteRequest={this.props.onTagDeleteRequest}
           setRef={this._setRef}
-          onInitialLoad={this._countTags}
+          onInitialLoad={this._handleInitialLoad}
         />
       </div>
     )

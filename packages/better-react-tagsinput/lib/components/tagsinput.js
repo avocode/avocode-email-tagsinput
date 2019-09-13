@@ -178,12 +178,11 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     editor: Editor,
     next: Function
   ) => {
-    if (this.props.onBlur) {
-      this.props.onBlur(event, editor, next)
-      return
-    }
-
     next()
+
+    if (this.props.onBlur) {
+      this.props.onBlur(event, editor)
+    }
   }
 
   _handleFocus = (
@@ -191,12 +190,11 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     editor: Editor,
     next: Function
   ) => {
-    if (this.props.onFocus) {
-      this.props.onFocus(event, editor, next)
-      return
-    }
-
     next()
+
+    if (this.props.onFocus) {
+      this.props.onFocus(event, editor)
+    }
   }
 
   render() {

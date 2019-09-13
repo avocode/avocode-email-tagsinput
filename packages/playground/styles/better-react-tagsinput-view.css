@@ -2,13 +2,23 @@
   border: 1px solid red;
 }
 
-.tagsinput--collapsible {
+.tagsinput--collapsing-input {
+  border-width: 0px;
+}
+
+.collapsible-tagsinput--collapsing-input {
   width: 400px;
-  height: 26px;
-  overflow: hidden;
-}
-
-.tagsinput--collapsible--focused {
   height: 160px;
+  overflow: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 }
 
+.collapsible-tagsinput--collapsing-input--collapsed {
+  height: 30px;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ededed;
+}

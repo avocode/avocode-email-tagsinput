@@ -16,19 +16,15 @@ export default class Collapsible extends React.PureComponent<{}, State> {
   state = {
     query: '',
     tags: [
-      { value: 'this' },
-      { value: 'is' },
-      { value: 'contained' },
-      { value: 'in' },
-      { value: 'collapsible' },
-      { value: 'input' },
-      { value: 'following' },
-      { value: 'tags' },
-      { value: 'will' },
-      { value: 'be' },
-      { value: 'hidden' },
-      { value: 'and' },
-      { value: 'counted!' },
+      { value: 'Lorem' },
+      { value: 'ipsum' },
+      { value: 'dolor' },
+      { value: 'sit' },
+      { value: 'amet' },
+      { value: 'consectetur' },
+      { value: 'adipiscing' },
+      { value: 'elit' },
+      { value: 'sed' },
     ],
     count: 0,
   }
@@ -43,6 +39,17 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     text: Query,
     event: SyntheticKeyboardEvent<*>,
   ) => {
+    this.setState((prevState) => {
+      return {
+        tags: [ ...prevState.tags, { value: text } ],
+        query: '',
+      }
+    })
+  }
+
+  _handleRandomTagAdded = () => {
+    const text = `${Date.now().toString().substring(8)}@avcd.cz`
+
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -109,8 +116,12 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           <strong>Hidden tag count:</strong> <i>{this.state.count}</i>
         </p>
 
+        <p>
+          <button onClick={this._handleRandomTagAdded}>Add random tag</button>
+        </p>
+
         <CollapsibleTagsInput
-          name='collapsible'
+          name='collapsing-input'
           query={this.state.query}
           tags={this.state.tags}
           onTagCountUpdateRequest={this._handleTagCountUpdate}
