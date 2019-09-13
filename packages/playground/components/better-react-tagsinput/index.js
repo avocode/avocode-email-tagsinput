@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -8,7 +10,13 @@ import Paste from './paste'
 import Collapsible from './collapsible'
 import Styling from './styling'
 
-export default class BetterReactTagsInputView extends React.PureComponent {
+type Props = {
+  match: {
+    url: string,
+  },
+}
+
+export default class BetterReactTagsInputView extends React.PureComponent<Props> {
   render() {
     const { match } = this.props
 

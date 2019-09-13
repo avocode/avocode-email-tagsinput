@@ -1,19 +1,31 @@
+// @flow
+
 import React from 'react'
 import TagsInput, { utils } from '@avocode/better-react-tagsinput'
 
-export default class Controlled extends React.PureComponent {
+import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
+
+type State = {
+  query: Query,
+  tags: Tags,
+}
+
+export default class Controlled extends React.PureComponent<{}, State> {
   state = {
     query: '',
     tags: [ { value: 'a' }, { value: 'b' } ],
   }
 
-  _handleQueryChange = (query) => {
+  _handleQueryChange = (query: Query) => {
     this.setState({
       query,
     })
   }
 
-  _handleTagAdded = (text, event) => {
+  _handleTagAdded = (
+    text: Query,
+    event: SyntheticKeyboardEvent<*>
+  ) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -22,7 +34,10 @@ export default class Controlled extends React.PureComponent {
     })
   }
 
-  _handleTagDeleted = (indices, event) => {
+  _handleTagDeleted = (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,

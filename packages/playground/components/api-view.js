@@ -1,8 +1,19 @@
+// @flow
+
 import React from 'react'
 
-export default class ApiView extends React.PureComponent {
+type Props = {
+  doc: ?string,
+  retryApiDocsLoadRequest?: () => void,
+}
+
+type State = {
+  failedToLoad: boolean,
+}
+
+export default class ApiView extends React.PureComponent<Props, State> {
   state = { failedToLoad: false }
-  _loadDoc = null
+  _loadDoc: ?TimeoutID = null
 
   componentDidMount() {
     this._loadDoc = setTimeout(() => {
@@ -18,7 +29,7 @@ export default class ApiView extends React.PureComponent {
     }
   }
 
-  _handleRetryClick = (event) => {
+  _handleRetryClick = (event: SyntheticMouseEvent<*>) => {
     event.preventDefault()
 
     if (this.props.retryApiDocsLoadRequest) {
