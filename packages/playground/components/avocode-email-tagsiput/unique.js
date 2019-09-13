@@ -1,7 +1,9 @@
+// @flow
+
 import React from 'react'
 import AvocodeEmailTagsInput from '@avocode/avocode-email-tagsinput'
 
-export default class Unique extends React.PureComponent {
+export default class Unique extends React.PureComponent<{}> {
   render() {
     return (
       <div>
