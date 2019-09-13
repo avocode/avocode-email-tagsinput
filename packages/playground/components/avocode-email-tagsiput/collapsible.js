@@ -1,7 +1,16 @@
+// @flow
+
 import React from 'react'
 import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 
-export default class Collapsible extends React.PureComponent {
+import type { Query, Tags } from '@avocode/avocode-email-tagsinput/dist/types'
+
+type State = {
+  query: Query,
+  tags: Tags,
+}
+
+export default class Collapsible extends React.PureComponent<{}, State> {
   state = {
     tags: [
       { value: 'test@test.com' },
@@ -20,7 +29,10 @@ export default class Collapsible extends React.PureComponent {
     query: '',
   }
 
-  _handleTagAdd = (text, event) => {
+  _handleTagAdd = (
+    text: Query,
+    event: SyntheticKeyboardEvent<*>
+  ) => {
     this.setState((prevState) => {
       return {
         query: '',
@@ -29,11 +41,14 @@ export default class Collapsible extends React.PureComponent {
     })
   }
 
-  _handleQueryChange = (query) => {
+  _handleQueryChange = (query: Query) => {
     this.setState({ query })
   }
 
-  _handleTagDelete = (indices, event) => {
+  _handleTagDelete = (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -46,10 +61,10 @@ export default class Collapsible extends React.PureComponent {
     })
   }
 
-  _addRandomTag = (event) => {
+  _addRandomTag = (event: SyntheticKeyboardEvent<*>) => {
     this._handleTagAdd(
-      event,
-      String(`value-${Date.now().toString()}@avocode.com`)
+      String(`value-${Date.now().toString()}@avocode.com`),
+      event
     )
   }
 

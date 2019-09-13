@@ -1,10 +1,22 @@
+// @flow
+
 import React from 'react'
 import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 
-export default class Controlled extends React.PureComponent {
+import type { Query, Tags } from '@avocode/avocode-email-tagsinput/dist/types'
+
+type State = {
+  query: Query,
+  tags: Tags,
+}
+
+export default class Controlled extends React.PureComponent<{}, State> {
   state = { tags: [ { value: 'test@test.com' }, { value: 'test2@test.com' } ], query: '' }
 
-  _handleTagAdd = (text, event) => {
+  _handleTagAdd = (
+    text: Query,
+    event: SyntheticKeyboardEvent<*>
+  ) => {
     this.setState((prevState) => {
       return {
         query: '',
@@ -13,11 +25,14 @@ export default class Controlled extends React.PureComponent {
     })
   }
 
-  _handleQueryChange = (query) => {
+  _handleQueryChange = (query: Query) => {
     this.setState({ query })
   }
 
-  _handleTagDelete = (indices, event) => {
+  _handleTagDelete = (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,

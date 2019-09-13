@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { utils } from '@avocode/better-react-tagsinput'
@@ -7,7 +9,13 @@ import Controlled from './controlled'
 import Unique from './unique'
 import Collapsible from './collapsible'
 
-export default class AvocodeEmailTagsInputView extends React.PureComponent {
+type Props = {
+  match: {
+    url: string,
+  }
+}
+
+export default class AvocodeEmailTagsInputView extends React.PureComponent<Props> {
   render() {
     const { match } = this.props
 
