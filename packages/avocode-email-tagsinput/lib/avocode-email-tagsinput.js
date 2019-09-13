@@ -28,12 +28,10 @@ type Props = {
   onBlur?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function,
   ) => void,
   onFocus?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function,
   ) => void,
 }
 
@@ -141,20 +139,14 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   _handleBlur = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function
   ) => {
-    next()
-
     this.setState({ focused: false })
   }
 
   _handleFocus = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function
   ) => {
-    next()
-
     this.setState({ focused: true })
   }
 
