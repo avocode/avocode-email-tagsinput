@@ -30,7 +30,7 @@ export type FactoryPluginOptions = {
   addTagKeyCodes: AddTagKeyCodes,
   name: Name,
   onTagAddedRequest: 
-(event: SyntheticKeyboardEvent<*>, text: Query) => void,
+(text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeText?: Query) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
 }

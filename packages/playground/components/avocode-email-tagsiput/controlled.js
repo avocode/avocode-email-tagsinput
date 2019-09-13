@@ -4,7 +4,7 @@ import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 export default class Controlled extends React.PureComponent {
   state = { tags: [ { value: 'test@test.com' }, { value: 'test2@test.com' } ], query: '' }
 
-  _handleTagAdd = (event, text) => {
+  _handleTagAdd = (text, event) => {
     this.setState((prevState) => {
       return {
         query: '',

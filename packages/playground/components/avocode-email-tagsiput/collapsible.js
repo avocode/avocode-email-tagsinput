@@ -20,7 +20,7 @@ export default class Collapsible extends React.PureComponent {
     query: '',
   }
 
-  _handleTagAdd = (event, text) => {
+  _handleTagAdd = (text, event) => {
     this.setState((prevState) => {
       return {
         query: '',

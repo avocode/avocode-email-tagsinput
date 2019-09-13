@@ -31,7 +31,7 @@ export type Props = {
   plugins?: Array<Plugin>,
   tagComponent?: React$Element<any>,
   onQueryChangedRequest: (query: Query) => void,
-  onTagAddedRequest: (event: SyntheticKeyboardEvent<*>, text: Query) => void,
+  onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
     indices: Array<number>,
@@ -149,8 +149,8 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     }
   }
 
-  _handleAddTag = (event: SyntheticKeyboardEvent<*>, text: Query) => {
-    this.props.onTagAddedRequest(event, text)
+  _handleAddTag = (text: Query, event: SyntheticKeyboardEvent<*>) => {
+    this.props.onTagAddedRequest(text, event)
   }
 
   _handleOnClick = (

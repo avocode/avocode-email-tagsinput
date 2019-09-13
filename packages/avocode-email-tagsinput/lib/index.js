@@ -19,7 +19,7 @@ type Props = {
   collapsible: boolean,
   renderCounter?: (attributes: { focused: boolean, tagCount: number }) => React$Node,
   onQueryChangedRequest?: (query: Query) => void,
-  onTagAddedRequest?: (event: SyntheticKeyboardEvent<*>, query: Query) => void,
+  onTagAddedRequest?: (query: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest?: (event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>, indices: Array<number>) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
   onBlur?: ?(
@@ -83,7 +83,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
       validTags
   }
 
-  _handleAddTag = (event: SyntheticKeyboardEvent<*>, text: Query) => {
+  _handleAddTag = (text: Query, event: SyntheticKeyboardEvent<*>) => {
     if (!utils.isValueValidEmail(text)) {
       return
     }
@@ -98,7 +98,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
       }
     }, () => {
       if (this.props.onTagAddedRequest) {
-        this.props.onTagAddedRequest(event, text)
+        this.props.onTagAddedRequest(text, event)
       }
     })
   }

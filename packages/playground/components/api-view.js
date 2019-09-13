@@ -2,13 +2,20 @@ import React from 'react'
 
 export default class ApiView extends React.PureComponent {
   state = { failedToLoad: false }
+  _loadDoc = null
 
   componentDidMount() {
-    setTimeout(() => {
+    this._loadDoc = setTimeout(() => {
       this.setState({
         failedToLoad: !this.props.doc,
       })
     }, 10000)
+  }
+
+  componentWillUnmount() {
+    if (Number.isFinite(this._loadDoc)) {
+      clearTimeout(this._loadDoc)
+    }
   }
 
   _handleRetryClick = (event) => {

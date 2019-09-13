@@ -34,7 +34,7 @@ Override default plugin. See [plugins](#plugins).
 
 Callback that is triggered when user types in the input. The argument is the value of the input.
 
-### `onTagAddedRequest: (event: Event, text: string)`
+### `onTagAddedRequest: (text: string, event: Event)`
 
 Callback that is triggered if any of the `addTagKeyCodes` keys has been pressed. The event object is passed as first argument. Second argument is the text value of new tag.
 

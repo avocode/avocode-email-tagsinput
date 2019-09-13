@@ -17,7 +17,7 @@ const EMPTY_TAG_STATE = ''
 export default class TagsPlugin implements PluginFactory {
   _addKeys: AddTagKeyCodes
   _name: Name
-  _onTagAddedRequest: (event: SyntheticKeyboardEvent<*>, text: Query) => void
+  _onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void
     _onTagDeleteRequest: (event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>, indices: Array<number>, queryNodeText?: Query) => void
   _onPasteRequest: ?(event: SyntheticClipboardEvent<*>) => void
 
@@ -86,7 +86,7 @@ export default class TagsPlugin implements PluginFactory {
     const currentNode = value.document.getNode(selection.start.path)
 
     if (this._onTagAddedRequest) {
-      this._onTagAddedRequest(event, currentNode.text)
+      this._onTagAddedRequest(currentNode.text, event)
     }
   }
 
