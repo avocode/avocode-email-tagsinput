@@ -1,7 +1,9 @@
+// @flow
+
 import React from 'react'
 import TagsInput from '@avocode/better-react-tagsinput'
 
-export default class Basic extends React.PureComponent {
+export default class Basic extends React.PureComponent<{}> {
   render() {
     const tags = [
       { value: 'first tag' },

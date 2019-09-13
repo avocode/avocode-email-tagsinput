@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import marked from 'marked'
@@ -8,7 +10,14 @@ import ApiView from './api-view'
 
 import '../styles/index.css'
 
-export default class App extends React.Component {
+type State = {
+  apiDocs: {
+    'avocode-email-tagsinput': ?string,
+    'better-react-tagsinput': ?string,
+  },
+}
+
+export default class App extends React.Component<{}, State> {
   state = {
     apiDocs: {},
   }

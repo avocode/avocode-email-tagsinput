@@ -1,9 +1,17 @@
 import React from 'react'
 import TagsInput, { utils } from '@avocode/better-react-tagsinput'
 
+import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
+
+type State = {
+  query: Query,
+  tags: Tags,
+  cssDoc: string,
+}
+
 const cssDocID = "/* DOC=styled */"
 
-export default class Styling extends React.PureComponent {
+export default class Styling extends React.PureComponent<{}, State> {
   state = {
     query: '',
     tags: [
@@ -21,13 +29,16 @@ export default class Styling extends React.PureComponent {
     this.setState({ cssDoc })
   }
 
-  _handleQueryChange = (query) => {
+  _handleQueryChange = (query: Query) => {
     this.setState({
       query,
     })
   }
 
-  _handleTagAdded = (text, event) => {
+  _handleTagAdded = (
+    text: Query,
+    event: SyntheticKeyboardEvent<*>
+  ) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -36,7 +47,10 @@ export default class Styling extends React.PureComponent {
     })
   }
 
-  _handleTagDeleted = (indices, event) => {
+  _handleTagDeleted = (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,

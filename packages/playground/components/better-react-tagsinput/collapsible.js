@@ -1,7 +1,18 @@
+// @flow
+
 import React from 'react'
 import TagsInput, { CollapsibleTagsInput, utils } from '@avocode/better-react-tagsinput'
 
-export default class Collapsible extends React.PureComponent {
+import type { Editor } from 'slate-react'
+import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
+
+type State = {
+  query: string,
+  tags: Tags,
+  count: number,
+}
+
+export default class Collapsible extends React.PureComponent<{}, State> {
   state = {
     query: '',
     tags: [
@@ -22,13 +33,16 @@ export default class Collapsible extends React.PureComponent {
     count: 0,
   }
 
-  _handleQueryChange = (query) => {
+  _handleQueryChange = (query: Query) => {
     this.setState({
       query,
     })
   }
 
-  _handleTagAdded = (text, event) => {
+  _handleTagAdded = (
+    text: Query,
+    event: SyntheticKeyboardEvent<*>,
+  ) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -37,7 +51,10 @@ export default class Collapsible extends React.PureComponent {
     })
   }
 
-  _handleTagDeleted = (indices, event) => {
+  _handleTagDeleted = (
+    indices: Array<number>,
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+  ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -50,11 +67,15 @@ export default class Collapsible extends React.PureComponent {
     })
   }
 
-  _handleFocus = (editor, event, next, count) => {
+  _handleFocus = (
+    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
+    editor: Editor,
+    next: Function,
+  ) => {
     this.setState({ count: 0 })
   }
 
-  _handleTagCountUpdate = (count) => {
+  _handleTagCountUpdate = (count: number) => {
     this.setState({ count })
   }
 
