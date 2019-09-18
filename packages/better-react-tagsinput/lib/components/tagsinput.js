@@ -125,12 +125,18 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       //       value of the "query" part of the input which is at the end
       const currentNode = value.document.getNode(selection.end.key)
 
-      const insertTextOperation = Boolean(
-        operations.size === 1 &&
-        operations.find((operation) => operation.type === 'insert_text')
+      const textOperation = Boolean(
+        (
+          operations.size === 1 &&
+          operations.find((operation) => operation.type === 'insert_text')
+        ) ||
+        (
+          operations.size === 2 &&
+          operations.find((operation) => operation.type === 'remove_text')
+        )
       )
 
-      if (currentNode && insertTextOperation) {
+      if (currentNode && textOperation) {
         this.props.onQueryChangedRequest(currentNode.text)
       }
 
