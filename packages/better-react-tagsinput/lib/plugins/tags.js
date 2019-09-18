@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react'
-import Tag from '../components/tag'
+import TagComponent from '../components/tag-component'
 
 import type { Editor } from 'slate-react'
 import type { Selection, Value } from 'slate'
-import type { AddTagKeyCodes, Name, PluginFactory, Query, Tags } from '../types.js'
+import type { AddTagKeyCodes, Name, PluginFactory, Query, TagComponentProps, TagComponentFactory, Tags } from '../types.js'
 
 export const TAG_PLUGIN_NODE_ID = 'tag'
 const BACKSPACE_KEY_CODE = 8
@@ -24,16 +24,19 @@ export default class TagsPlugin implements PluginFactory {
     queryNodeText?: Query,
   ) => void
   _onPasteRequest: ?(event: SyntheticClipboardEvent<*>) => void
+  _tagComponentFactory: ?TagComponentFactory
 
   constructor(options: {
     addTagKeyCodes: AddTagKeyCodes,
     name: Name,
+    tagComponentFactory: ?TagComponentFactory,
     onTagAddedRequest: Function,
     onTagDeleteRequest: Function,
     onPasteRequest: Function,
   }) {
     this._addKeys = options.addTagKeyCodes
     this._name = options.name
+    this._tagComponentFactory = options.tagComponentFactory
     this._onTagAddedRequest = options.onTagAddedRequest
     this._onTagDeleteRequest = options.onTagDeleteRequest
     this._onPasteRequest = options.onPasteRequest
@@ -45,19 +48,22 @@ export default class TagsPlugin implements PluginFactory {
 
     switch (node.type) {
       case TAG_PLUGIN_NODE_ID:
+        const tagProps = {
+          ...attributes,
+          isFocused: props.isFocused,
+          id: node.key,
+          name: this._name,
+          contents: data.get('tagContents'),
+          state: data.get('tagState') || EMPTY_TAG_STATE,
+          data: data.get('data') || EMPTY_TAG_DATA,
+          onRemoveButtonClick: editor.removeTag,
+          children,
+        }
+        if (this._tagComponentFactory) {
+          return this._tagComponentFactory(tagProps)
+        }
         return (
-          <Tag
-            {...attributes}
-            isFocused={props.isFocused}
-            id={node.key}
-            name={this._name}
-            contents={data.get('tagContents')}
-            state={data.get('tagState') || EMPTY_TAG_STATE}
-            data={data.get('data') || EMPTY_TAG_DATA}
-            onRemoveButtonClick={editor.removeTag}
-          >
-            {children}
-          </Tag>
+          <TagComponent {...tagProps} />
         )
       default:
         return next()

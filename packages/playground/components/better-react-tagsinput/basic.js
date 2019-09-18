@@ -9,7 +9,7 @@ export default class Basic extends React.PureComponent<{}> {
       { value: 'first tag' },
       { value: 'second tag' },
     ]
-    const query = 'this is where you type'
+    const query = 'query'
 
     return (
       <div>

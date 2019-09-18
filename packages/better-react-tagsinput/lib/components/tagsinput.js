@@ -20,6 +20,7 @@ import type {
   Plugin,
   Query,
   Tag,
+  TagComponentFactory,
   Tags,
 } from '../types.js'
 
@@ -29,7 +30,7 @@ export type Props = {
   name: string,
   addTagKeyCodes: AddTagKeyCodes,
   plugins?: Array<Plugin>,
-  tagComponent?: React$Element<any>,
+  tagComponentFactory?: TagComponentFactory,
   onQueryChangedRequest: (query: Query) => void,
   onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
@@ -76,6 +77,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     const {
       addTagKeyCodes,
       name,
+      tagComponentFactory,
       tags,
       query,
       onTagDeleteRequest,
@@ -84,6 +86,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     const plugins = this.props.plugins || createPlugins({
       addTagKeyCodes,
       name,
+      tagComponentFactory,
       onTagDeleteRequest,
       onPasteRequest,
       onTagDeleteRequest: this._handleDeleteTag,
@@ -209,6 +212,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
         })}
       >
         <Editor
+          {...this.props}
           value={this.state.value}
           plugins={this.state.plugins}
           schema={schema}

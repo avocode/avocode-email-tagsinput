@@ -11,6 +11,7 @@ const createPlugins = (
   const tagsPlugin = new TagsPlugin({
     addTagKeyCodes: options.addTagKeyCodes,
     name: options.name,
+    tagComponentFactory: options.tagComponentFactory,
     onTagAddedRequest: options.onTagAddedRequest,
     onTagDeleteRequest: options.onTagDeleteRequest,
     onPasteRequest: options.onPasteRequest,

@@ -9,7 +9,7 @@ export default class BasicWithTagState extends React.PureComponent<{}> {
       { value: 'first tag', state: 'error' },
       { value: 'second tag' },
     ]
-    const query = 'this is where you type'
+    const query = 'query'
 
     return (
       <div>

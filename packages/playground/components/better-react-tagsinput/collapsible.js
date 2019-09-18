@@ -100,8 +100,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           extra class name. You can style these classes to set the heights of focused and blurred state.
         </p>
         <p>
-          By default the <b>count</b> calculation considers the visible tags to be on first line only.
-          Again this depends on CSS and the way it is set up.
+          By default the <b>count</b> calculation considers the visible tags to be on the last line only. If you add new tags and overflow container is set up, the view is scrolled to last line.
         </p>
 
         <strong>Props</strong>

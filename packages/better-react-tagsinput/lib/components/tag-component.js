@@ -4,19 +4,9 @@ import React from 'react'
 import classNames from 'classnames'
 import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
-import type { Name, Query, Tag } from '../types.js'
+import type { TagComponentProps } from '../types'
 
-type Props = {
-  id: string,
-  state: string,
-  name: Name,
-  contents: Query,
-  children?: React$Node,
-  isFocused: boolean,
-  onRemoveButtonClick: (event: SyntheticMouseEvent<*>, id: string) => void,
-}
-
-export default class TagComponent extends React.PureComponent<Props> {
+export default class TagComponent extends React.PureComponent<TagComponentProps> {
   static defaultProps = {
     name: '',
     state: '',
