@@ -12,6 +12,7 @@ import initialValue from '../initial-value'
 import type { List } from 'immutable'
 import type { Operation, Value } from 'slate'
 
+// $FlowFixMe: Ignore flow for styles
 import '../../styles/index.css'
 
 import type {
