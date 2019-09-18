@@ -30,9 +30,13 @@ export default class TagsPlugin implements PluginFactory {
     addTagKeyCodes: AddTagKeyCodes,
     name: Name,
     tagComponentFactory: ?TagComponentFactory,
-    onTagAddedRequest: Function,
-    onTagDeleteRequest: Function,
-    onPasteRequest?: Function,
+    onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+    onTagDeleteRequest: (
+      indices: Array<number>,
+      event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
+      queryNodeText?: Query,
+    ) => void,
+    onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
   }) {
     this._addKeys = options.addTagKeyCodes
     this._name = options.name

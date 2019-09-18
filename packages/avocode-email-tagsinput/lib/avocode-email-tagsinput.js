@@ -9,6 +9,7 @@ import Counter from './components/counter'
 import type { Name, Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 import type { Editor } from 'slate-react'
 
+// $FlowFixMe: Ignore flow for styles
 import '../styles/index.css'
 
 type Props = {
