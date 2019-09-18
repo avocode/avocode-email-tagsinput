@@ -3,6 +3,7 @@
     "Ondrej Synacek <ondrejsynacek@fastmail.com>"
   ],
   "scripts": {
+    "build": "lerna run build --stream",
     "build:package": "npx lerna run build --stream --scope",
     "publish:package": "npx lerna run publish --stream --scope",
     "publish": "npm publish dist/",
