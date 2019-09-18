@@ -26,9 +26,23 @@ export type KeyCode = number
 export type AddTagKeyCodes = Array<KeyCode>
 export type Name = string
 
+export type TagComponentProps = {
+  isFocused: boolean,
+  id: string,
+  name: Name,
+  contents: Query,
+  state: string,
+  children?: React$Node,
+  data: Object,
+  onRemoveButtonClick: (event: SyntheticMouseEvent<*>, id: string) => void,
+}
+
+export type TagComponentFactory = (props: TagComponentProps) => React$Node
+
 export type FactoryPluginOptions = {
   addTagKeyCodes: AddTagKeyCodes,
   name: Name,
+  tagComponentFactory?: TagComponentFactory,
   onTagAddedRequest: 
 (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (

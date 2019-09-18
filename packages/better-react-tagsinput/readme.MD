@@ -26,6 +26,10 @@ The important and required property is `value` which is the text value that is r
 
 Javascript event keyboard codes. These keys trigger adding a new tag. By default *Space*, *Enter* and *Comma* keys are used.
 
+### `tagComponentFactory: (props) => React$Node`
+
+Render props for rendering custom tag component. The callback receives props such as `isFocused` (if cursor is focused on tag), `contents` (text content of tag), `state` (state value of tag) and others. Look at source code of the `tag-component` to see how to correctly create your own component.
+
 ### `plugins: Array<Plugin`
 
 Override default plugin. See [plugins](#plugins).
