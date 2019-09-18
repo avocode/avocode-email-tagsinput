@@ -32,7 +32,7 @@ export default class TagsPlugin implements PluginFactory {
     tagComponentFactory: ?TagComponentFactory,
     onTagAddedRequest: Function,
     onTagDeleteRequest: Function,
-    onPasteRequest: Function,
+    onPasteRequest?: Function,
   }) {
     this._addKeys = options.addTagKeyCodes
     this._name = options.name

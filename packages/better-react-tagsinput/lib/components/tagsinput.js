@@ -41,12 +41,10 @@ export type Props = {
   onBlur?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function,
   ) => void,
   onFocus?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
-    next: Function,
   ) => void,
   onChange?: ?({ value: Value, operations: List<Operation> }) => void,
   setRef?: ?(node: ?React$ElementRef<*>) => mixed,
