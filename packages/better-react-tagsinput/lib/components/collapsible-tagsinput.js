@@ -40,13 +40,16 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
   _tagNodes: HTMLCollection<HTMLElement> | Array<*> = []
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (
-      this.state.collapsed &&
-      this.props.tags.length !== prevProps.tags.length
-    ) {
-      this._updateTagNodeCache()
-      this._countTags()
-      this._scrollToBottom()
+    // HACK: This needs to be here so when you add tag
+    //       in overflow container, the editor gets
+    //       scrolled into view.
+    //       Not sure how to fix this properly.
+    if (this.props.tags.length !== prevProps.tags.length) {
+      setImmediate(() => {
+        this._updateTagNodeCache()
+        this._countTags()
+        this._scrollToBottom()
+      })
     }
   }
 
@@ -86,10 +89,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
   ) => {
     this.setState({ collapsed: true }, () => {
-      this._updateTagNodeCache()
-      this._countTags()
       this._scrollToBottom()
-
       if (this.props.onBlur) {
         this.props.onBlur(event, editor)
       }
@@ -101,10 +101,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
   ) => {
     this.setState({ collapsed: false }, () => {
-      this._updateTagNodeCache()
-      this._countTags()
       this._scrollToBottom()
-
       if (this.props.onFocus) {
         this.props.onFocus(event, editor)
       }
@@ -155,7 +152,11 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
       return
     }
 
-    lastTagNode.scrollIntoView()
+    // HACK: Not sure how to fix this yet
+    //       see `componentDidUpdate` for similar action
+    setTimeout(() => {
+      lastTagNode.scrollIntoView()
+    }, 5)
   }
 
   render() {
