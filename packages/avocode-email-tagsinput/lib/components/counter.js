@@ -17,7 +17,7 @@ export default class Counter extends React.PureComponent<Props> {
 
   render() {
     const { count } = this.props
-    const countString = count < 99 ? count : '+99'
+    const countString = count < 99 ? `+${count}` : '+99'
 
     return (
       <div className={classNames('avocode-email-tagsinput-counter', {
