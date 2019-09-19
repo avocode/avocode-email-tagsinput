@@ -17,6 +17,7 @@ export default class UpdateValuePlugin implements PluginFactory {
       prevQuery?: Query,
     }
   ) => {
+    console.time('update_value')
     const tags = options.tags
     const prevTags = options.prevTags || []
     const query = options.query
@@ -81,6 +82,7 @@ export default class UpdateValuePlugin implements PluginFactory {
 
       editor.moveTo(offset).insertInline(this._createTag(tag)).moveFocusToEndOfDocument()
     })
+    console.timeEnd('update_value')
   }
 
   _compareTags(prevTags: Tags, tags: Tags) {

@@ -10,6 +10,7 @@ import Paste from './paste'
 import Collapsible from './collapsible'
 import Styling from './styling'
 import CustomTag from './custom-tag'
+import Performance from './performance'
 
 type Props = {
   match: {
@@ -33,6 +34,7 @@ export default class BetterReactTagsInputView extends React.PureComponent<Props>
               <li className='subnav-item'><Link to={`${match.url}/collapsible`}>Collapsible</Link></li>
               <li className='subnav-item'><Link to={`${match.url}/styling`}>Styling</Link></li>
               <li className='subnav-item'><Link to={`${match.url}/custom-tag`}>Custom tag</Link></li>
+              <li className='subnav-item'><Link to={`${match.url}/performance`}>Performance</Link></li>
             </ul>
           </nav>
 
@@ -44,6 +46,7 @@ export default class BetterReactTagsInputView extends React.PureComponent<Props>
           <Route path={`${match.url}/collapsible`} component={Collapsible} />
           <Route path={`${match.url}/styling`} component={Styling} />
           <Route path={`${match.url}/custom-tag`} component={CustomTag} />
+          <Route path={`${match.url}/performance`} component={Performance} />
         </div>
       </Router>
     )
