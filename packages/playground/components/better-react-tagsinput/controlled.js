@@ -101,6 +101,115 @@ export default class Controlled extends React.PureComponent<{}, State> {
           onTagAddedRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
         />
+        <ControlledUpdates />
+        <ControlledAdditions />
+      </div>
+    )
+  }
+}
+
+class ControlledUpdates extends React.PureComponent<{}, State> {
+  state = {
+    query: 'query',
+    tags: [
+      { value: 'a' },
+      { value: 'b', state: 'warning' },
+      { value: 'c' },
+      { value: 'd' },
+      { value: 'e' },
+      { value: 'f' },
+    ],
+  }
+
+  _performChanges = () => {
+    this.setState({
+      tags: [
+        { value: 'Z' },
+        { value: 'b', state: 'highlight' },
+        { value: 'c' },
+        { value: 'd' },
+        { value: 'Y' },
+      ],
+      query: '!!!',
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <p>
+          The controlled input can perform multiple changes at once. This specific
+          change will update & remove tags at once and also change query.
+          <br />
+          <button onClick={this._performChanges}>Change</button>
+        </p>
+        <strong>Props</strong>
+        <dl>
+          <dt>tags</dt>
+          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
+          <dt>query</dt>
+          <dd>{this.state.query}</dd>
+        </dl>
+        <TagsInput
+          name='controlled'
+          tags={this.state.tags}
+          query={this.state.query}
+          onQueryChangedRequest={() => {}}
+          onTagAddedRequest={() => {}}
+          onTagDeleteRequest={() => {}}
+        />
+      </div>
+    )
+  }
+}
+
+class ControlledAdditions extends React.PureComponent<{}, State> {
+  state = {
+    query: 'query',
+    tags: [
+      { value: 'a' },
+      { value: 'b' },
+      { value: 'c' },
+    ],
+  }
+
+  _performChanges = () => {
+    this.setState({
+      tags: [
+      { value: 'a' },
+      { value: 'b' },
+      { value: 'c' },
+      { value: 'd' },
+      { value: 'e' },
+      ],
+      query: 'changed',
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <p>
+          The controlled input can perform multiple changes at once. This specific
+          change will update & remove tags at once and also change query.
+          <br />
+          <button onClick={this._performChanges}>Change</button>
+        </p>
+        <strong>Props</strong>
+        <dl>
+          <dt>tags</dt>
+          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
+          <dt>query</dt>
+          <dd>{this.state.query}</dd>
+        </dl>
+        <TagsInput
+          name='controlled'
+          tags={this.state.tags}
+          query={this.state.query}
+          onQueryChangedRequest={() => {}}
+          onTagAddedRequest={() => {}}
+          onTagDeleteRequest={() => {}}
+        />
       </div>
     )
   }

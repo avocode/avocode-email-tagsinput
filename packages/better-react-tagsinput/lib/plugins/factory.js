@@ -2,6 +2,7 @@
 
 import TagsPlugin from './tags'
 import KeyboardNavigationPlugin from './keyboard-navigation'
+import UpdateValuePlugin from './update-value'
 
 import type { Plugin, FactoryPluginOptions } from '../types.js'
 
@@ -19,6 +20,7 @@ const createPlugins = (
 
   const pluginInstances = [
     tagsPlugin,
+    new UpdateValuePlugin(),
     new KeyboardNavigationPlugin(),
   ]
 

@@ -40,14 +40,8 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
   _tagNodes: HTMLCollection<HTMLElement> | Array<*> = []
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    // HACK: This needs to be here so when you add tag
-    //       in overflow container, the editor gets
-    //       scrolled into view.
-    //       Not sure how to fix this properly.
-    if (this.props.tags.length !== prevProps.tags.length) {
+    if (prevState.collapsed !== this.state.collapsed) {
       setImmediate(() => {
-        this._updateTagNodeCache()
-        this._countTags()
         this._scrollToBottom()
       })
     }
@@ -89,7 +83,6 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
   ) => {
     this.setState({ collapsed: true }, () => {
-      this._scrollToBottom()
       if (this.props.onBlur) {
         this.props.onBlur(event, editor)
       }
@@ -101,11 +94,30 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     editor: Editor,
   ) => {
     this.setState({ collapsed: false }, () => {
-      this._scrollToBottom()
       if (this.props.onFocus) {
         this.props.onFocus(event, editor)
       }
     })
+  }
+
+  _handleChange = ({ value, operations }: { value: Value, operations: List<Operation> }) => {
+    const tagCountChanged = Boolean(
+      operations.find((operation) => {
+        return (
+          operation.type === 'insert_node' ||
+          operation.type === 'remove_node'
+        ) || (
+          operation.node &&
+          operation.node.type === TAG_PLUGIN_NODE_ID
+        )
+      })
+    )
+
+    if (tagCountChanged) {
+      this._updateTagNodeCache()
+      this._countTags()
+      this._scrollToBottom()
+    }
   }
 
   _getTagNodes(): HTMLCollection<HTMLElement> | Array<*> {
@@ -152,11 +164,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
       return
     }
 
-    // HACK: Not sure how to fix this yet
-    //       see `componentDidUpdate` for similar action
-    setTimeout(() => {
-      lastTagNode.scrollIntoView()
-    }, 5)
+    lastTagNode.scrollIntoView()
   }
 
   render() {
@@ -169,6 +177,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
       >
         <TagsInput
           {...this.props}
+          onChange={this._handleChange}
           onBlur={this._handleBlur}
           onFocus={this._handleFocus}
           onQueryChangedRequest={this.props.onQueryChangedRequest}

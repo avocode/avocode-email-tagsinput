@@ -6,7 +6,6 @@ import { Editor } from 'slate-react'
 import classNames from 'classnames'
 import { createPlugins } from '../plugins'
 import schema from '../schema'
-import { parseValue } from '../utils'
 import initialValue from '../initial-value'
 
 import type { List } from 'immutable'
@@ -72,6 +71,8 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
   }
 
+  _input: ?React$ElementRef = null
+
   componentDidMount() {
     const {
       addTagKeyCodes,
@@ -92,26 +93,30 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       onTagAddedRequest: this._handleAddTag,
     })
 
-    const value = parseValue(tags, query, this.state.value ? this.state.value.selection : null)
-
-    this.setState({
-      plugins,
-      value,
-    }, () => {
+    this.setState({ plugins }, () => {
+      if (this._input) {
+        this._input.createValue({
+          tags: this.props.tags,
+          query: this.props.query,
+        })
+      }
       if (this.props.onInitialLoad) {
         this.props.onInitialLoad()
       }
     })
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     if (
-      this.props.query !== nextProps.query ||
-      this.props.tags !== nextProps.tags
+      this._input &&
+      this.props.tags !== prevProps.tags ||
+      this.props.query !== prevProps.query
     ) {
-      const nextValue = parseValue(nextProps.tags, nextProps.query, this.state.value.selection)
-      this.setState({
-        value: nextValue,
+      this._input.updateValue({
+        tags: this.props.tags,
+        prevTags: prevProps.tags,
+        query: this.props.query,
+        prevQuery: prevProps.query,
       })
     }
   }
@@ -205,6 +210,18 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     }
   }
 
+  _setRef = (node: React$ElementRef<*>) => {
+    if (!node) {
+      return
+    }
+
+    this._input = node
+
+    if (this.props.setRef) {
+      this.props.setRef(node)
+    }
+  }
+
   render() {
     const isFocused = this.state.value.selection.isFocused
 
@@ -224,7 +241,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
           onChange={this._handleChange}
           onBlur={this._handleBlur}
           onFocus={this._handleFocus}
-          ref={this.props.setRef}
+          ref={this._setRef}
           onClick={this._handleOnClick}
         />
       </div>
