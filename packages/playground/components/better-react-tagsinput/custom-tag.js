@@ -2,7 +2,6 @@
 
 import React from 'react'
 import TagsInput, { utils } from '@avocode/better-react-tagsinput'
-import classNames from 'classnames'
 
 import type { Editor } from 'slate-react'
 import type { Name, Query, Tags, TagComponentProps } from '@avocode/better-react-tagsinput/dist/types'
