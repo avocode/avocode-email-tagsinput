@@ -70,7 +70,6 @@ If you need to set reference to the editor itself, you can use this function to 
 
 This callback is triggered once the query and tags are parsed and the internal editor value is generated, basically after the editor's internal state is set and first render occurs. The callback is called at the end of `componentDidMount`.
 
-
 ## CollapsibleTagsInput API
 
 You can pass the same props as for `TagsInput` component. The additional props are these.
@@ -97,6 +96,10 @@ React component that renders `TagsInput` internally. This component allows for p
 
 See [CollapsibleTagsInput API](#collapsibletagsinput-api)
 
+### `TagComponent`
+
+Default React component that renders tag items.
+
 ### `plugins`
 
 Object containing default SlateJS plugins used with `TagsInput`. These plugins are used by default with the input. The plugins are created as classes so you need to call `plugin.initialize()` before passing them to the input.
@@ -108,6 +111,10 @@ Handles rendering of the tag objects. It also triggers callbacks when tag should
 - `KeyboardNavigationPlugin`
 
 Plugin that enables navigation with cursor arrows between tag nodes so empty nodes between tag nodes are skipped.
+
+- `UpdateValue`
+
+Plugin that parses incoming `tag` and `query` props into SlateJS value representation.
 
 ### `createPlugins`
 
