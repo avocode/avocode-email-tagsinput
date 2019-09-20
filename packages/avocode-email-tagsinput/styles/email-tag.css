@@ -1,0 +1,6 @@
+.tag__label--avocode-email-tagsinput-tag {
+  max-width: 210px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 1px 0 -4px 0;
+}

@@ -5,6 +5,7 @@ import TagsInput, { CollapsibleTagsInput } from '@avocode/better-react-tagsinput
 import classNames from 'classnames'
 import * as utils from './utils'
 import Counter from './components/counter'
+import EmailTag from './components/email-tag'
 
 import type { Name, Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 import type { Editor } from 'slate-react'
@@ -157,6 +158,10 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     }
   }
 
+  _renderEmailTag = (props) => {
+    return <EmailTag {...props} />
+  }
+
   render() {
     const { focused, tagCount } = this.state
 
@@ -184,6 +189,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
             name={this.props.name}
             query={this.state.query}
             tags={this.state.tags}
+            tagComponentFactory={this._renderEmailTag}
             onQueryChangedRequest={this._handleQueryChange}
             onTagAddedRequest={this._handleAddTag}
             onTagDeleteRequest={this._handleDeleteTag}
@@ -214,6 +220,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
           name={this.props.name}
           query={this.state.query}
           tags={this.state.tags}
+          tagComponentFactory={this._renderEmailTag}
           onQueryChangedRequest={this._handleQueryChange}
           onTagAddedRequest={this._handleAddTag}
           onTagDeleteRequest={this._handleDeleteTag}

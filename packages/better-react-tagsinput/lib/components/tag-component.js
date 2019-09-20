@@ -29,6 +29,7 @@ export default class TagComponent extends React.PureComponent<TagComponentProps>
 
     return (
       <span
+        title={this.props.title || ''}
         contentEditable={false}
         className={classNames(TAG_PLUGIN_NODE_ID, {
           [`${TAG_PLUGIN_NODE_ID}--${this.props.name}`]: this.props.name,
