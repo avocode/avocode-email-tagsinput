@@ -8,6 +8,7 @@ import Basic from './basic'
 import Controlled from './controlled'
 import Unique from './unique'
 import Collapsible from './collapsible'
+import LongInput from './long-input'
 
 type Props = {
   match: {
@@ -29,6 +30,7 @@ export default class AvocodeEmailTagsInputView extends React.PureComponent<Props
               <li className='subnav-item'><Link to={`${url}/controlled`}>Controlled</Link></li>
               <li className='subnav-item'><Link to={`${url}/unique`}>Unique</Link></li>
               <li className='subnav-item'><Link to={`${url}/collapsible`}>Collapsible</Link></li>
+              <li className='subnav-item'><Link to={`${url}/long-input`}>LongInput</Link></li>
             </ul>
           </nav>
 
@@ -37,6 +39,7 @@ export default class AvocodeEmailTagsInputView extends React.PureComponent<Props
           <Route path={`${url}/controlled`} component={Controlled} />
           <Route path={`${url}/unique`} component={Unique} />
           <Route path={`${url}/collapsible`} component={Collapsible} />
+          <Route path={`${url}/long-input`} component={LongInput} />
         </div>
       </Router>
     )

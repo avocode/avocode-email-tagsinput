@@ -12,11 +12,16 @@
   overflow: auto;
   display: flex;
   justify-content: space-between;
+  margin: 3px;
 }
 
 .collapsible-tagsinput--email-collapsible--collapsed {
   height: 27px;
   overflow: hidden;
+}
+
+.tagsinput--email-collapsible {
+  padding: 0px;
 }
 
 .tagsinput--email-collapsible--focused {
@@ -52,3 +57,8 @@
   height: 20px;
   text-align: center;
 }
+
+.avocode-email-tagsinput--long-input {
+  width: 400px;
+}
+
