@@ -3,6 +3,7 @@
   "version": "1.2.4-beta",
   "description": "Playground React app to be used with better-tags-input & avocode-email-tagsinput library during development.",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "npm run copy-api-docs && webpack --mode=production .",
     "clean": "rm -rf dist && mkdir dist",
@@ -31,5 +32,5 @@
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.6"
   },
-  "gitHead": "a180e31a24b0ea8b7e7ab02dba4bb92c02fb12d0"
+  "gitHead": "8d36eccdb3954dca3ac91951531d5a447ddcabba"
 }
