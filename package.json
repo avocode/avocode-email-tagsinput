@@ -3,13 +3,17 @@
     "Ondrej Synacek <ondrejsynacek@fastmail.com>"
   ],
   "scripts": {
-    "build": "lerna run build --stream",
-    "build:package": "npx lerna run build --stream --scope",
-    "publish:package": "npx lerna run publish --stream --scope",
-    "publish": "npm publish dist/",
-    "flow": "npx lerna run flow --stream --scope @avocode/better-react-tagsinput && npx lerna run flow --stream --scope @avocode/avocode-email-tagsinput && npx lerna run flow --stream --scope playground",
-    "start": "npx lerna run start --scope playground --stream",
-    "start:all": "npx concurrently \"npx lerna run copy-api-docs --scope playground\" \"npx lerna run build:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"npx lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"npm start\""
+    "build": "npm run clean && lerna run build --stream",
+    "build:package": "lerna run build --stream --scope",
+    "clean": "lerna run clean --stream",
+    "clean:package": "lerna run clean --stream --scope",
+    "install": "lerna bootstrap",
+    "flow": "lerna run flow --stream",
+    "publish:package": "lerna run publish --stream --scope",
+    "publish": "lerna run publish --stream",
+    "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
+    "test": "jest .",
+    "version": "lerna version"
   },
   "license": "ISC",
   "devDependencies": {
@@ -21,11 +25,15 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.9.0",
     "concurrently": "^4.1.2",
+    "flow-bin": "^0.108.0",
+    "flow-copy-source": "^2.0.8",
+    "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "mini-css-extract-plugin": "^0.8.0",
     "surge": "^0.21.3",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {}
 }

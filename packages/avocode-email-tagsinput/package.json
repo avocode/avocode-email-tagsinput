@@ -4,14 +4,13 @@
   "description": "React input component that handles creation and removal of tags based on matching email regex.",
   "main": "dist/avocode-email-tagsinput.js",
   "scripts": {
-    "build": "npm run build:clean && npm run copy-public-flow-types && npm run flow:libdef && npx webpack --mode=production",
-    "build:clean": "rm -rf dist && mkdir dist",
-    "build:watch": "npx webpack --mode=production --watch",
+    "build": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && webpack --mode=production",
+    "build:watch": "webpack --mode=production --watch",
+    "clean": "rm -rf dist && mkdir dist",
     "copy-public-flow-types": "cp lib/types.js dist/",
-    "flow": "npx flow",
-    "flow:libdef": "npx flow-copy-source -v lib/ dist/",
-    "flow:libdef:watch": "npx flow-copy-source -vw lib/ dist/",
-    "publish": "npm publish",
+    "flow": "flow",
+    "flow:libdef": "flow-copy-source -v lib/ dist/",
+    "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,15 +43,12 @@
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
-    "flow-bin": "^0.104.0",
-    "flow-copy-source": "^2.0.8",
     "immutable": "^3.8.1",
     "jest": "^24.8.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "slate-react": "^0.22.8",
     "style-loader": "^1.0.0",
-    "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
   }
 }

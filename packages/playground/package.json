@@ -4,12 +4,13 @@
   "description": "Playground React app to be used with better-tags-input & avocode-email-tagsinput library during development.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run copy-api-docs && npx webpack --mode=production .",
-    "flow": "npx flow",
+    "build": "npm run copy-api-docs && webpack --mode=production .",
+    "clean": "rm -rf dist && mkdir dist",
+    "flow": "flow",
     "copy-api-docs": "cp ../better-react-tagsinput/readme.MD static/better-react-tagsinput.md && cp ../avocode-email-tagsinput/readme.MD static/avocode-email-tagsinput.md",
     "prepublish": "npm run build && cp -R static dist",
-    "publish": "npx surge dist/ avocode-email-tagsinput.surge.sh",
-    "start": "npm run copy-api-docs && npx webpack-dev-server",
+    "publish": "surge dist/ avocode-email-tagsinput.surge.sh",
+    "start": "npm run copy-api-docs && webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
@@ -26,11 +27,8 @@
   "devDependencies": {
     "babel-loader": "^8.0.6",
     "css-loader": "^3.1.0",
-    "flow-bin": "^0.104.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.38.0",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-cli": "^3.3.6"
   }
 }
