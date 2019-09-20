@@ -1,6 +1,6 @@
 {
   "name": "@avocode/better-react-tagsinput",
-  "version": "1.2.1-beta",
+  "version": "1.2.2-beta",
   "description": "React input element that allows you to insert and delete tags.",
   "main": "dist/better-react-tagsinput.js",
   "scripts": {
