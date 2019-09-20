@@ -10,7 +10,7 @@
     "install": "lerna bootstrap",
     "flow": "lerna run flow --stream",
     "publish:package": "lerna run publish --stream --scope",
-    "publish": "lerna run publish --stream",
+    "publish": "lerna publish",
     "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
     "test": "jest .",
     "version": "lerna version"
