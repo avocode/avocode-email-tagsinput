@@ -1,13 +1,12 @@
-// NOTE: This config file is used to create distribution packages only
-
 const path = require('path')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 module.exports = {
   devtool: 'source-map',
-  optimization: {
-    minimize: false,
-  },
+  //optimization: {
+  //  minimize: false,
+  //},
   module: {
     rules: [
       {
