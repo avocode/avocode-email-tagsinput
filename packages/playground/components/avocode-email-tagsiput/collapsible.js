@@ -2,6 +2,7 @@
 
 import React from 'react'
 import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
+import uuid from 'uuid'
 
 import type { Query, Tags } from '@avocode/avocode-email-tagsinput/dist/types'
 
@@ -63,7 +64,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
 
   _addRandomTag = (event: SyntheticKeyboardEvent<*>) => {
     this._handleTagAdd(
-      String(`value-${Date.now().toString()}@avocode.com`),
+      String(`${uuid.v4().substring(0, 8)}@avocode.com`),
       event
     )
   }
@@ -130,7 +131,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
               </div>
             )
           )}
-        />
+          />
       </div>
     )
   }

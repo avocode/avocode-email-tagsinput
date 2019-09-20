@@ -17,14 +17,13 @@ export default class UpdateValuePlugin implements PluginFactory {
       prevQuery?: Query,
     }
   ) => {
-    console.time('update_value')
     const tags = options.tags
     const prevTags = options.prevTags || []
     const query = options.query
     const prevQuery = options.prevQuery || ''
 
     if (query !== prevQuery) {
-      this._replaceQuery(editor, query)
+      this._replaceQuery(editor, query, prevQuery)
     }
 
     // NOTE: Don't bother with tags at all if they haven't changed
@@ -82,7 +81,6 @@ export default class UpdateValuePlugin implements PluginFactory {
 
       editor.moveTo(offset).insertInline(this._createTag(tag)).moveFocusToEndOfDocument()
     })
-    console.timeEnd('update_value')
   }
 
   _compareTags(prevTags: Tags, tags: Tags) {
@@ -178,7 +176,7 @@ export default class UpdateValuePlugin implements PluginFactory {
       .moveFocusToEndOfDocument()
   }
 
-  _replaceQuery(editor, query) {
+  _replaceQuery(editor, query, prevQuery) {
     const selection = editor.value.selection
 
     if (selection.isExpanded) {
@@ -194,8 +192,10 @@ export default class UpdateValuePlugin implements PluginFactory {
           offset: selection.focus.offset,
         }
       })
+      const nextQuery = query.length < prevQuery.length
+        ? "" : query
 
-      editor.insertTextAtRange(range, query)
+      editor.insertTextAtRange(range, nextQuery)
       return
     }
 
@@ -211,6 +211,7 @@ export default class UpdateValuePlugin implements PluginFactory {
     editor
       .moveToRangeOfNode(currentNode)
       .insertText(query)
+      .moveTo(selection.end.offset)
   }
 
   _createTag(tag: Tag) {

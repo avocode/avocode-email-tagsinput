@@ -41,9 +41,9 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
 
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevState.collapsed !== this.state.collapsed) {
-      setImmediate(() => {
+      setTimeout(() => {
         this._scrollToBottom()
-      })
+      }, 0)
     }
   }
 
