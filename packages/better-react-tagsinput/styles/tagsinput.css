@@ -23,4 +23,7 @@
 .tagsinput > div > div > span:only-child {
   padding: 3px;
 }
+.tagsinput > div > div > span > span > span[data-slate-length="0"][data-slate-zero-width="z"] {
+  visibility: hidden;
+}
 
