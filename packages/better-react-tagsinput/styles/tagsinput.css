@@ -24,7 +24,7 @@
   word-break: break-all;
 }
 .tagsinput > div > div > span:only-child {
-  padding: 3px;
+  padding: 6px 5px;
 }
 .tagsinput > div > div > span > span > span[data-slate-length="0"][data-slate-zero-width="z"] {
   visibility: hidden;
