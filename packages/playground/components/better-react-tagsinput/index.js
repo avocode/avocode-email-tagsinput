@@ -21,32 +21,34 @@ type Props = {
 export default class BetterReactTagsInputView extends React.PureComponent<Props> {
   render() {
     const { match } = this.props
+    console.log(match.url)
+    const url = match.url === '/' ? '/better-react-tagsinput' : match.url
 
     return (
       <Router>
         <div>
           <nav>
             <ul className='subnav'>
-              <li className='subnav-item'><Link to={`${match.url}/basic`}>Basic</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/controlled`}>Controlled</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/basic-with-state`}>State</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/paste`}>Paste</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/collapsible`}>Collapsible</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/styling`}>Styling</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/custom-tag`}>Custom tag</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/performance`}>Performance</Link></li>
+              <li className='subnav-item'><Link to={`${url}/basic`}>Basic</Link></li>
+              <li className='subnav-item'><Link to={`${url}/controlled`}>Controlled</Link></li>
+              <li className='subnav-item'><Link to={`${url}/basic-with-state`}>State</Link></li>
+              <li className='subnav-item'><Link to={`${url}/paste`}>Paste</Link></li>
+              <li className='subnav-item'><Link to={`${url}/collapsible`}>Collapsible</Link></li>
+              <li className='subnav-item'><Link to={`${url}/styling`}>Styling</Link></li>
+              <li className='subnav-item'><Link to={`${url}/custom-tag`}>Custom tag</Link></li>
+              <li className='subnav-item'><Link to={`${url}/performance`}>Performance</Link></li>
             </ul>
           </nav>
 
           <Route path={`${match.url}/`} exact component={Basic} />
-          <Route path={`${match.url}/basic`} component={Basic} />
-          <Route path={`${match.url}/controlled`} component={Controlled} />
-          <Route path={`${match.url}/basic-with-state`} component={BasicWithTagState} />
-          <Route path={`${match.url}/paste`} component={Paste} />
-          <Route path={`${match.url}/collapsible`} component={Collapsible} />
-          <Route path={`${match.url}/styling`} component={Styling} />
-          <Route path={`${match.url}/custom-tag`} component={CustomTag} />
-          <Route path={`${match.url}/performance`} component={Performance} />
+          <Route path={`${url}/basic`} component={Basic} />
+          <Route path={`${url}/controlled`} component={Controlled} />
+          <Route path={`${url}/basic-with-state`} component={BasicWithTagState} />
+          <Route path={`${url}/paste`} component={Paste} />
+          <Route path={`${url}/collapsible`} component={Collapsible} />
+          <Route path={`${url}/styling`} component={Styling} />
+          <Route path={`${url}/custom-tag`} component={CustomTag} />
+          <Route path={`${url}/performance`} component={Performance} />
         </div>
       </Router>
     )

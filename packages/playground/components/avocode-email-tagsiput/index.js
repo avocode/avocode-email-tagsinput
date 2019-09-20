@@ -18,24 +18,25 @@ type Props = {
 export default class AvocodeEmailTagsInputView extends React.PureComponent<Props> {
   render() {
     const { match } = this.props
+    const url = match.url === '/' ? '/avocode-email-tagsinput' : match.url
 
     return (
       <Router>
         <div>
           <nav>
             <ul className='subnav'>
-              <li className='subnav-item'><Link to={`${match.url}/basic`}>Basic</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/controlled`}>Controlled</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/unique`}>Unique</Link></li>
-              <li className='subnav-item'><Link to={`${match.url}/collapsible`}>Collapsible</Link></li>
+              <li className='subnav-item'><Link to={`${url}/basic`}>Basic</Link></li>
+              <li className='subnav-item'><Link to={`${url}/controlled`}>Controlled</Link></li>
+              <li className='subnav-item'><Link to={`${url}/unique`}>Unique</Link></li>
+              <li className='subnav-item'><Link to={`${url}/collapsible`}>Collapsible</Link></li>
             </ul>
           </nav>
 
           <Route path={`${match.url}/`} exact component={Basic} />
-          <Route path={`${match.url}/basic`} component={Basic} />
-          <Route path={`${match.url}/controlled`} component={Controlled} />
-          <Route path={`${match.url}/unique`} component={Unique} />
-          <Route path={`${match.url}/collapsible`} component={Collapsible} />
+          <Route path={`${url}/basic`} component={Basic} />
+          <Route path={`${url}/controlled`} component={Controlled} />
+          <Route path={`${url}/unique`} component={Unique} />
+          <Route path={`${url}/collapsible`} component={Collapsible} />
         </div>
       </Router>
     )

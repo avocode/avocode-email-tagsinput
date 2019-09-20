@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import marked from 'marked'
 
 import AvocodeEmailTagsInputView from './avocode-email-tagsiput/'
