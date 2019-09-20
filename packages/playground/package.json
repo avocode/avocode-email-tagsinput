@@ -30,5 +30,6 @@
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.6"
-  }
+  },
+  "gitHead": "a180e31a24b0ea8b7e7ab02dba4bb92c02fb12d0"
 }
