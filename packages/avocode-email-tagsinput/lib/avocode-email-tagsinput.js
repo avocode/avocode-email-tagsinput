@@ -62,19 +62,18 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
   _input: ?Editor
 
-  componentDidUpdate(prevProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     if (
-      this.props.query !== prevProps.query ||
-      this.props.tags !== prevProps.tags
+      this.props.query !== nextProps.query ||
+      this.props.tags !== nextProps.tags
     ) {
-      setImmediate(() => {
-        this.setState({
-          query: this.props.query,
-          tags: this.props.tags,
-        })
+      this.setState({
+        query: nextProps.query,
+        tags: nextProps.tags,
       })
     }
   }
+
 
   _getTags(tags: Tags): Tags {
     const validTags = tags.filter((tag) => {

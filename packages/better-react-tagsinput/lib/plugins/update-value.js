@@ -22,15 +22,6 @@ export default class UpdateValuePlugin implements PluginFactory {
     const query = options.query
     const prevQuery = options.prevQuery || ''
 
-    if (query !== prevQuery) {
-      this._replaceQuery(editor, query, prevQuery)
-    }
-
-    // NOTE: Don't bother with tags at all if they haven't changed
-    if (tags === prevTags) {
-      return
-    }
-
     const compareDesc = this._compareTags(prevTags, tags)
     const addedTags = tags.slice(prevTags.length)
 
@@ -51,7 +42,7 @@ export default class UpdateValuePlugin implements PluginFactory {
       tags
     )
 
-    editor.withoutNormalization((thisEditor) => {
+    return editor.withoutNormalization((thisEditor) => {
 
       updateDescs.updateDescs.forEach((desc) => {
         const  { key, tag } = desc
@@ -69,18 +60,33 @@ export default class UpdateValuePlugin implements PluginFactory {
         const  { key, tag } = desc
         thisEditor.removeNodeByKey(key)
       })
+
+      addedTags.forEach((tag) => {
+        const tagNodes = thisEditor.value.document.getInlinesByType(TAG_PLUGIN_NODE_ID)
+        const lastTagNode = tagNodes.last()
+        const queryNode = lastTagNode
+          ? thisEditor.value.document.getNextSibling(lastTagNode.key)
+          : thisEditor.value.document.getLastText()
+        const offset = thisEditor.value.document.getOffset(queryNode.key)
+
+        thisEditor
+          .moveTo(offset)
+          .insertInline({
+            ...this._createTag(tag),
+            nodes: [ { object: 'text', text: "" } ],
+          })
+          .moveFocusToEndOfDocument()
+      })
+
+      const queryNode = thisEditor.value.document.getTexts().last()
+
+      thisEditor
+        .moveToRangeOfNode(queryNode)
+        .insertText(query)
+
+      return thisEditor
     })
 
-    addedTags.forEach((tag) => {
-      const tagNodes = editor.value.document.getInlinesByType(TAG_PLUGIN_NODE_ID)
-      const lastTagNode = tagNodes.last()
-      const queryNode = lastTagNode
-        ? editor.value.document.getNextSibling(lastTagNode.key)
-        : editor.value.document.getLastText()
-      const offset = editor.value.document.getOffset(queryNode.key)
-
-      editor.moveTo(offset).insertInline(this._createTag(tag)).moveFocusToEndOfDocument()
-    })
   }
 
   _compareTags(prevTags: Tags, tags: Tags) {
@@ -174,44 +180,6 @@ export default class UpdateValuePlugin implements PluginFactory {
     editor
       .insertText(query)
       .moveFocusToEndOfDocument()
-  }
-
-  _replaceQuery(editor, query, prevQuery) {
-    const selection = editor.value.selection
-
-    if (selection.isExpanded) {
-      const range = Range.create({
-        anchor: {
-          key: selection.anchor.key,
-          path: selection.anchor.path.toJS(),
-          offset: selection.anchor.offset,
-        },
-        focus: {
-          key: selection.focus.key,
-          path: selection.focus.path.toJS(),
-          offset: selection.focus.offset,
-        }
-      })
-      const nextQuery = query.length < prevQuery.length
-        ? "" : query
-
-      editor.insertTextAtRange(range, nextQuery)
-      return
-    }
-
-    const currentNode = editor.value.document.getNode(
-      editor.value.selection.end.key
-    )
-
-    if (!currentNode) {
-      this._createQuery(editor, query)
-      return
-    }
-
-    editor
-      .moveToRangeOfNode(currentNode)
-      .insertText(query)
-      .moveTo(selection.end.offset)
   }
 
   _createTag(tag: Tag) {

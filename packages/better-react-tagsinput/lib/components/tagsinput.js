@@ -106,20 +106,21 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     })
   }
 
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentWillReceiveProps(nextProps: Props) {
     if (
       this._input &&
-      this.props.tags !== prevProps.tags ||
-      this.props.query !== prevProps.query
+      this.props.tags !== nextProps.tags ||
+      this.props.query !== nextProps.query
     ) {
       this._input.updateValue({
-        tags: this.props.tags,
-        prevTags: prevProps.tags,
-        query: this.props.query,
-        prevQuery: prevProps.query,
+        tags: nextProps.tags,
+        prevTags: this.props.tags,
+        query: nextProps.query,
+        prevQuery: this.props.query,
       })
     }
   }
+
 
   _handleChange = ({ value, operations }: { value: Value, operations: List<Operation> }) => {
     this.setState({ value }, () => {
@@ -229,7 +230,8 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const isFocused = this.state.value.selection.isFocused
+    const value = this._input ? this._input.value : initialValue
+    const isFocused = value.selection.isFocused
 
     return (
       <div
@@ -241,7 +243,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       >
         <Editor
           {...this.props}
-          value={this.state.value}
+          value={value}
           plugins={this.state.plugins}
           schema={schema}
           onChange={this._handleChange}

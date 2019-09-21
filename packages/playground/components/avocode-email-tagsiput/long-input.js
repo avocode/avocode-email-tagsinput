@@ -32,7 +32,11 @@ export default class LongInput extends React.PureComponent<{}, State> {
   }
 
   _handleQueryChange = (query: Query) => {
-    this.setState({ query })
+    this.setState((prevState) => {
+      return {
+        query: query.length > 50 ? prevState.query : query,
+      }
+    })
   }
 
   _handleTagDelete = (
