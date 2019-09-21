@@ -115,7 +115,7 @@ export default class TagsPlugin implements PluginFactory {
   _handleRemoveTags = (selection: Selection, value: Value, event: SyntheticKeyboardEvent<*>, next: Function) => {
     const { indices, queryNodeText } = this._getTagNodeIndicesBySelection(selection, value)
 
-    if (this._onTagDeleteRequest) {
+    if (indices.length > 0 && this._onTagDeleteRequest) {
       this._onTagDeleteRequest(indices, event, queryNodeText)
       return
     }
