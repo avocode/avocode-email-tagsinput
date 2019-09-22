@@ -5,12 +5,14 @@
   "main": "dist/avocode-email-tagsinput.js",
   "scripts": {
     "build": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && webpack --mode=production",
+    "build:dev": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && webpack --mode=development",
     "build:watch": "webpack --mode=development --watch",
     "clean": "rm -rf dist && mkdir dist",
     "copy-public-flow-types": "cp lib/types.js dist/",
     "flow": "flow",
     "flow:libdef": "flow-copy-source -v lib/ dist/",
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
+    "pack": "npm pack",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
