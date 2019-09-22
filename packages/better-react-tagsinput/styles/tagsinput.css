@@ -19,12 +19,13 @@
 .tagsinput > div > div > span:only-child,
 .tagsinput > div > div > span:last-child {
   display: inline-block;
-  padding: 1px 5px;
+  padding: 4px 5px;
   margin: 3px;
   word-break: break-all;
 }
 .tagsinput > div > div > span:only-child {
-  padding: 6px 5px;
+  padding: 4px 5px;
+  min-width: 1px;
 }
 .tagsinput > div > div > span > span > span[data-slate-length="0"][data-slate-zero-width="z"] {
   visibility: hidden;
