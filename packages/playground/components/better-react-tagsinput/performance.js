@@ -8,9 +8,14 @@ import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 type State = {
   query: Query,
   tags: Tags,
+  amount: number,
 }
 
-const createRandomTags = (amount) => {
+type Props = {
+  amount: number
+}
+
+const createRandomTags = (amount: number): Tags => {
   return Array.from(new Array(amount)).map((item) => {
     return {
       value: uuid.v4().substr(0, Math.ceil(Math.random() * 15)),
@@ -19,7 +24,7 @@ const createRandomTags = (amount) => {
   })
 }
 
-export default class Performance extends React.PureComponent<{}, State> {
+export default class Performance extends React.PureComponent<Props, State> {
   state = {
     query: '',
     tags: createRandomTags(this.props.amount),
@@ -64,7 +69,7 @@ export default class Performance extends React.PureComponent<{}, State> {
     })
   }
 
-  _changeAmount = (proxy) => {
+  _changeAmount = (proxy: SyntheticInputEvent<*>) => {
     const amount = Number(proxy.target.value)
 
     this.setState({ amount })

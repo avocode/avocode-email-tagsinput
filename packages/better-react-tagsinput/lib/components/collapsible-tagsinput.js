@@ -6,7 +6,9 @@ import classNames from 'classnames'
 import TagsInput from './tagsinput'
 import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
-import type { Editor } from 'slate'
+import type { List } from 'immutable'
+import type { Operation, Value } from 'slate'
+import type { Editor } from 'slate-react'
 import type { Props as TagsInputProps } from './tagsinput'
 import type { AddTagKeyCodes, Query } from '../types.js'
 

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npm run clean && lerna run build --stream",
     "build:package": "lerna run build --stream --scope",
+    "clean:all": "npm run clean && lerna clean",
     "clean": "lerna run clean --stream",
     "clean:package": "lerna run clean --stream --scope",
     "install": "lerna bootstrap",

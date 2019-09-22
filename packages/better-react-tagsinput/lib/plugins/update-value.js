@@ -6,7 +6,23 @@ import { TAG_PLUGIN_NODE_ID } from './tags'
 
 import type { Node } from 'slate'
 import type { Editor } from 'slate-react'
+import type { List } from 'immutable'
 import type { PluginFactory, Query, Tag, Tags, } from '../types.js'
+
+type CompareDescriptors = {
+  removeIndices: Array<number>,
+  updatedIndices: Array<number>,
+}
+
+type UpdateDescriptor = {
+  key: string,
+  tag: Tag,
+}
+
+type UpdateDescriptors = {
+  removeDescs: Array<UpdateDescriptor>,
+  updateDescs: Array<UpdateDescriptor>,
+}
 
 export default class UpdateValuePlugin implements PluginFactory {
   _updateValue = (
@@ -22,12 +38,12 @@ export default class UpdateValuePlugin implements PluginFactory {
     const query = options.query
     const prevQuery = options.prevQuery || ''
 
-    const compareDesc = this._compareTags(prevTags, tags)
+    const compareDescriptors = this._compareTags(prevTags, tags)
     const addedTags = tags.slice(prevTags.length)
 
     if (
-      compareDesc.updatedIndices.length < 1 &&
-      compareDesc.removeIndices.length < 1 &&
+      compareDescriptors.updatedIndices.length < 1 &&
+      compareDescriptors.removeIndices.length < 1 &&
       addedTags.length < 1
     ) {
       return
@@ -36,15 +52,15 @@ export default class UpdateValuePlugin implements PluginFactory {
     const tagNodes =
       editor.value.document.getInlinesByType(TAG_PLUGIN_NODE_ID)
 
-    const updateDescs = this._getUpdateDescriptors(
+    const updateDescriptors = this._getUpdateDescriptors(
       tagNodes,
-      compareDesc,
+      compareDescriptors,
       tags
     )
 
-    return editor.withoutNormalization((thisEditor) => {
+    return editor.withoutNormalizing((thisEditor) => {
 
-      updateDescs.updateDescs.forEach((desc) => {
+      updateDescriptors.updateDescs.forEach((desc) => {
         const  { key, tag } = desc
         thisEditor.setNodeByKey(
           key,
@@ -56,7 +72,7 @@ export default class UpdateValuePlugin implements PluginFactory {
         )
       })
 
-      updateDescs.removeDescs.forEach((desc) => {
+      updateDescriptors.removeDescs.forEach((desc) => {
         const  { key, tag } = desc
         thisEditor.removeNodeByKey(key)
       })
@@ -89,7 +105,7 @@ export default class UpdateValuePlugin implements PluginFactory {
 
   }
 
-  _compareTags(prevTags: Tags, tags: Tags) {
+  _compareTags(prevTags: Tags, tags: Tags): CompareDescriptors {
     return prevTags.reduce((desc, tag, index) => {
       const nextTag = tags[index]
 
@@ -125,13 +141,13 @@ export default class UpdateValuePlugin implements PluginFactory {
 
   _getUpdateDescriptors(
     tagNodes: List<Node>,
-    compareDesc,
-    tags
-  ) {
+    compareDescriptors: CompareDescriptors,
+    tags: Tags,
+  ): UpdateDescriptors {
     return tagNodes.reduce((desc, tagNode, index, array) => {
       let nextDesc = desc
       const tag = tags[index]
-      if (compareDesc.updatedIndices.includes(index)) {
+      if (compareDescriptors.updatedIndices.includes(index)) {
         nextDesc = {
           ...nextDesc,
           updateDescs: [ ...nextDesc.updateDescs,
@@ -140,7 +156,7 @@ export default class UpdateValuePlugin implements PluginFactory {
         }
       }
 
-      if (compareDesc.removeIndices.includes(index)) {
+      if (compareDescriptors.removeIndices.includes(index)) {
         nextDesc = {
           ...nextDesc,
           removeDescs: [ ...nextDesc.removeDescs,
@@ -168,7 +184,7 @@ export default class UpdateValuePlugin implements PluginFactory {
     this._createQuery(editor, query)
   }
 
-  _createTags(editor: Tag, tags: Tags) {
+  _createTags(editor: Editor, tags: Tags) {
     tags.forEach((tag) => {
       editor
         .insertInline(this._createTag(tag))
@@ -176,7 +192,7 @@ export default class UpdateValuePlugin implements PluginFactory {
     })
   }
 
-  _createQuery(editor, query) {
+  _createQuery(editor: Editor, query: Query) {
     editor
       .insertText(query)
       .moveFocusToEndOfDocument()

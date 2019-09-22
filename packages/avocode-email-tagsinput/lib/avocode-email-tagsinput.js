@@ -7,7 +7,7 @@ import * as utils from './utils'
 import Counter from './components/counter'
 import EmailTag from './components/email-tag'
 
-import type { Name, Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
+import type { Name, Query, Tags, TagComponentProps } from '@avocode/better-react-tagsinput/dist/types'
 import type { Editor } from 'slate-react'
 
 // $FlowFixMe: Ignore flow for styles
@@ -157,7 +157,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     }
   }
 
-  _renderEmailTag = (props) => {
+  _renderEmailTag = (props: TagComponentProps) => {
     return <EmailTag {...props} />
   }
 
