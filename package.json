@@ -32,6 +32,8 @@
     "jest": "^24.9.0",
     "lerna": "^3.16.4",
     "mini-css-extract-plugin": "^0.8.0",
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
     "surge": "^0.21.3",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.7",
