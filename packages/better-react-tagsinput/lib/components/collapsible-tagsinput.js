@@ -35,6 +35,8 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
   }
 
+  static displayName = 'CollapsibleTagsInput'
+
   state = { collapsed: true }
 
   _input: ?React$ElementRef<*>

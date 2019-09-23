@@ -129,6 +129,7 @@ export default class TagsPlugin implements PluginFactory {
 
 
   _getTagNodeIndicesBySelection(selection: Selection, value: Value) {
+    console.log('selection: ', selection, 'value: ', value)
     const selectedNodes = value.document.getNodesAtRange(selection)
 
     const indices = selectedNodes

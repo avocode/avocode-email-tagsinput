@@ -15,6 +15,8 @@ export default class Counter extends React.PureComponent<Props> {
     count: 0,
   }
 
+  static displayName = 'Counter'
+
   render() {
     const { count } = this.props
     const countString = count < 99 ? `+${count}` : '+99'

@@ -53,6 +53,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     tags: [],
   }
 
+  static displayName = 'AvocodeEmailTagsInput'
+
   state = {
     query: this.props.query,
     tags: this._getTags(this.props.tags),

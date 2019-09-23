@@ -13,6 +13,8 @@ export default class TagComponent extends React.PureComponent<TagComponentProps>
     state: '',
   }
 
+  static displayName = 'TagComponent'
+
   _handleOnRemoveButtonClick = (event: SyntheticMouseEvent<*>) => {
     this.props.onRemoveButtonClick(event, this.props.id)
   }

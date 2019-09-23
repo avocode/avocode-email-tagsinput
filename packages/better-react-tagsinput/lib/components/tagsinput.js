@@ -71,6 +71,8 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
   }
 
+  static displayName = 'TagsInput'
+
   _input: React$ElementRef<*> = null
 
   componentDidMount() {
