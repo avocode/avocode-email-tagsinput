@@ -8,7 +8,6 @@ import Counter from './components/counter'
 import EmailTag from './components/email-tag'
 
 import type { Name, Query, Tags, TagComponentProps } from '@avocode/better-react-tagsinput/dist/types'
-import type { Editor } from 'slate-react'
 
 // $FlowFixMe: Ignore flow for styles
 import '../styles/index.css'
@@ -29,11 +28,13 @@ type Props = {
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
   onBlur?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    editor: Editor,
+    // $FlowFixMe: Dependency not provided, will be fixed in future releases.
+    editor,
   ) => void,
   onFocus?: ?(
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    editor: Editor,
+    // $FlowFixMe: Dependency not provided, will be fixed in future releases.
+    editor,
   ) => void,
 }
 
@@ -62,7 +63,10 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     focused: false,
   }
 
-  _input: ?Editor
+  // $FlowFixMe: Ignoring for now, defs not present in
+  //             flowtyped & its causing type checker to
+  //             fail when consumed by 3rd party
+  _input = null
 
   componentWillReceiveProps(nextProps: Props) {
     if (
@@ -141,14 +145,16 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
   _handleBlur = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    editor: Editor,
+    // $FlowFixMe: Dependency not provided, will be fixed in future releases.
+    editor,
   ) => {
     this.setState({ focused: false })
   }
 
   _handleFocus = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    editor: Editor,
+    // $FlowFixMe: Dependency not provided, will be fixed in future releases.
+    editor,
   ) => {
     this.setState({ focused: true })
   }

@@ -9,7 +9,7 @@
     "build:watch": "webpack --mode=development --watch",
     "clean": "rm -rf dist && mkdir dist",
     "copy-public-flow-types": "cp lib/types.js dist/",
-    "flow": "flow",
+    "flow": " npm run flow:libdef && npm run copy-public-flow-types && flow",
     "flow:libdef": "flow-copy-source -v lib/ dist/",
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
     "pack": "npm pack",
