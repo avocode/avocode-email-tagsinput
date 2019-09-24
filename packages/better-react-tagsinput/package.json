@@ -32,11 +32,11 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.6",
-    "immutable": "^3.8.1",
     "slate": "^0.45.0",
     "slate-react": "^0.21.20"
   },
   "peerDependencies": {
+    "immutable": "^3.8.1",
     "react": "15.4.2",
     "react-dom": "15.4.2"
   },
