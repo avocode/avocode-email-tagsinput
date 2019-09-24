@@ -7,7 +7,7 @@ import { TAG_PLUGIN_NODE_ID } from './tags'
 import type { Node } from 'slate'
 import type { Editor } from 'slate-react'
 import type { List } from 'immutable'
-import type { PluginFactory, Query, Tag, Tags, } from '../types.js'
+import type { PluginFactory, Query, Tag, Tags } from '../types'
 
 type CompareDescriptors = {
   removeIndices: Array<number>,
@@ -59,9 +59,8 @@ export default class UpdateValuePlugin implements PluginFactory {
     )
 
     return editor.withoutNormalizing((thisEditor) => {
-
       updateDescriptors.updateDescs.forEach((desc) => {
-        const  { key, tag } = desc
+        const { key, tag } = desc
         thisEditor.setNodeByKey(
           key,
           { data: {
@@ -73,13 +72,13 @@ export default class UpdateValuePlugin implements PluginFactory {
       })
 
       updateDescriptors.removeDescs.forEach((desc) => {
-        const  { key, tag } = desc
+        const { key, tag } = desc
         thisEditor.removeNodeByKey(key)
       })
 
       addedTags.forEach((tag) => {
-        const tagNodes = thisEditor.value.document.getInlinesByType(TAG_PLUGIN_NODE_ID)
-        const lastTagNode = tagNodes.last()
+        const updatedTagNodes = thisEditor.value.document.getInlinesByType(TAG_PLUGIN_NODE_ID)
+        const lastTagNode = updatedTagNodes.last()
         const queryNode = lastTagNode
           ? thisEditor.value.document.getNextSibling(lastTagNode.key)
           : thisEditor.value.document.getLastText()
@@ -89,7 +88,7 @@ export default class UpdateValuePlugin implements PluginFactory {
           .moveTo(offset)
           .insertInline({
             ...this._createTag(tag),
-            nodes: [ { object: 'text', text: "" } ],
+            nodes: [ { object: 'text', text: '' } ],
           })
           .moveFocusToEndOfDocument()
       })
@@ -102,7 +101,6 @@ export default class UpdateValuePlugin implements PluginFactory {
 
       return thisEditor
     })
-
   }
 
   _compareTags(prevTags: Tags, tags: Tags): CompareDescriptors {
@@ -114,7 +112,7 @@ export default class UpdateValuePlugin implements PluginFactory {
           ...desc,
           removeIndices: [
             ...desc.removeIndices,
-            index
+            index,
           ],
         }
       }
@@ -128,7 +126,7 @@ export default class UpdateValuePlugin implements PluginFactory {
           updatedIndices: [
             ...desc.updatedIndices,
             index,
-          ]
+          ],
         }
       }
 
@@ -151,7 +149,7 @@ export default class UpdateValuePlugin implements PluginFactory {
         nextDesc = {
           ...nextDesc,
           updateDescs: [ ...nextDesc.updateDescs,
-            { key: tagNode.key, tag }
+            { key: tagNode.key, tag },
           ],
         }
       }
@@ -160,7 +158,7 @@ export default class UpdateValuePlugin implements PluginFactory {
         nextDesc = {
           ...nextDesc,
           removeDescs: [ ...nextDesc.removeDescs,
-            { key: tagNode.key, tag }
+            { key: tagNode.key, tag },
           ],
         }
       }
@@ -205,7 +203,7 @@ export default class UpdateValuePlugin implements PluginFactory {
         tagContents: tag.value,
         tagState: tag.state,
         data: tag.data,
-      }
+      },
     }
   }
 
@@ -214,7 +212,8 @@ export default class UpdateValuePlugin implements PluginFactory {
       commands: {
         createValue: this._createValue,
         updateValue: this._updateValue,
-      }
+      },
     }
   }
 }
+

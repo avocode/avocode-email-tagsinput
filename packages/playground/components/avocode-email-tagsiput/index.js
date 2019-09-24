@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import { utils } from '@avocode/better-react-tagsinput'
 
 import Basic from './basic'
 import Controlled from './controlled'
@@ -13,7 +12,7 @@ import LongInput from './long-input'
 type Props = {
   match: {
     url: string,
-  }
+  },
 }
 
 export default class AvocodeEmailTagsInputView extends React.PureComponent<Props> {

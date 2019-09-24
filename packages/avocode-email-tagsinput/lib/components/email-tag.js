@@ -1,4 +1,5 @@
 // @flow
+
 import React from 'react'
 
 import { TagComponent } from '@avocode/better-react-tagsinput'

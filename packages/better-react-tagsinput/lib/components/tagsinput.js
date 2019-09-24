@@ -16,13 +16,11 @@ import '../../styles/index.css'
 
 import type {
   AddTagKeyCodes,
-  KeyCode,
   Plugin,
   Query,
-  Tag,
   TagComponentFactory,
   Tags,
-} from '../types.js'
+} from '../types'
 
 export type Props = {
   query: string,
@@ -59,13 +57,6 @@ export type State = {
 
 
 export default class TagsInput extends React.PureComponent<Props, State> {
-  state = {
-    value: initialValue,
-    plugins: [],
-    focused: false,
-  }
-
-
   static defaultProps = {
     name: '',
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
@@ -73,7 +64,11 @@ export default class TagsInput extends React.PureComponent<Props, State> {
 
   static displayName = 'TagsInput'
 
-  _input: React$ElementRef<*> = null
+  state = {
+    value: initialValue,
+    plugins: [],
+    focused: false,
+  }
 
   componentDidMount() {
     const {
@@ -89,7 +84,6 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       addTagKeyCodes,
       name,
       tagComponentFactory,
-      onTagDeleteRequest,
       onPasteRequest,
       onTagDeleteRequest: this._handleDeleteTag,
       onTagAddedRequest: this._handleAddTag,
@@ -110,9 +104,10 @@ export default class TagsInput extends React.PureComponent<Props, State> {
 
   componentWillReceiveProps(nextProps: Props) {
     if (
-      this._input &&
-      this.props.tags !== nextProps.tags ||
-      this.props.query !== nextProps.query
+      this._input && (
+        this.props.tags !== nextProps.tags ||
+        this.props.query !== nextProps.query
+      )
     ) {
       this._input.updateValue({
         tags: nextProps.tags,
@@ -123,6 +118,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     }
   }
 
+  _input: React$ElementRef<*> = null
 
   _handleChange = ({ value, operations }: { value: Value, operations: List<Operation> }) => {
     this.setState({ value }, () => {
@@ -245,16 +241,17 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       >
         <Editor
           {...this.props}
+          ref={this._setRef}
           value={value}
           plugins={this.state.plugins}
           schema={schema}
-          onChange={this._handleChange}
           onBlur={this._handleBlur}
-          onFocus={this._handleFocus}
-          ref={this._setRef}
+          onChange={this._handleChange}
           onClick={this._handleOnClick}
+          onFocus={this._handleFocus}
         />
       </div>
     )
   }
 }
+

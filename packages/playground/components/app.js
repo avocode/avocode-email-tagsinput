@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { HashRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import marked from 'marked'
 
 import AvocodeEmailTagsInputView from './avocode-email-tagsiput/'
@@ -38,7 +38,7 @@ export default class App extends React.Component<{}, State> {
               apiDocs: {
                 ...prevState.apiDocs,
                 [docName]: marked(text),
-              }
+              },
             }
           })
         })
@@ -65,21 +65,34 @@ export default class App extends React.Component<{}, State> {
             <Route path='/better-react-tagsinput' component={BetterReactTagsInputView} />
           </div>
           <div className='app-container__api'>
-            <Route path='/' exact render={() => (
-              <ApiView doc={avocodeEmailTagsInputDoc}
-                retryApiDocsLoadRequest={this._fetchApiDocs}
-              />
-            )}/>
-            <Route path='/avocode-email-tagsinput' render={() => (
-              <ApiView doc={avocodeEmailTagsInputDoc}
-                retryApiDocsLoadRequest={this._fetchApiDocs}
-              />
-            )}/>
-            <Route path='/better-react-tagsinput' render={() => (
-              <ApiView doc={betterReactTagsInputDoc}
-                retryApiDocsLoadRequest={this._fetchApiDocs}
-              />
-            )}/>
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <ApiView
+                  doc={avocodeEmailTagsInputDoc}
+                  retryApiDocsLoadRequest={this._fetchApiDocs}
+                />
+              )}
+            />
+            <Route
+              path='/avocode-email-tagsinput'
+              render={() => (
+                <ApiView
+                  doc={avocodeEmailTagsInputDoc}
+                  retryApiDocsLoadRequest={this._fetchApiDocs}
+                />
+              )}
+            />
+            <Route
+              path='/better-react-tagsinput'
+              render={() => (
+                <ApiView
+                  doc={betterReactTagsInputDoc}
+                  retryApiDocsLoadRequest={this._fetchApiDocs}
+                />
+              )}
+            />
           </div>
         </div>
       </Router>

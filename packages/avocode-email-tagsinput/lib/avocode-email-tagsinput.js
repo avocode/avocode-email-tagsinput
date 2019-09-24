@@ -58,7 +58,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
   state = {
     query: this.props.query,
-    tags: this._getTags(this.props.tags),
+    tags: this._getTags(this.props.tags, this.props.unique),
     tagCount: 0,
     focused: false,
   }
@@ -66,7 +66,6 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   // $FlowFixMe: Ignoring for now, defs not present in
   //             flowtyped & its causing type checker to
   //             fail when consumed by 3rd party
-  _input = null
 
   componentWillReceiveProps(nextProps: Props) {
     if (
@@ -75,18 +74,19 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     ) {
       this.setState({
         query: nextProps.query,
-        tags: nextProps.tags,
+        tags: this._getTags(nextProps.tags, nextProps.unique),
       })
     }
   }
 
+  _input = null
 
-  _getTags(tags: Tags): Tags {
+  _getTags(tags: Tags, unique: boolean = false): Tags {
     const validTags = tags.filter((tag) => {
       return utils.isValueValidEmail(tag.value)
     })
 
-    return this.props.unique ?
+    return unique ?
       utils.getUniqueTagsByValue(validTags) :
       validTags
   }
@@ -174,7 +174,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
     const counterComponent = this.props.renderCounter ?
       this.props.renderCounter({ focused, tagCount }) :
-      (!focused && tagCount > 0 && 
+      (!focused && tagCount > 0 &&
         <Counter
           name={this.props.name}
           count={tagCount}
@@ -184,9 +184,10 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 
     if (this.props.collapsible) {
       return (
-        <div className={classNames('avocode-email-tagsinput-collapsible', {
+        <div
+          className={classNames('avocode-email-tagsinput-collapsible', {
             [`avocode-email-tagsinput-collapsible--${this.props.name}`]: this.props.name,
-            [`avocode-email-tagsinput-collapsible--focused`]: focused,
+            'avocode-email-tagsinput-collapsible--focused': focused,
             [`avocode-email-tagsinput-collapsible--${this.props.name}--focused`]: this.props.name && focused,
           })}
           onClick={this._handleInputClick}
@@ -195,20 +196,20 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
             {...this.props}
             name={this.props.name}
             query={this.state.query}
-            tags={this.state.tags}
-            tagComponentFactory={this._renderEmailTag}
-            onQueryChangedRequest={this._handleQueryChange}
-            onTagAddedRequest={this._handleAddTag}
-            onTagDeleteRequest={this._handleDeleteTag}
-            onPasteRequest={this.props.onPasteRequest}
-            onTagCountUpdateRequest={this._handleTagCountUpdate}
-            onFocus={this._handleFocus}
-            onBlur={this._handleBlur}
             setRef={(node) => {
               if (node) {
                 this._input = node
               }
             }}
+            tags={this.state.tags}
+            tagComponentFactory={this._renderEmailTag}
+            onBlur={this._handleBlur}
+            onFocus={this._handleFocus}
+            onPasteRequest={this.props.onPasteRequest}
+            onQueryChangedRequest={this._handleQueryChange}
+            onTagAddedRequest={this._handleAddTag}
+            onTagCountUpdateRequest={this._handleTagCountUpdate}
+            onTagDeleteRequest={this._handleDeleteTag}
           />
           {counterComponent}
         </div>
@@ -218,7 +219,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     return (
       <div className={classNames('avocode-email-tagsinput', {
         [`avocode-email-tagsinput--${this.props.name}`]: this.props.name,
-        [`avocode-email-tagsinput--focused`]: focused,
+        'avocode-email-tagsinput--focused': focused,
         [`avocode-email-tagsinput--${this.props.name}--focused`]: this.props.name && focused,
       })}
       >
@@ -228,12 +229,12 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
           query={this.state.query}
           tags={this.state.tags}
           tagComponentFactory={this._renderEmailTag}
+          onBlur={this._handleBlur}
+          onFocus={this._handleFocus}
+          onPasteRequest={this.props.onPasteRequest}
           onQueryChangedRequest={this._handleQueryChange}
           onTagAddedRequest={this._handleAddTag}
           onTagDeleteRequest={this._handleDeleteTag}
-          onPasteRequest={this.props.onPasteRequest}
-          onFocus={this._handleFocus}
-          onBlur={this._handleBlur}
         />
       </div>
     )
@@ -243,3 +244,4 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
 export {
   utils,
 }
+

@@ -21,18 +21,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            configFile: path.join(__dirname, '..', '..', 'babel.config.js')
+            configFile: path.join(__dirname, '..', '..', 'babel.config.js'),
           },
-        }
+        },
       },
       {
         test: /\.css$/i,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' }
+          { loader: 'css-loader' },
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -41,5 +41,6 @@ module.exports = {
   ],
   devServer: {
     port: 8080,
-  }
+  },
 }
+

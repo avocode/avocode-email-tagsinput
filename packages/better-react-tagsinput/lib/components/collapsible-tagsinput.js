@@ -10,7 +10,7 @@ import type { List } from 'immutable'
 import type { Operation, Value } from 'slate'
 import type { Editor } from 'slate-react'
 import type { Props as TagsInputProps } from './tagsinput'
-import type { AddTagKeyCodes, Query } from '../types.js'
+import type { AddTagKeyCodes, Query } from '../types'
 
 type Props = TagsInputProps & {
   addTagKeyCodes?: AddTagKeyCodes,
@@ -30,18 +30,17 @@ type State = {
 }
 
 export default class CollapsibleTagsInput extends React.PureComponent<Props, State> {
+  _input: ?React$ElementRef<*>
+
+  static displayName = 'CollapsibleTagsInput'
+
   static defaultProps = {
     name: '',
     addTagKeyCodes: [ 32 /* Space */, 13 /* Enter */, 188 /* Comma */ ],
   }
 
-  static displayName = 'CollapsibleTagsInput'
 
   state = { collapsed: true }
-
-  _input: ?React$ElementRef<*>
-  _hiddenTagNodes: Array<HTMLElement> = []
-  _tagNodes: HTMLCollection<HTMLElement> | Array<*> = []
 
   componentDidUpdate(prevProps: Props, prevState: State) {
     if (prevState.collapsed !== this.state.collapsed) {
@@ -52,6 +51,9 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
       }, 0)
     }
   }
+
+  _hiddenTagNodes: Array<HTMLElement> = []
+  _tagNodes: HTMLCollection<HTMLElement> | Array<*> = []
 
   _setRef = (node: ?React$ElementRef<*>) => {
     if (!node) {
@@ -149,7 +151,7 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
     nodes: HTMLCollection<HTMLElement> | Array<*>,
     offset: ?number,
   ): Array<HTMLElement> {
-    const lastNodeOffsetTop = nodes[nodes.length - 1] && nodes[nodes.length - 1].offsetTop || 0
+    const lastNodeOffsetTop = (nodes[nodes.length - 1] && nodes[nodes.length - 1].offsetTop) || 0
     const offsetTop = Number.isFinite(offset) || lastNodeOffsetTop
 
     return Array.from(nodes).filter((node) => {
@@ -175,7 +177,8 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
 
   render() {
     return (
-      <div className={classNames('collapsible-tagsinput', {
+      <div
+        className={classNames('collapsible-tagsinput', {
           [`collapsible-tagsinput--${this.props.name}`]: this.props.name,
           'collapsible-tagsinput--collapsed': this.state.collapsed,
           [`collapsible-tagsinput--${this.props.name}--collapsed`]: this.state.collapsed,
@@ -183,16 +186,17 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
       >
         <TagsInput
           {...this.props}
-          onChange={this._handleChange}
+          setRef={this._setRef}
           onBlur={this._handleBlur}
+          onChange={this._handleChange}
           onFocus={this._handleFocus}
+          onInitialLoad={this._handleInitialLoad}
           onQueryChangedRequest={this.props.onQueryChangedRequest}
           onTagAddedRequest={this.props.onTagAddedRequest}
           onTagDeleteRequest={this.props.onTagDeleteRequest}
-          setRef={this._setRef}
-          onInitialLoad={this._handleInitialLoad}
         />
       </div>
     )
   }
 }
+

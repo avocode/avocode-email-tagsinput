@@ -1,8 +1,9 @@
 // @flow
 
 import React from 'react'
-import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
 import uuid from 'uuid'
+import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
+import StateView from '../state-view'
 
 import type { Query, Tags } from '@avocode/avocode-email-tagsinput/dist/types'
 
@@ -30,10 +31,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     query: '',
   }
 
-  _handleTagAdd = (
-    text: Query,
-    event: SyntheticKeyboardEvent<*>
-  ) => {
+  _handleTagAdd = (text: Query) => {
     this.setState((prevState) => {
       return {
         query: '',
@@ -46,10 +44,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     this.setState({ query })
   }
 
-  _handleTagDelete = (
-    indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-  ) => {
+  _handleTagDelete = (indices: Array<number>) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -62,14 +57,14 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     })
   }
 
-  _addRandomTag = (event: SyntheticKeyboardEvent<*>) => {
+  _addRandomTag = () => {
     this._handleTagAdd(
       String(`${uuid.v4().substring(0, 8)}@avocode.com`),
-      event
     )
   }
 
   render() {
+    /* eslint-disable-next-line */
     const codeSnippet = "\
 (({ tagCount, focused }) => (\n\
   (!focused && tagCount > 0) &&\n\
@@ -89,26 +84,20 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           <button onClick={this._addRandomTag}>Add +</button>
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <AvocodeEmailTagsInput
           collapsible
           name='email-collapsible'
           tags={this.state.tags}
           query={this.state.query}
-          onTagAddedRequest={this._handleTagAdd}
           onQueryChangedRequest={this._handleQueryChange}
+          onTagAddedRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
 
         <p>
-          You can also pass prop <code>renderCounter</code>. This is render prop function that 
+          You can also pass prop <code>renderCounter</code>. This is render prop function that
           receives argument object with <code>tagCount</code> and <code>focused</code> arguments:
         </p>
         <pre><code>{codeSnippet}</code></pre>
@@ -121,9 +110,6 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           name='custom-email-collapsible'
           tags={this.state.tags}
           query={this.state.query}
-          onTagAddedRequest={this._handleTagAdd}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagDeleteRequest={this._handleTagDelete}
           renderCounter={({ focused, tagCount }) => (
             (!focused && tagCount > 0) && (
               <div className='email-collapsible-custom-counter'>
@@ -131,7 +117,10 @@ export default class Collapsible extends React.PureComponent<{}, State> {
               </div>
             )
           )}
-          />
+          onQueryChangedRequest={this._handleQueryChange}
+          onTagAddedRequest={this._handleTagAdd}
+          onTagDeleteRequest={this._handleTagDelete}
+        />
       </div>
     )
   }

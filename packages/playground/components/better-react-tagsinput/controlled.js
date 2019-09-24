@@ -2,6 +2,7 @@
 
 import React from 'react'
 import TagsInput, { utils } from '@avocode/better-react-tagsinput'
+import StateView from '../state-view'
 
 import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 
@@ -24,7 +25,6 @@ export default class Controlled extends React.PureComponent<{}, State> {
 
   _handleTagAdded = (
     text: Query,
-    event: SyntheticKeyboardEvent<*>
   ) => {
     this.setState((prevState) => {
       return {
@@ -36,7 +36,6 @@ export default class Controlled extends React.PureComponent<{}, State> {
 
   _handleTagDeleted = (
     indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
   ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
@@ -55,7 +54,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
       <div>
         <p>
           By passing <code>onQueryChangedRequest</code> callback you can change the value
-          of the text on non-tag node. This will allow the value to be 
+          of the text on non-tag node. This will allow the value to be
           updated.
           <br />
           By passing <code>onTagAddedRequest</code> you can then control when the new
@@ -68,13 +67,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
           tags.
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <p>
           The input below only receives values from the other input. It is controlled
@@ -108,6 +101,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
   }
 }
 
+/* eslint-disable-next-line react/no-multi-comp */
 class ControlledUpdates extends React.PureComponent<{}, State> {
   state = {
     query: 'query',
@@ -143,13 +137,9 @@ class ControlledUpdates extends React.PureComponent<{}, State> {
           <br />
           <button onClick={this._performChanges}>Change</button>
         </p>
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+
+        <StateView tags={this.state.tags} query={this.state.query} />
+
         <TagsInput
           name='controlled'
           tags={this.state.tags}
@@ -163,6 +153,7 @@ class ControlledUpdates extends React.PureComponent<{}, State> {
   }
 }
 
+/* eslint-disable-next-line react/no-multi-comp */
 class ControlledAdditions extends React.PureComponent<{}, State> {
   state = {
     query: 'query',
@@ -195,13 +186,9 @@ class ControlledAdditions extends React.PureComponent<{}, State> {
           <br />
           <button onClick={this._performChanges}>Change</button>
         </p>
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+
+        <StateView tags={this.state.tags} query={this.state.query} />
+
         <TagsInput
           name='controlled'
           tags={this.state.tags}

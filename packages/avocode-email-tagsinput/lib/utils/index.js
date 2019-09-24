@@ -1,4 +1,5 @@
 // @flow
+
 import { utils } from '@avocode/better-react-tagsinput'
 
 import type { Tags } from '@avocode/better-react-tagsinput/dist/types'

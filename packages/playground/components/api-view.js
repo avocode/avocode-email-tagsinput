@@ -13,7 +13,6 @@ type State = {
 
 export default class ApiView extends React.PureComponent<Props, State> {
   state = { failedToLoad: false }
-  _loadDoc: ?TimeoutID = null
 
   componentDidMount() {
     this._loadDoc = setTimeout(() => {
@@ -28,6 +27,8 @@ export default class ApiView extends React.PureComponent<Props, State> {
       clearTimeout(this._loadDoc)
     }
   }
+
+  _loadDoc: ?TimeoutID = null
 
   _handleRetryClick = (event: SyntheticMouseEvent<*>) => {
     event.preventDefault()
@@ -47,13 +48,14 @@ export default class ApiView extends React.PureComponent<Props, State> {
         }
         {this.state.failedToLoad &&
           <div className='api-view__loading-failed'>
-            Failed to load API docs. <a href="#" onClick={this._handleRetryClick}>Retry</a>
+            Failed to load API docs. <button onClick={this._handleRetryClick}>Retry</button>
           </div>
         }
         <section>
-        {this.props.doc &&
-          <article dangerouslySetInnerHTML={{__html: this.props.doc}} />
-        }
+          {this.props.doc &&
+            /* eslint-disable-next-line react/no-danger */
+            <article dangerouslySetInnerHTML={{ __html: this.props.doc }} />
+          }
         </section>
       </div>
     )

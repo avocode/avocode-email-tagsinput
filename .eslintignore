@@ -1,0 +1,11 @@
+node_modules/**
+coverage/**
+flow-typed/**
+.*/**
+static/**
+resources/**
+release/**
+dist/**
+webdist/**
+/packages/**/node_modules
+/packages/**/dist

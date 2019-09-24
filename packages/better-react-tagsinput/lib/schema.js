@@ -1,6 +1,7 @@
 // @flow
 
 import { Block } from 'slate'
+import { TAG_PLUGIN_NODE_ID } from '../lib/plugins/tags'
 
 import type { Editor } from 'slate-react'
 import type { Node } from 'slate'
@@ -15,8 +16,8 @@ export default {
             min: 1,
           },
           {
-            type: 'tag',
-          }
+            type: TAG_PLUGIN_NODE_ID,
+          },
         ],
       },
     ],
@@ -34,8 +35,8 @@ export default {
     },
   },
   inlines: {
-    tag: {
+    [TAG_PLUGIN_NODE_ID]: {
       isVoid: true,
-    }
+    },
   },
 }

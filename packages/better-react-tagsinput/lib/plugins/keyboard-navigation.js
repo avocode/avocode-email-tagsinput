@@ -2,16 +2,14 @@
 
 import { Range, Text } from 'slate'
 
-import { TAG_PLUGIN_NODE_ID } from './tags'
-
 import type { Editor } from 'slate-react'
 import type { Node } from 'slate'
-import type { PluginFactory } from '../types.js'
+import type { PluginFactory } from '../types'
 
 const ARROW_LEFT_KEY_CODE = 37
 const ARROW_RIGHT_KEY_CODE = 39
 const ARROW_UP_KEY_CODE = 38
-const ARROW_DOWN_KEY_CODE = 40 
+const ARROW_DOWN_KEY_CODE = 40
 const KEY_CODES = [
   ARROW_LEFT_KEY_CODE,
   ARROW_RIGHT_KEY_CODE,
@@ -20,7 +18,6 @@ const KEY_CODES = [
 ]
 
 export default class KeyboardNavigationPlugin implements PluginFactory {
-
   onKeyDown = (event: SyntheticKeyboardEvent<*>, editor: Editor, next: Function) => {
     if (!KEY_CODES.includes(event.keyCode)) {
       return next()
@@ -36,7 +33,7 @@ export default class KeyboardNavigationPlugin implements PluginFactory {
       case ARROW_DOWN_KEY_CODE:
         event.preventDefault()
         return next()
-      case ARROW_LEFT_KEY_CODE:
+      case ARROW_LEFT_KEY_CODE: {
         const previousNode = document.getPreviousNode(key)
 
         if (previousNode && this._nodeIsText(previousNode)) {
@@ -52,7 +49,8 @@ export default class KeyboardNavigationPlugin implements PluginFactory {
               .moveAnchorTo(currentNode.key)
         }
         return next()
-      case ARROW_RIGHT_KEY_CODE:
+      }
+      case ARROW_RIGHT_KEY_CODE: {
         const nextNode = document.getNextNode(key)
 
         if (nextNode && this._nodeIsText(nextNode)) {
@@ -65,6 +63,8 @@ export default class KeyboardNavigationPlugin implements PluginFactory {
               .moveAnchorTo(nextInlineTextNode.key) :
             next()
         }
+        return next()
+      }
       default:
         return next()
     }

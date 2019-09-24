@@ -2,6 +2,7 @@
 
 import React from 'react'
 import TagsInput from '@avocode/better-react-tagsinput'
+import StateView from '../state-view'
 
 export default class BasicWithTagState extends React.PureComponent<{}> {
   render() {
@@ -19,20 +20,14 @@ export default class BasicWithTagState extends React.PureComponent<{}> {
           specific class name for given tag.
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{query}</dd>
-        </dl>
+        <StateView tags={tags} query={query} />
 
         <TagsInput
           name='basic-state'
           tags={tags}
           query={query}
-          onTagAddedRequest={() => {}}
           onQueryChangedRequest={() => {}}
+          onTagAddedRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
       </div>

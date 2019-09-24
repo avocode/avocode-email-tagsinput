@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react'
-import TagsInput, { CollapsibleTagsInput, utils } from '@avocode/better-react-tagsinput'
+import { CollapsibleTagsInput, utils } from '@avocode/better-react-tagsinput'
+import StateView from '../state-view'
 
-import type { Editor } from 'slate-react'
 import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 
 type State = {
@@ -37,7 +37,6 @@ export default class Collapsible extends React.PureComponent<{}, State> {
 
   _handleTagAdded = (
     text: Query,
-    event: SyntheticKeyboardEvent<*>,
   ) => {
     this.setState((prevState) => {
       return {
@@ -60,7 +59,6 @@ export default class Collapsible extends React.PureComponent<{}, State> {
 
   _handleTagDeleted = (
     indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
   ) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
@@ -74,11 +72,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     })
   }
 
-  _handleFocus = (
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-    editor: Editor,
-    next: Function,
-  ) => {
+  _handleFocus = () => {
     this.setState({ count: 0 })
   }
 
@@ -90,7 +84,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
     return (
       <div>
         <p>
-          The package also exports <code>CollapsibleTagsInput</code> which has the same API as 
+          The package also exports <code>CollapsibleTagsInput</code> which has the same API as
           <code>TagsInput</code>.
           This input will collapse on blur and expand on focus. When blur event happens, one of the
           arguments is <b>count</b> which calculates how many tags are non-visible (hidden by collapsing).
@@ -103,13 +97,7 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           By default the <b>count</b> calculation considers the visible tags to be on the last line only. If you add new tags and overflow container is set up, the view is scrolled to last line.
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <p>
           <strong>Hidden tag count:</strong> <i>{this.state.count}</i>
@@ -123,10 +111,9 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           name='collapsing-input'
           query={this.state.query}
           tags={this.state.tags}
-          onTagCountUpdateRequest={this._handleTagCountUpdate}
-          onFocus={this._handleFocus}
           onQueryChangedRequest={this._handleQueryChange}
           onTagAddedRequest={this._handleTagAdded}
+          onTagCountUpdateRequest={this._handleTagCountUpdate}
           onTagDeleteRequest={this._handleTagDeleted}
         />
       </div>

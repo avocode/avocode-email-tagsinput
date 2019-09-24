@@ -21,7 +21,6 @@ type Props = {
 export default class BetterReactTagsInputView extends React.PureComponent<Props> {
   render() {
     const { match } = this.props
-    console.log(match.url)
     const url = match.url === '/' ? '/better-react-tagsinput' : match.url
 
     return (

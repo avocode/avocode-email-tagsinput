@@ -1,7 +1,9 @@
 // @flow
+
 import React from 'react'
 import uuid from 'uuid'
 import TagsInput, { utils } from '@avocode/better-react-tagsinput'
+import StateView from '../state-view'
 
 import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 
@@ -12,7 +14,7 @@ type State = {
 }
 
 type Props = {
-  amount: number
+  amount: number,
 }
 
 const createRandomTags = (amount: number): Tags => {
@@ -25,14 +27,21 @@ const createRandomTags = (amount: number): Tags => {
 }
 
 export default class Performance extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    amount: 150,
+  }
+
   state = {
     query: '',
     tags: createRandomTags(this.props.amount),
     amount: this.props.amount,
   }
 
-  static defaultProps = {
-    amount: 150
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.amount !== nextProps.amount) {
+      this.setState({ tags: createRandomTags(nextProps.amount) })
+    }
   }
 
   _handleQueryChange = (query: Query) => {
@@ -41,10 +50,8 @@ export default class Performance extends React.PureComponent<Props, State> {
     })
   }
 
-  _handleTagAdded = (
-    text: Query,
-    event: SyntheticKeyboardEvent<*>
-  ) => {
+
+  _handleTagAdded = (text: Query) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -53,10 +60,7 @@ export default class Performance extends React.PureComponent<Props, State> {
     })
   }
 
-  _handleTagDeleted = (
-    indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-  ) => {
+  _handleTagDeleted = (indices: Array<number>) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -77,7 +81,7 @@ export default class Performance extends React.PureComponent<Props, State> {
 
   _regenerateTags = () => {
     this.setState({
-      tags: createRandomTags(this.state.amount)
+      tags: createRandomTags(this.state.amount),
     })
   }
 
@@ -87,10 +91,16 @@ export default class Performance extends React.PureComponent<Props, State> {
         <p>
           Test here for performance.
           <br />
-          <input onChange={this._changeAmount} type='number' value={this.state.amount} />
+          <input
+            value={this.state.amount}
+            type='number'
+            onChange={this._changeAmount}
+          />
           <br />
           <button onClick={this._regenerateTags}>Generate tags</button>
         </p>
+
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <TagsInput
           tags={this.state.tags}

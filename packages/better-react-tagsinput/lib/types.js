@@ -10,16 +10,16 @@ export type Tag = {|
 |}
 export type Tags = Array<Tag>
 
-export interface PluginFactory {
-  renderNode?: (props: Object, editor: Editor, next: Function) => ?React$Node;
-  onKeyDown?: (event: SyntheticKeyboardEvent<*>, editor: Editor, next: Function) => void;
-  initialize(): Plugin;
-}
-
 export type Plugin = {
   onKeyDown?: Function,
   renderNode?: Function,
   commands?: Object,
+}
+
+export interface PluginFactory {
+  renderNode?: (props: Object, editor: Editor, next: Function) => ?React$Node;
+  onKeyDown?: (event: SyntheticKeyboardEvent<*>, editor: Editor, next: Function) => void;
+  initialize(): Plugin;
 }
 
 export type KeyCode = number
@@ -45,8 +45,9 @@ export type FactoryPluginOptions = {
   addTagKeyCodes: AddTagKeyCodes,
   name: Name,
   tagComponentFactory?: TagComponentFactory,
-  onTagAddedRequest: 
-(text: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onTagAddedRequest: (
+    text: Query, event: SyntheticKeyboardEvent<*>
+  ) => void,
   onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -54,3 +55,4 @@ export type FactoryPluginOptions = {
   ) => void,
   onPasteRequest?: ?(event: SyntheticClipboardEvent<*>) => void,
 }
+

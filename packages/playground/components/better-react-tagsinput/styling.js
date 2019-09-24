@@ -9,7 +9,7 @@ type State = {
   cssDoc: string,
 }
 
-const cssDocID = "/* DOC=styled */"
+const cssDocID = '/* DOC=styled */'
 
 export default class Styling extends React.PureComponent<{}, State> {
   state = {
@@ -18,14 +18,14 @@ export default class Styling extends React.PureComponent<{}, State> {
       { value: 'xyz' },
       { value: 'abc' },
     ],
-    cssDoc: ''
+    cssDoc: '',
   }
 
   componentDidMount() {
-    const style = Array.from(document.head.getElementsByTagName('style')).find(n => n.innerHTML.startsWith(cssDocID))
+    const style = Array.from(document.head.getElementsByTagName('style')).find((n) => n.innerHTML.startsWith(cssDocID))
 
     const cssDoc = style ? style.innerHTML.replace(cssDocID, '') : ''
-    
+
     this.setState({ cssDoc })
   }
 
@@ -35,10 +35,7 @@ export default class Styling extends React.PureComponent<{}, State> {
     })
   }
 
-  _handleTagAdded = (
-    text: Query,
-    event: SyntheticKeyboardEvent<*>
-  ) => {
+  _handleTagAdded = (text: Query) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -47,10 +44,7 @@ export default class Styling extends React.PureComponent<{}, State> {
     })
   }
 
-  _handleTagDeleted = (
-    indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-  ) => {
+  _handleTagDeleted = (indices: Array<number>) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -85,10 +79,10 @@ export default class Styling extends React.PureComponent<{}, State> {
           name='styled'
           query={this.state.query}
           tags={this.state.tags}
+          onPasteRequest={this._handlePaste}
           onQueryChangedRequest={this._handleQueryChange}
           onTagAddedRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
-          onPasteRequest={this._handlePaste}
         />
       </div>
     )

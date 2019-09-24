@@ -3,7 +3,7 @@
 import { Point, Value, Selection } from 'slate'
 import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
 
-import type { Query, Tags } from '../types.js'
+import type { Query, Tags } from '../types'
 
 const parseValue = (
   tags: Tags,
@@ -34,9 +34,9 @@ const parseValue = (
         {
           object: 'block',
           type: 'paragraph',
-          nodes: nodes,
+          nodes,
         },
-      ]
+      ],
     },
   })
 

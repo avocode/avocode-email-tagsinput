@@ -1,7 +1,9 @@
 // @flow
 
 import React from 'react'
-import TagsInput, { CollapsibleTagsInput, utils } from '@avocode/better-react-tagsinput'
+import TagsInput, { utils } from '@avocode/better-react-tagsinput'
+
+import StateView from '../state-view'
 
 import type { Query, Tags } from '@avocode/better-react-tagsinput/dist/types'
 
@@ -34,10 +36,7 @@ export default class Paste extends React.PureComponent<{}, State> {
     })
   }
 
-  _handleTagAdded = (
-    text: Query,
-    event: SyntheticKeyboardEvent<*>
-  ) => {
+  _handleTagAdded = (text: Query) => {
     this.setState((prevState) => {
       return {
         tags: [ ...prevState.tags, { value: text } ],
@@ -46,10 +45,7 @@ export default class Paste extends React.PureComponent<{}, State> {
     })
   }
 
-  _handleTagDeleted = (
-    indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-  ) => {
+  _handleTagDeleted = (indices: Array<number>) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -76,21 +72,15 @@ export default class Paste extends React.PureComponent<{}, State> {
           <code>test1, test2, test3</code>
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <TagsInput
           query={this.state.query}
           tags={this.state.tags}
+          onPasteRequest={this._handlePaste}
           onQueryChangedRequest={this._handleQueryChange}
           onTagAddedRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
-          onPasteRequest={this._handlePaste}
         />
       </div>
     )

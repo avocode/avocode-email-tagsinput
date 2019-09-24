@@ -2,6 +2,7 @@
 
 import React from 'react'
 import TagsInput from '@avocode/better-react-tagsinput'
+import StateView from '../state-view'
 
 export default class Basic extends React.PureComponent<{}> {
   render() {
@@ -22,13 +23,7 @@ export default class Basic extends React.PureComponent<{}> {
           the input but will not actually change the props.
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{query}</dd>
-        </dl>
+        <StateView tags={tags} query={query} />
 
         <TagsInput
           tags={tags}

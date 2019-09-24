@@ -5,7 +5,7 @@ import TagComponent from '../components/tag-component'
 
 import type { Editor } from 'slate-react'
 import type { Selection, Value } from 'slate'
-import type { AddTagKeyCodes, Name, PluginFactory, Query, TagComponentProps, TagComponentFactory, Tags } from '../types.js'
+import type { AddTagKeyCodes, Name, PluginFactory, Query, TagComponentFactory } from '../types'
 
 export const TAG_PLUGIN_NODE_ID = 'tag'
 const BACKSPACE_KEY_CODE = 8
@@ -51,7 +51,7 @@ export default class TagsPlugin implements PluginFactory {
     const data = node.get('data')
 
     switch (node.type) {
-      case TAG_PLUGIN_NODE_ID:
+      case TAG_PLUGIN_NODE_ID: {
         const tagProps = {
           ...attributes,
           isFocused: props.isFocused,
@@ -69,6 +69,7 @@ export default class TagsPlugin implements PluginFactory {
         return (
           <TagComponent {...tagProps} />
         )
+      }
       default:
         return next()
     }
@@ -129,7 +130,6 @@ export default class TagsPlugin implements PluginFactory {
 
 
   _getTagNodeIndicesBySelection(selection: Selection, value: Value) {
-    console.log('selection: ', selection, 'value: ', value)
     const selectedNodes = value.document.getNodesAtRange(selection)
 
     const indices = selectedNodes

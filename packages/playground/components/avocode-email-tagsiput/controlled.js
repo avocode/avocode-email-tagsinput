@@ -2,6 +2,7 @@
 
 import React from 'react'
 import AvocodeEmailTagsInput, { utils } from '@avocode/avocode-email-tagsinput'
+import StateView from '../state-view'
 
 import type { Query, Tags } from '@avocode/avocode-email-tagsinput/dist/types'
 
@@ -13,10 +14,7 @@ type State = {
 export default class Controlled extends React.PureComponent<{}, State> {
   state = { tags: [ { value: 'test@test.com' }, { value: 'test2@test.com' } ], query: '' }
 
-  _handleTagAdd = (
-    text: Query,
-    event: SyntheticKeyboardEvent<*>
-  ) => {
+  _handleTagAdd = (text: Query) => {
     this.setState((prevState) => {
       return {
         query: '',
@@ -29,10 +27,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
     this.setState({ query })
   }
 
-  _handleTagDelete = (
-    indices: Array<number>,
-    event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
-  ) => {
+  _handleTagDelete = (indices: Array<number>) => {
     this.setState((prevState) => {
       const nextTags = utils.removeTagsByIndices(
         prevState.tags,
@@ -55,19 +50,13 @@ export default class Controlled extends React.PureComponent<{}, State> {
           tags values (f.e. server errors).
         </p>
 
-        <strong>Props</strong>
-        <dl>
-          <dt>tags</dt>
-          <dd>{this.state.tags.map(t => JSON.stringify(t)).join(' , ')}</dd>
-          <dt>query</dt>
-          <dd>{this.state.query}</dd>
-        </dl>
+        <StateView tags={this.state.tags} query={this.state.query} />
 
         <AvocodeEmailTagsInput
           tags={this.state.tags}
           query={this.state.query}
-          onTagAddedRequest={this._handleTagAdd}
           onQueryChangedRequest={this._handleQueryChange}
+          onTagAddedRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
       </div>
