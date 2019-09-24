@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 static/
+packages/**/stats.json
 !static/.gitkeep
 npm-debug.log
 .DS_Store

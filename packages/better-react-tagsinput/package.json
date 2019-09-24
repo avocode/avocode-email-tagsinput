@@ -1,6 +1,6 @@
 {
   "name": "@avocode/better-react-tagsinput",
-  "version": "1.2.13-beta",
+  "version": "1.2.14-beta",
   "description": "React input element that allows you to insert and delete tags.",
   "main": "dist/better-react-tagsinput.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
     "pack": "npm pack",
     "prepublish": "npm run build",
+    "profile": "webpack --mode=development --profile --json > stats.json",
     "test": "jest --no-cache --config ../../jest.config.json"
   },
   "keywords": [
@@ -31,11 +32,11 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.6",
-    "immutable": "^3.8.1",
     "slate": "^0.45.0",
     "slate-react": "^0.21.20"
   },
   "peerDependencies": {
+    "immutable": "^3.8.1",
     "react": "15.4.2",
     "react-dom": "15.4.2"
   },

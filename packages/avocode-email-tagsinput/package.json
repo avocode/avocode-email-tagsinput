@@ -1,6 +1,6 @@
 {
   "name": "@avocode/avocode-email-tagsinput",
-  "version": "1.2.13-beta",
+  "version": "1.2.14-beta",
   "description": "React input component that handles creation and removal of tags based on matching email regex.",
   "main": "dist/avocode-email-tagsinput.js",
   "scripts": {
@@ -14,6 +14,7 @@
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
     "pack": "npm pack",
     "prepublish": "npm run build",
+    "profile": "webpack --mode=development --profile --json > stats.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -31,10 +32,11 @@
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@avocode/better-react-tagsinput": "^1.2.13-beta",
+    "@avocode/better-react-tagsinput": "^1.2.14-beta",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
+    "immutable": "^3.8.1",
     "react": "15.4.2",
     "react-dom": "15.4.2"
   },
