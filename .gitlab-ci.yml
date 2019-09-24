@@ -1,0 +1,34 @@
+image: node:12.7.0
+
+stages:
+  - install
+  - test
+
+install:
+  stage: install
+  script:
+    - npm install --unsafe-perm
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - node_modules/
+      - packages/avocode-email-tagsinput/node_modules/
+      - packages/better-react-tagsinput/node_modules/
+      - packages/playground/node_modules/
+      - packages/avocode-email-tagsinput/dist/
+      - packages/better-react-tagsinput/dist/
+      - packages/playground/dist/
+
+lint:
+  stage: test
+  script:
+    - npm run eslint -- --quiet
+  dependencies:
+    - install
+
+build:
+  stage: test
+  script:
+    - npm run build
+  dependencies:
+    - install
