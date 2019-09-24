@@ -10,4 +10,9 @@ module.exports = {
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
   },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+    'immutable': 'immutable',
+  },
 }
