@@ -2,11 +2,15 @@ image: node:12.7.0
 
 stages:
   - install
-  - test
+  - build
+  - lint
 
 install:
   stage: install
   script:
+    # `--unsafe-perm` will allow other scripts
+    # to be launched because CI runs as root and these
+    # scripts might otherwise restrict it (Lerna)
     - npm install --unsafe-perm
   artifacts:
     expire_in: 1 day
@@ -15,20 +19,25 @@ install:
       - packages/avocode-email-tagsinput/node_modules/
       - packages/better-react-tagsinput/node_modules/
       - packages/playground/node_modules/
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    expire_in: 1 day
+    paths:
       - packages/avocode-email-tagsinput/dist/
       - packages/better-react-tagsinput/dist/
       - packages/playground/dist/
+  dependencies:
+    - install
 
 lint:
-  stage: test
+  stage: lint
   script:
     - npm run eslint -- --quiet
   dependencies:
     - install
+    - build
 
-build:
-  stage: test
-  script:
-    - npm run build
-  dependencies:
-    - install
