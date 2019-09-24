@@ -14,6 +14,7 @@
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
     "pack": "npm pack",
     "prepublish": "npm run build",
+    "profile": "webpack --mode=development --profile --json > stats.json",
     "test": "jest --no-cache --config ../../jest.config.json"
   },
   "keywords": [
