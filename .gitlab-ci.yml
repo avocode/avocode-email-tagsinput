@@ -41,3 +41,11 @@ lint:
     - install
     - build
 
+flow:
+  stage: lint
+  script:
+    - npm run flow
+  dependencies:
+    - install
+    - build
+
