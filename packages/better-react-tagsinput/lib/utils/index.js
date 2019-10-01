@@ -1,7 +1,7 @@
 // @flow
 
 import { Point, Value, Selection } from 'slate'
-import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
+import { TAG_PLUGIN_NODE_ID } from '../constants'
 
 import type { Query, Tags } from '../types'
 

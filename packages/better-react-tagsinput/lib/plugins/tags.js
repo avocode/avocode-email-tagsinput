@@ -2,12 +2,12 @@
 
 import React from 'react'
 import TagComponent from '../components/tag-component'
+import { TAG_PLUGIN_NODE_ID } from '../constants'
 
 import type { Editor } from 'slate-react'
 import type { Selection, Value } from 'slate'
 import type { AddTagKeyCodes, Name, PluginFactory, Query, TagComponentFactory } from '../types'
 
-export const TAG_PLUGIN_NODE_ID = 'tag'
 const BACKSPACE_KEY_CODE = 8
 const DELETE_KEY_CODE = 46
 

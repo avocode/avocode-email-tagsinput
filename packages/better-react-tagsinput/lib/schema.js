@@ -1,7 +1,7 @@
 // @flow
 
 import { Block } from 'slate'
-import { TAG_PLUGIN_NODE_ID } from '../lib/plugins/tags'
+import { TAG_PLUGIN_NODE_ID } from './constants'
 
 import type { Editor } from 'slate-react'
 import type { Node } from 'slate'
