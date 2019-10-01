@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import TagsInput from './tagsinput'
-import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
+import { TAG_PLUGIN_NODE_ID } from '../constants'
 
 import type { List } from 'immutable'
 import type { Operation, Value } from 'slate'

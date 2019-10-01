@@ -7,6 +7,7 @@ import marked from 'marked'
 import AvocodeEmailTagsInputView from './avocode-email-tagsiput/'
 import BetterReactTagsInputView from './better-react-tagsinput/'
 import ApiView from './api-view'
+import pkg from '../package.json'
 
 import '../styles/index.css'
 
@@ -51,48 +52,55 @@ export default class App extends React.Component<{}, State> {
 
     return (
       <Router>
-        <div className='app-container'>
-          <div className='app-container__header'>
-            <nav>
-              <ul className='nav'>
-                <li className='nav-item'><Link to="/avocode-email-tagsinput">Avocode Email TagsInput</Link></li>
-                <li className='nav-item'><Link to="/better-react-tagsinput">Better React TagsInput</Link></li>
-              </ul>
-            </nav>
-
-            <Route path='/' exact component={AvocodeEmailTagsInputView} />
-            <Route path='/avocode-email-tagsinput' component={AvocodeEmailTagsInputView} />
-            <Route path='/better-react-tagsinput' component={BetterReactTagsInputView} />
+        <div className='app'>
+          <div className='version-header'>
+            playground: <code>{pkg.version}</code>{' ◆ '}
+            avocode-email-tagsinput: <code>{pkg.dependencies['@avocode/avocode-email-tagsinput']}</code>{' ◆ '}
+            better-react-tagsinput: <code>{pkg.dependencies['@avocode/better-react-tagsinput']}</code>
           </div>
-          <div className='app-container__api'>
-            <Route
-              exact
-              path='/'
-              render={() => (
-                <ApiView
-                  doc={avocodeEmailTagsInputDoc}
-                  retryApiDocsLoadRequest={this._fetchApiDocs}
-                />
-              )}
-            />
-            <Route
-              path='/avocode-email-tagsinput'
-              render={() => (
-                <ApiView
-                  doc={avocodeEmailTagsInputDoc}
-                  retryApiDocsLoadRequest={this._fetchApiDocs}
-                />
-              )}
-            />
-            <Route
-              path='/better-react-tagsinput'
-              render={() => (
-                <ApiView
-                  doc={betterReactTagsInputDoc}
-                  retryApiDocsLoadRequest={this._fetchApiDocs}
-                />
-              )}
-            />
+          <div className='app-container'>
+            <div className='app-container__header'>
+              <nav>
+                <ul className='nav'>
+                  <li className='nav-item'><Link to="/avocode-email-tagsinput">Avocode Email TagsInput</Link></li>
+                  <li className='nav-item'><Link to="/better-react-tagsinput">Better React TagsInput</Link></li>
+                </ul>
+              </nav>
+
+              <Route path='/' exact component={AvocodeEmailTagsInputView} />
+              <Route path='/avocode-email-tagsinput' component={AvocodeEmailTagsInputView} />
+              <Route path='/better-react-tagsinput' component={BetterReactTagsInputView} />
+            </div>
+            <div className='app-container__api'>
+              <Route
+                exact
+                path='/'
+                render={() => (
+                  <ApiView
+                    doc={avocodeEmailTagsInputDoc}
+                    retryApiDocsLoadRequest={this._fetchApiDocs}
+                  />
+                )}
+              />
+              <Route
+                path='/avocode-email-tagsinput'
+                render={() => (
+                  <ApiView
+                    doc={avocodeEmailTagsInputDoc}
+                    retryApiDocsLoadRequest={this._fetchApiDocs}
+                  />
+                )}
+              />
+              <Route
+                path='/better-react-tagsinput'
+                render={() => (
+                  <ApiView
+                    doc={betterReactTagsInputDoc}
+                    retryApiDocsLoadRequest={this._fetchApiDocs}
+                  />
+                )}
+              />
+            </div>
           </div>
         </div>
       </Router>

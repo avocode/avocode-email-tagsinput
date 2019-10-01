@@ -2,7 +2,7 @@
 
 import React from 'react'
 import classNames from 'classnames'
-import { TAG_PLUGIN_NODE_ID } from '../plugins/tags'
+import { TAG_PLUGIN_NODE_ID } from '../constants'
 
 import type { TagComponentProps } from '../types'
 

@@ -2,7 +2,7 @@
 
 import { Range } from 'slate'
 
-import { TAG_PLUGIN_NODE_ID } from './tags'
+import { TAG_PLUGIN_NODE_ID } from '../constants'
 
 import type { Node } from 'slate'
 import type { Editor } from 'slate-react'
