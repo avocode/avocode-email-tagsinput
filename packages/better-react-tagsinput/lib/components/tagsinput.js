@@ -6,7 +6,7 @@ import { Editor } from 'slate-react'
 import classNames from 'classnames'
 import { createPlugins } from '../plugins'
 import schema from '../schema'
-import initialValue from '../initial-value'
+import initialValueFactory from '../initial-value-factory'
 
 import type { List } from 'immutable'
 import type { Operation, Value } from 'slate'
@@ -65,7 +65,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   static displayName = 'TagsInput'
 
   state = {
-    value: initialValue,
+    value: initialValueFactory(),
     plugins: [],
     focused: false,
   }
@@ -228,7 +228,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const value = this._input ? this._input.value : initialValue
+    const value = this._input ? this._input.value : this.state.value
     const isFocused = value.selection.isFocused
 
     return (
