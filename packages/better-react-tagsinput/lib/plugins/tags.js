@@ -82,6 +82,22 @@ export default class TagsPlugin implements PluginFactory {
     if (this._addKeys.includes(event.keyCode)) {
       return this._handleAddTag(event, editor)
     }
+
+    return next()
+  }
+
+  onBeforeInput = (event: SyntheticKeyboardEvent<*>, editor: Editor, next: Function) => {
+    // NOTE: Safeguard for handling certain cases (Firefox) where user could
+    //       end up between or before tag node(s). Force text insertion at
+    //       "query" node (last text block)
+    const queryNode = editor.value.document.getTexts().last()
+    const currentNodeKey = editor.value.selection.end.key
+
+    if (queryNode && queryNode.key !== currentNodeKey) {
+      const currentNode = editor.value.document.getNode(currentNodeKey)
+      return editor.moveToStartOfNode(queryNode)
+    }
+
     return next()
   }
 
@@ -180,6 +196,7 @@ export default class TagsPlugin implements PluginFactory {
       onKeyDown: this.onKeyDown,
       renderNode: this.renderNode,
       onPaste: this.onPaste,
+      onBeforeInput: this.onBeforeInput,
       commands: {
         removeTag: this._handleRemoveTag,
       },
