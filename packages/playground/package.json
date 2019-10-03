@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.2.15-beta",
+  "version": "1.2.16-beta",
   "description": "Playground React app to be used with better-tags-input & avocode-email-tagsinput library during development.",
   "main": "index.js",
   "private": true,
@@ -17,8 +17,8 @@
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@avocode/avocode-email-tagsinput": "^1.2.15-beta",
-    "@avocode/better-react-tagsinput": "^1.2.15-beta",
+    "@avocode/avocode-email-tagsinput": "^1.2.16-beta",
+    "@avocode/better-react-tagsinput": "^1.2.16-beta",
     "classnames": "^2.2.6",
     "immutable": "^3.8.1",
     "marked": "^0.7.0",
