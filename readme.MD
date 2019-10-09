@@ -2,34 +2,76 @@
 
 This monorepo contains three packages:
 
-1. `avocode-email-tagsinput`
+1. `@avocode/avocode-email-tagsinput`
 
-React input component for typing emails that are converted into tags. It uses base component from `better-react-tagsinput` library.
+    React input component for typing emails that are converted into tags. It uses base component from `better-react-tagsinput` library. It exposes component `AvocodeEmailTagsInput`. [README](packages/avocode-email-tagsinput/readme.MD)
 
-2. `better-react-tagsinput`
+2. `@avocode/better-react-tagsinput`
 
-React input component / editor created with SlateJS library. It displays the input, handles the input and renders tags. It also manages keyboard shortcuts within the input.
+    React input component / editor created with SlateJS library. Its intended usage is to render, create and remove tags inside input. The input can also be collapsible (have overflow via CSS). It is controlled component which must receive `tags` and `query` props, along with callbacks for events that change the input state. [README](packages/better-react-tagsinput/readme.MD)
 
 3. `playground`
 
-React app to be used during development of all the packages.
+    React app to be used during development of all the packages. [README](packages/playground/readme.MD)
 
 ## Development
 
-The `babel` configuration is shared across the packages so first you need to run `npm install`. After this you need to install package dependencies and link them together: `npx lerna bootstrap`.
+Library uses `npm` package manager to manage the dependencies. All the scripts mentioned here need to be prefixed with `npm run [script]` unless stated otherwise. **Run all the scripts from the root directory**.
 
-To run playground app (`playground` package) just run `npm start` and it'll launch development server on port `8080`.
+The `babel` configuration is shared across the packages so first you need to run `npm install`. The monorepo is managed by Lerna so after the install is complete, the dependencies will be resolved to root `node_modules` directory. Versioning is set up so each package has the same version all the time.
+
+Webpack config is also shared for the most part and will output the result to `dist/` directories in each package.
+
+* `start`
+   Starts builds in watch mode in the all packages and runs dev server for `playground`. The changes in any package will be updated live. Use this command to develop the libraries and preview changes.
 
 ## Build
 
 Each package can be built using `build` script in each package directory. You can build specific package from the root directory by running `npm run build:package` and pass package name as argument. The distribution files will be located within `dist/` folder for each package.
 
+* `build`
+   Builds all packages.
+
+* `build:package`
+   Builds specific package that is passed as argument.
+
 ## Publish
 
-Each package can be published using `publish` script in each package configuration. Building specific package is done by runnin `npm run publish:package` from root directory. You need to pass package name as argument. `prepublish` script will be triggered as well if available.
+Each package has its own `prepublish` script that will trigger builds. Packages are published to npm registry to private `@avocode` workspace so you need to run `npm login` first (this is important). The exception is `playground` package that has different publish target.
 
-### Publishing playground
+Before publishing make sure you increment version in each package since it's published by git tags.
 
-Every time any of the libraries are changed, the playground should be published as well so new changes can be demonstrated, reviewed, etc. The playground is published publicly using [surge.sh]() service at [https://avocode-email-tagsinput.surge.sh](https://avocode-email-tagsinput.surge.sh). To publish updated playground run `npm run publish:package playground` which will create new build and upload it to the domain. You need to be logged in to _surge.sh_ service in order for it to work correctly.
+* `publish`
+   Builds and publishes all packages.
 
-Alternatively you can distribute files in `packages/playground/dist/` anywhere you wish.
+* `publish:package`
+   Publishes specific package that is passed as argument.
+
+* `version`
+   Pass version as argument to change all packages to that specific version. Info is read from `lerna.json` file.
+
+## Clean
+
+* `clean:all`
+   Clears `dist/` and `node_modules/` folders in each package
+
+* `clean`
+   Clears only `dist/` folders in each package.
+
+* `clean:package`
+   Clears only `dist/` folder in specific package that is passed as argument.
+
+## Lint & Type checking
+
+The project uses Flow type library. The libraries are set up to expose type definitions to their environment. External type definitions are prepared during build.
+
+* `flow`
+   Typechecks all packages.
+
+* `eslint`
+   Runs linter.
+
+## Test
+
+* `test`
+   Runs tests for all packages.
