@@ -1,6 +1,20 @@
+:root {
+  --playground-text: 18px;
+  --playground-bigger-text: 20px;
+}
+
+html {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
 code {
   background-color: lightgrey;
-  font-size: 1.1rem;
+  font-size: var(--playground-text);
+}
+
+p {
+  font-size: var(--playground-text);
 }
 
 .app {
@@ -16,6 +30,10 @@ code {
 .app-container__header {
   margin: 10px;
   flex: 2;
+}
+
+.app-container__header nav * {
+  font-size: var(--playground-bigger-text);
 }
 
 .app-container__api {
@@ -55,6 +73,14 @@ code {
 .api-view {
   max-height: 100vh;
   overflow: auto;
+  font-size: var(--playground-text);
+}
+
+.state-view {
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: var(--playground-text);
+  margin: 10px 0;
 }
 
 @keyframes opacity {

@@ -13,7 +13,7 @@ export default class StateView extends React.PureComponent<Props> {
   render() {
     const { tags, query, ...rest } = this.props
     return (
-      <div>
+      <div className='state-view'>
         <strong>Props</strong>
         <dl>
           <dt>tags</dt>
