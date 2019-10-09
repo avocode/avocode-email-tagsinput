@@ -1,3 +1,5 @@
+# better-react-tagsinput
+
 React input component for displaying tags. This componenty needs to be controlled from outside in order to work correctly. The input is rendered as SlateJS editor.
 
 ## TagsInput API
