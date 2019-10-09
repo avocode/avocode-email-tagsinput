@@ -1,8 +1,27 @@
 .tagsinput {
+  border-radius: 3px;
   border-width: 1px;
   border-style: solid;
   border-color: #ededed;
-  padding: 3px;
+  padding: 2px;
+  font-size: 1.1rem;
+  min-height: 29px;
+}
+
+/* HACK: Firefox forces minimum line height on
+ * elements with contentEditable=false
+ */
+@-moz-document url-prefix() {
+  .tagsinput {
+    line-height: 0;
+  }
+  .tagsinput > div > div > span:only-child,
+  .tagsinput > div > div > span:last-child {
+    vertical-align: text-bottom;
+  }
+  .tagsinput > div > div > span:only-child {
+    line-height: 1;
+  }
 }
 
 .tagsinput--focused {
@@ -19,13 +38,16 @@
 .tagsinput > div > div > span:only-child,
 .tagsinput > div > div > span:last-child {
   display: inline-block;
-  padding: 4px 5px;
-  margin: 3px;
+  margin: 5px 3px;
+  padding: 3px;
+  /*padding: 4px 5px;*/
+  /*margin: 3px;*/
   word-break: break-all;
 }
 .tagsinput > div > div > span:only-child {
-  padding: 4px 5px;
+  /*padding: 6px 5px;*/
   min-width: 1px;
+  /*line-height: 1;*/
 }
 .tagsinput > div > div > span > span > span[data-slate-length="0"][data-slate-zero-width="z"] {
   visibility: hidden;

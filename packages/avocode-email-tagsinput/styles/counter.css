@@ -1,13 +1,10 @@
 .avocode-email-tagsinput-counter {
-  margin: 5px;
-  padding: 2px 4px;
+  min-height: 25px;
+  min-width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ededed;
-  border: 1px solid #ededed;
   cursor: pointer;
-  font-size: 0.8rem;
 }
 
-.avocode-email-tagsinput-counter:hover,
-.avocode-email-tagsinput-counter:active {
-  border: 1px solid black;
-}
