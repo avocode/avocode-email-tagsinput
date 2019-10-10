@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import * as utils from '../lib/utils'
+import * as utils from '../../lib/utils'
 
 describe('utils', () => {
   it('should return func', () => {

@@ -2,6 +2,7 @@
   "transform": {
     "^.+\\.js$": "<rootDir>/jest.transform.js"
   },
+  "testEnvironment": "jsdom",
   "roots": [ "packages/" ],
   "transformIgnorePatterns": [
      "/node_modules/*",

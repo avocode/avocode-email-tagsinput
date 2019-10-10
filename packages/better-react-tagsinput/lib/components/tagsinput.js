@@ -52,7 +52,6 @@ export type Props = {
 export type State = {
   value: Value,
   plugins: Array<Plugin>,
-  focused: boolean,
 }
 
 
@@ -67,7 +66,6 @@ export default class TagsInput extends React.PureComponent<Props, State> {
   state = {
     value: initialValueFactory(),
     plugins: [],
-    focused: false,
   }
 
   componentDidMount() {
@@ -145,7 +143,10 @@ export default class TagsInput extends React.PureComponent<Props, State> {
         removeText: false,
       })
 
-      if (currentNode && allowedTextOperations) {
+      if (
+        currentNode &&
+        (allowedTextOperations.insertText || allowedTextOperations.removeText)
+      ) {
         this.props.onQueryChangeRequest(currentNode.text)
       }
 
