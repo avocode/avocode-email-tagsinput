@@ -8,7 +8,7 @@ import sinon from 'sinon'
 import chaiSinon from 'chai-sinon'
 import uuid from 'uuid'
 
-import TagComponent from '../../lib/components/tag-component'
+import TagComponent from '../../../lib/components/tag-component'
 
 chai.use(chaiEnzyme())
 chai.use(chaiSinon)

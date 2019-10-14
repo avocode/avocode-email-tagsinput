@@ -17,7 +17,10 @@
     "publish:package": "lerna run publish --stream --scope",
     "publish": "lerna publish from-git --yes && npm run publish:package playground",
     "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --stream --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --stream --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
-    "test": "jest .",
+    "test": "jest --config test/jest.config.json",
+    "test:e2e": "jest --config test/jest-e2e.config.json",
+    "test:e2e:dev:full": "concurrently \"npm run start\" \"sleep 20 && npm run test:e2e:dev\"",
+    "test:e2e:dev": "NODE_ENV=development jest --config test/jest-e2e.config.json",
     "test:watch": "jest --watch",
     "version": "lerna version"
   },
@@ -57,6 +60,7 @@
     "jsdom": "^15.1.1",
     "lerna": "^3.16.4",
     "mini-css-extract-plugin": "^0.8.0",
+    "puppeteer": "^1.20.0",
     "react": "15.4.2",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "15.4.2",
@@ -73,13 +77,5 @@
     "node": ">=12.7.0",
     "npm": ">=6.10.0"
   },
-  "repository": "https://gitlab.avcd.cz/ondrasynacek/avocode-email-tagsinput",
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/test/__mocks__/styleMock.js"
-    },
-    "setupFiles": [
-      "./test/__globals__/dom.globals.js"
-    ]
-  }
+  "repository": "https://gitlab.avcd.cz/ondrasynacek/avocode-email-tagsinput"
 }

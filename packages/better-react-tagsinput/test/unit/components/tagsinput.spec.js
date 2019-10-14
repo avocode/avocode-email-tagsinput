@@ -9,7 +9,7 @@ import chaiSinon from 'chai-sinon'
 import uuid from 'uuid'
 import { Text } from 'slate'
 
-import TagsInput from '../../lib/components/tagsinput'
+import TagsInput from '../../../lib/components/tagsinput'
 import { testAsync } from '../test-utils'
 
 chai.use(chaiEnzyme())
@@ -72,24 +72,24 @@ describe('TagsInput', () => {
 
 
   it('should render focused container', (callback) => {
-    const wrapper = renderComponent()
-    wrapper.find('Editor').simulate('click', new Event('click'), {
-      value: {
-        selection: { start: { key: 1 } },
-        document: {
-          getNode: () => {
-            return Text.fromJSON({ text: '' })
-          },
-        },
-      },
-      moveToEndOfDocument: () => { return { focus: () => {} } },
-    },
+    const wrapper = renderMountedComponent({
+      // TODO: Double-check if we can manage on click focus
+      // with non-empty query
+      query: '',
+    })
+
+    const editorInstance = wrapper.instance()._input
+
+    wrapper.find('Editor').simulate(
+      'click',
+      new Event('click'),
+      editorInstance,
       () => {}
     )
 
     testAsync(callback, () => {
       expect(wrapper.find('.tagsinput--focused')).to.exist
-    })
+    }, 100)
   })
 
   describe('initial value', () => {
@@ -258,6 +258,8 @@ describe('TagsInput', () => {
   })
 
   describe('user interaction', () => {
+    // TODO: Figure out how to trigger keyboard events to
+    // simulate user change
     xit('should call onQueryChangedRequest when user types ' +
        'into input', (callback) => {
       const props = {
@@ -266,14 +268,15 @@ describe('TagsInput', () => {
         onQueryChangedRequest: sinon.spy(),
       }
       const wrapper = renderMountedComponent(props)
-      const event = new Event('keydown', { keyCode: 65 })
+      const editorInstance = wrapper.instance()._input
+      const event = new KeyboardEvent('keypress', { keyCode: 65 })
 
-      wrapper.find('Editor').simulate('click', new Event('click'))
-      wrapper.find('Editor').simulate('keydown', event)
+      wrapper.find('Editor').simulate('click', new MouseEvent('click'), editorInstance, () => {})
+      wrapper.find('Editor').simulate('keypress', event, editorInstance, () => {})
 
       testAsync(callback, () => {
-        expect(props.onQueryChangedRequest).to.have.been.called
-      }, 100)
+        expect(props.onQueryChangedRequest).to.have.been.calledWith('a')
+      })
     })
   })
 })
