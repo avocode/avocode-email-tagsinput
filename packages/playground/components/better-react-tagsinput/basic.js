@@ -28,8 +28,8 @@ export default class Basic extends React.PureComponent<{}> {
         <TagsInput
           tags={tags}
           query={query}
-          onQueryChangedRequest={() => {}}
-          onTagAddedRequest={() => {}}
+          onQueryChangeRequest={() => {}}
+          onTagAddRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
       </div>

@@ -55,7 +55,7 @@ export default class LongInput extends React.PureComponent<{}, State> {
     return (
       <div>
         <p>
-          By hooking into <code>onQueryChangedRequest</code> method you can limit the amount
+          By hooking into <code>onQueryChangeRequest</code> method you can limit the amount
           of characters user types into the input.
 
           Also the default styling shortens very long emails by styling the tag component.
@@ -67,8 +67,8 @@ export default class LongInput extends React.PureComponent<{}, State> {
           name='long-input'
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdd}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
       </div>

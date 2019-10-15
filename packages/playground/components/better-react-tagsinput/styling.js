@@ -80,8 +80,8 @@ export default class Styling extends React.PureComponent<{}, State> {
           query={this.state.query}
           tags={this.state.tags}
           onPasteRequest={this._handlePaste}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdded}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
         />
       </div>

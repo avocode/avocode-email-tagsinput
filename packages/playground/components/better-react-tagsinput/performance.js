@@ -105,8 +105,8 @@ export default class Performance extends React.PureComponent<Props, State> {
         <TagsInput
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdded}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
         />
       </div>

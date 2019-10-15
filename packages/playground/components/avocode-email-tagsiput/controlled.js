@@ -55,8 +55,8 @@ export default class Controlled extends React.PureComponent<{}, State> {
         <AvocodeEmailTagsInput
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdd}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
       </div>

@@ -15,8 +15,8 @@ import type { AddTagKeyCodes, Query } from '../types'
 type Props = TagsInputProps & {
   addTagKeyCodes?: AddTagKeyCodes,
   offset?: number,
-  onQueryChangedRequest: (query: Query) => void,
-  onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onQueryChangeRequest: (query: Query) => void,
+  onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -191,8 +191,8 @@ export default class CollapsibleTagsInput extends React.PureComponent<Props, Sta
           onChange={this._handleChange}
           onFocus={this._handleFocus}
           onInitialLoad={this._handleInitialLoad}
-          onQueryChangedRequest={this.props.onQueryChangedRequest}
-          onTagAddedRequest={this.props.onTagAddedRequest}
+          onQueryChangeRequest={this.props.onQueryChangeRequest}
+          onTagAddRequest={this.props.onTagAddRequest}
           onTagDeleteRequest={this.props.onTagDeleteRequest}
         />
       </div>

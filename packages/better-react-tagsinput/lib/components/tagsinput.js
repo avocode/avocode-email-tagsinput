@@ -29,8 +29,8 @@ export type Props = {
   addTagKeyCodes: AddTagKeyCodes,
   plugins?: Array<Plugin>,
   tagComponentFactory?: TagComponentFactory,
-  onQueryChangedRequest: (query: Query) => void,
-  onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onQueryChangeRequest: (query: Query) => void,
+  onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -86,7 +86,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       tagComponentFactory,
       onPasteRequest,
       onTagDeleteRequest: this._handleDeleteTag,
-      onTagAddedRequest: this._handleAddTag,
+      onTagAddRequest: this._handleAddTag,
     })
 
     this.setState({ plugins }, () => {
@@ -146,7 +146,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
       })
 
       if (currentNode && allowedTextOperations) {
-        this.props.onQueryChangedRequest(currentNode.text)
+        this.props.onQueryChangeRequest(currentNode.text)
       }
 
       if (this.props.onChange) {
@@ -163,12 +163,12 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     this.props.onTagDeleteRequest(indices, event)
 
     if (this.props.query !== queryNodeText) {
-      this.props.onQueryChangedRequest(queryNodeText || '')
+      this.props.onQueryChangeRequest(queryNodeText || '')
     }
   }
 
   _handleAddTag = (text: Query, event: SyntheticKeyboardEvent<*>) => {
-    this.props.onTagAddedRequest(text, event)
+    this.props.onTagAddRequest(text, event)
   }
 
   _handleOnClick = (

@@ -36,11 +36,11 @@ Render props for rendering custom tag component. The callback receives props suc
 
 Override default plugin. See [plugins](#plugins).
 
-### `onQueryChangedRequest: (query: string)`
+### `onQueryChangeRequest: (query: string)`
 
 Callback that is triggered when user types in the input. The argument is the value of the input.
 
-### `onTagAddedRequest: (text: string, event: Event)`
+### `onTagAddRequest: (text: string, event: Event)`
 
 Callback that is triggered if any of the `addTagKeyCodes` keys has been pressed. The event object is passed as first argument. Second argument is the text value of new tag.
 

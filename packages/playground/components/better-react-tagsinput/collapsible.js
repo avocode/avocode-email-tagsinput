@@ -111,8 +111,8 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           name='collapsing-input'
           query={this.state.query}
           tags={this.state.tags}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdded}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdded}
           onTagCountUpdateRequest={this._handleTagCountUpdate}
           onTagDeleteRequest={this._handleTagDeleted}
         />
