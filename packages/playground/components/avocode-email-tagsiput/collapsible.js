@@ -91,8 +91,8 @@ export default class Collapsible extends React.PureComponent<{}, State> {
           name='email-collapsible'
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdd}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
 
@@ -117,8 +117,8 @@ export default class Collapsible extends React.PureComponent<{}, State> {
               </div>
             )
           )}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdd}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdd}
           onTagDeleteRequest={this._handleTagDelete}
         />
       </div>

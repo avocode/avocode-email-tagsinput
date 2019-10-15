@@ -53,11 +53,11 @@ export default class Controlled extends React.PureComponent<{}, State> {
     return (
       <div>
         <p>
-          By passing <code>onQueryChangedRequest</code> callback you can change the value
+          By passing <code>onQueryChangeRequest</code> callback you can change the value
           of the text on non-tag node. This will allow the value to be
           updated.
           <br />
-          By passing <code>onTagAddedRequest</code> you can then control when the new
+          By passing <code>onTagAddRequest</code> you can then control when the new
           tag is added.
           <br />
           By passing <code>onTagDeleteRequest</code> you can control when and which
@@ -76,12 +76,12 @@ export default class Controlled extends React.PureComponent<{}, State> {
         <TagsInput
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={() => {}}
-          onTagAddedRequest={() => {}}
+          onQueryChangeRequest={() => {}}
+          onTagAddRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
         <p>
-          By passing <code>onTagAddedRequest</code> callback you can capture
+          By passing <code>onTagAddRequest</code> callback you can capture
           newly created tag. By default <i>Space</i>, <i>Enter</i> and <i>Comma</i> keys
           create tags.
           <br />
@@ -90,8 +90,8 @@ export default class Controlled extends React.PureComponent<{}, State> {
         <TagsInput
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdded}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
         />
         <ControlledUpdates />
@@ -144,8 +144,8 @@ class ControlledUpdates extends React.PureComponent<{}, State> {
           name='controlled'
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={() => {}}
-          onTagAddedRequest={() => {}}
+          onQueryChangeRequest={() => {}}
+          onTagAddRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
       </div>
@@ -193,8 +193,8 @@ class ControlledAdditions extends React.PureComponent<{}, State> {
           name='controlled'
           tags={this.state.tags}
           query={this.state.query}
-          onQueryChangedRequest={() => {}}
-          onTagAddedRequest={() => {}}
+          onQueryChangeRequest={() => {}}
+          onTagAddRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
       </div>

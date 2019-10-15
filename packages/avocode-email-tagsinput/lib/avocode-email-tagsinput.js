@@ -19,8 +19,8 @@ type Props = {
   unique: boolean,
   collapsible: boolean,
   renderCounter?: (attributes: { focused: boolean, tagCount: number }) => React$Node,
-  onQueryChangedRequest?: (query: Query) => void,
-  onTagAddedRequest?: (query: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onQueryChangeRequest?: (query: Query) => void,
+  onTagAddRequest?: (query: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest?: (
     indices: Array<number>,
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
@@ -105,16 +105,16 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
         query: '',
       }
     }, () => {
-      if (this.props.onTagAddedRequest) {
-        this.props.onTagAddedRequest(text, event)
+      if (this.props.onTagAddRequest) {
+        this.props.onTagAddRequest(text, event)
       }
     })
   }
 
   _handleQueryChange = (query: Query) => {
     this.setState({ query }, () => {
-      if (this.props.onQueryChangedRequest) {
-        this.props.onQueryChangedRequest(query)
+      if (this.props.onQueryChangeRequest) {
+        this.props.onQueryChangeRequest(query)
       }
     })
   }
@@ -206,8 +206,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
             onBlur={this._handleBlur}
             onFocus={this._handleFocus}
             onPasteRequest={this.props.onPasteRequest}
-            onQueryChangedRequest={this._handleQueryChange}
-            onTagAddedRequest={this._handleAddTag}
+            onQueryChangeRequest={this._handleQueryChange}
+            onTagAddRequest={this._handleAddTag}
             onTagCountUpdateRequest={this._handleTagCountUpdate}
             onTagDeleteRequest={this._handleDeleteTag}
           />
@@ -232,8 +232,8 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
           onBlur={this._handleBlur}
           onFocus={this._handleFocus}
           onPasteRequest={this.props.onPasteRequest}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleAddTag}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleAddTag}
           onTagDeleteRequest={this._handleDeleteTag}
         />
       </div>

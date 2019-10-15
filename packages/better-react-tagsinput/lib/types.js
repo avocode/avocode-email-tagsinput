@@ -45,7 +45,7 @@ export type FactoryPluginOptions = {
   addTagKeyCodes: AddTagKeyCodes,
   name: Name,
   tagComponentFactory?: TagComponentFactory,
-  onTagAddedRequest: (
+  onTagAddRequest: (
     text: Query, event: SyntheticKeyboardEvent<*>
   ) => void,
   onTagDeleteRequest: (

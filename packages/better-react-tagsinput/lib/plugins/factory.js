@@ -13,7 +13,7 @@ const createPlugins = (
     addTagKeyCodes: options.addTagKeyCodes,
     name: options.name,
     tagComponentFactory: options.tagComponentFactory,
-    onTagAddedRequest: options.onTagAddedRequest,
+    onTagAddRequest: options.onTagAddRequest,
     onTagDeleteRequest: options.onTagDeleteRequest,
     onPasteRequest: options.onPasteRequest,
   })

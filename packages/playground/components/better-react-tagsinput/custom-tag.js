@@ -69,8 +69,8 @@ export default class CustomTag extends React.PureComponent<{}, State> {
           tagComponentFactory={(props) => (
             <CustomTagComponent {...props} />
           )}
-          onQueryChangedRequest={this._handleQueryChange}
-          onTagAddedRequest={this._handleTagAdded}
+          onQueryChangeRequest={this._handleQueryChange}
+          onTagAddRequest={this._handleTagAdded}
           onTagDeleteRequest={this._handleTagDeleted}
         />
       </div>

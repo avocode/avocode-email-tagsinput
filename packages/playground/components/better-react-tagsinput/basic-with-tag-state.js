@@ -26,8 +26,8 @@ export default class BasicWithTagState extends React.PureComponent<{}> {
           name='basic-state'
           tags={tags}
           query={query}
-          onQueryChangedRequest={() => {}}
-          onTagAddedRequest={() => {}}
+          onQueryChangeRequest={() => {}}
+          onTagAddRequest={() => {}}
           onTagDeleteRequest={() => {}}
         />
       </div>

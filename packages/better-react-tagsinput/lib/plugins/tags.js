@@ -17,7 +17,7 @@ const EMPTY_TAG_STATE = ''
 export default class TagsPlugin implements PluginFactory {
   _addKeys: AddTagKeyCodes
   _name: Name
-  _onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void
+  _onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void
   _onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -30,7 +30,7 @@ export default class TagsPlugin implements PluginFactory {
     addTagKeyCodes: AddTagKeyCodes,
     name: Name,
     tagComponentFactory: ?TagComponentFactory,
-    onTagAddedRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+    onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
     onTagDeleteRequest: (
       indices: Array<number>,
       event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -41,7 +41,7 @@ export default class TagsPlugin implements PluginFactory {
     this._addKeys = options.addTagKeyCodes
     this._name = options.name
     this._tagComponentFactory = options.tagComponentFactory
-    this._onTagAddedRequest = options.onTagAddedRequest
+    this._onTagAddRequest = options.onTagAddRequest
     this._onTagDeleteRequest = options.onTagDeleteRequest
     this._onPasteRequest = options.onPasteRequest
   }
@@ -116,8 +116,8 @@ export default class TagsPlugin implements PluginFactory {
     const { selection } = value
     const currentNode = value.document.getNode(selection.start.path)
 
-    if (this._onTagAddedRequest) {
-      this._onTagAddedRequest(currentNode.text, event)
+    if (this._onTagAddRequest) {
+      this._onTagAddRequest(currentNode.text, event)
     }
   }
 

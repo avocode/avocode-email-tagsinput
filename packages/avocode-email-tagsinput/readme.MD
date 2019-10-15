@@ -14,8 +14,8 @@ In short you need to pass at least these props:
 
 * `tags`
 * `query`
-* `onQueryChangedRequest`
-* `onTagAddedRequest`
+* `onQueryChangeRequest`
+* `onTagAddRequest`
 * `onTagDeleteRequest`
 
 ### `unique: boolean`
