@@ -1,0 +1,15 @@
+.collapsible-tagsinput--e2e-collapsing-input {
+  width: 300px;
+  height: 300px;
+}
+
+.collapsible-tagsinput--e2e-collapsing-input--collapsed {
+  width: 300px;
+  height: 35px;
+  overflow-y: auto;
+}
+
+.tagsinput--e2e-collapsing-input--focused {
+  max-height: 70px;
+  overflow-y: auto;
+}

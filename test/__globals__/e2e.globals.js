@@ -14,3 +14,4 @@ global.browserOptions = global.isDevelopment ?
 } : {
   args: [ '--no-sandbox' ],
 }
+
