@@ -1,5 +1,10 @@
 import puppeteer from 'puppeteer'
 import { expect } from 'chai'
+import {
+  getInputText,
+  getTagNodes,
+  getAnchorAndFocus,
+} from './test-utils'
 
 const URL = isDevelopment
   ? 'http://localhost:8080/#/better-react-tagsinput/test-tagsinput'
@@ -21,45 +26,6 @@ describe('TagsInput', () => {
     page = await browser.newPage()
     await page.goto(URL)
   })
-
-  const getInputText = async (page) => {
-    const text = await page.evaluate(() => {
-      const editor = document.querySelector('.tagsinput')
-
-      return editor.textContent
-    })
-
-    return text.trim()
-  }
-
-  const getTagNodes = async (page) => {
-    const nodes = await page.evaluate(() => {
-      const editor = document.querySelector('.tagsinput')
-      const tagNodes = editor.querySelectorAll('.tag')
-
-      return Array.from(tagNodes).map((node) => {
-        return {
-          text: node.textContent.trim(),
-          className: node.className,
-          html: node.innerHTML,
-        }
-      })
-    })
-
-    return nodes
-  }
-
-
-  const getAnchorAndFocus = async (page) => {
-    const anchorAndFocus = await page.evaluate(() => {
-      const selection = window.getSelection()
-
-      return [ selection.anchorOffset, selection.focusOffset ]
-    })
-
-    return anchorAndFocus
-  }
-
 
   it('should render editor', async () => {
     const editor = await page.waitForSelector('.tagsinput')
