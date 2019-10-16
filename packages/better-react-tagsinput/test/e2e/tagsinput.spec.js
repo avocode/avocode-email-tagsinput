@@ -1,21 +1,9 @@
 import puppeteer from 'puppeteer'
 import { expect } from 'chai'
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-const isMac = process.platform === 'darwin'
-
 const URL = isDevelopment
   ? 'http://localhost:8080/#/better-react-tagsinput/test-tagsinput'
   : 'https://avocode-email-tagsinput.surge.sh/#/better-react-tagsinput/test-tagsinput'
-const browserOptions = isDevelopment
-  ? {
-    headless: false,
-    slowMo: 50,
-    devtools: true,
-  }
-  : {
-    args: [ '--no-sandbox' ],
-  }
 
 describe('TagsInput', () => {
   let browser

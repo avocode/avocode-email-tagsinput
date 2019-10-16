@@ -201,7 +201,10 @@
     "mountRender": false,
     "jest": false,
     "__ISWEB__": false,
-    "Dropbox": false
+    "Dropbox": false,
+    "isMac": false,
+    "isDevelopment": false,
+    "browserOptions": false,
   },
   "settings": {
      "flowtype": {
