@@ -74,4 +74,16 @@ The project uses Flow type library. The libraries are set up to expose type defi
 ## Test
 
 * `test`
-   Runs tests for all packages.
+   Runs unit tests for all packages.
+
+* `test:e2e`
+   Runs end-to-end tests for production environment.
+
+* `test:e2e:dev`
+   Runs end-to-end tests for development environment. It needs to
+   have dev server running for `playground` package first.
+
+* `test:e2e:dev:full`
+   Runs end-to-end tests for development environment. It will run dev
+   server first and launch tests after about 20 seconds. Use this command
+   if you simply want to launch the tests.

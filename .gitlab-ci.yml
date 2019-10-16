@@ -4,6 +4,7 @@ stages:
   - install
   - build
   - lint
+  - test
 
 install:
   stage: install
@@ -45,6 +46,23 @@ flow:
   stage: lint
   script:
     - npm run flow
+  dependencies:
+    - install
+    - build
+
+test:
+  stage: test
+  script:
+    - npm run test
+  dependencies:
+    - install
+    - build
+
+test-e2e:
+  image: gitlab-registry.avcd.cz/avocode/puppeteer-stories:0.1.0
+  stage: test
+  script:
+    - npm run test:e2e
   dependencies:
     - install
     - build

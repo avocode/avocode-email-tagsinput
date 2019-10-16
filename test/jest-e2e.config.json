@@ -1,0 +1,21 @@
+{
+  "rootDir": "../",
+  "transform": {
+    "^.+\\.js$": "<rootDir>/test/jest.transform.js"
+  },
+  "testEnvironment": "jsdom",
+  "roots": [ "<rootDir>/packages/" ],
+  "testPathIgnorePatterns": [
+    "unit/*-*"
+  ],
+  "transformIgnorePatterns": [
+     "/node_modules/*",
+     "/node_modules/jsdom",
+     "/node_modules/react-dom",
+     "/node_modules/*-*",
+     "/dist/*-*"
+   ],
+   "server": {
+     "command": "npm run start"
+   }
+}
