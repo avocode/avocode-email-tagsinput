@@ -21,7 +21,7 @@
     "test:e2e": "jest --config test/jest-e2e.config.json --testTimeout=10000",
     "test:e2e:dev:full": "concurrently \"npm run start\" \"sleep 20 && npm run test:e2e:dev\"",
     "test:e2e:dev": "NODE_ENV=development npm run test:e2e",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --config test/jest.config.json",
     "version": "lerna version"
   },
   "license": "ISC",
