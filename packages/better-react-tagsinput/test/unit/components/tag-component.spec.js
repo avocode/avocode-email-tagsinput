@@ -39,15 +39,6 @@ describe('TagComponent', () => {
     expect(wrapper).to.have.text('abcd')
   })
 
-
-  it('should render children', () => {
-    const children = <div className='test' />
-    const wrapper = renderComponent({ children })
-
-    expect(wrapper.find('.test')).to.exist
-  })
-
-
   describe('wrapper', () => {
     it('should render component wrapper', () => {
       const wrapper = renderComponent()

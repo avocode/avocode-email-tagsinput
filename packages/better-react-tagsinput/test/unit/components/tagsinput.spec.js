@@ -71,27 +71,6 @@ describe('TagsInput', () => {
   })
 
 
-  it('should render focused container', (callback) => {
-    const wrapper = renderMountedComponent({
-      // TODO: Double-check if we can manage on click focus
-      // with non-empty query
-      query: '',
-    })
-
-    const editorInstance = wrapper.instance()._input
-
-    wrapper.find('Editor').simulate(
-      'click',
-      new Event('click'),
-      editorInstance,
-      () => {}
-    )
-
-    testAsync(callback, () => {
-      expect(wrapper.find('.tagsinput--focused')).to.exist
-    }, 100)
-  })
-
   describe('initial value', () => {
     it('should create editor with blank value ' +
        'if query is empty', (callback) => {
@@ -101,6 +80,8 @@ describe('TagsInput', () => {
       })
 
       testAsync(callback, () => {
+        // NOTE: Enzyme v3 does not recognize state changes in componentDidMount
+        wrapper.update()
         expect(
           wrapper.find('Editor').props().value.document.text
         ).to.equal('')
@@ -116,6 +97,8 @@ describe('TagsInput', () => {
       })
 
       testAsync(callback, () => {
+        // NOTE: Enzyme v3 does not recognize state changes in componentDidMount
+        wrapper.update()
         expect(
           wrapper.find('Editor').props().value.document.text
         ).to.equal('hello')
@@ -131,6 +114,8 @@ describe('TagsInput', () => {
       })
 
       testAsync(callback, () => {
+        // NOTE: Enzyme v3 does not recognize state changes in onClick handler
+        wrapper.update()
         const tags = wrapper.find('Editor').props()
           .value.document.getInlinesByType('tag')
 
