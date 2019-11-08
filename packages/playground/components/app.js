@@ -11,10 +11,11 @@ import pkg from '../package.json'
 
 import '../styles/index.css'
 
+type Doc = 'avocode-email-tagsinput' | 'better-react-tagsinput'
+
 type State = {
   apiDocs: {
-    'avocode-email-tagsinput': ?string,
-    'better-react-tagsinput': ?string,
+    [key: Doc]: ?string,
   },
 }
 
@@ -30,7 +31,7 @@ export default class App extends React.Component<{}, State> {
   _fetchApiDocs = () => {
     const docs = [ 'avocode-email-tagsinput', 'better-react-tagsinput' ]
 
-    docs.forEach((docName) => {
+    docs.forEach((docName: Doc) => {
       fetch(`static/${docName}.md`)
         .then((response) => response.text())
         .then((text) => {
@@ -38,6 +39,7 @@ export default class App extends React.Component<{}, State> {
             return {
               apiDocs: {
                 ...prevState.apiDocs,
+                // $FlowFixMe: Ignore literal types
                 [docName]: marked(text),
               },
             }
