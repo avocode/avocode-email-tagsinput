@@ -26,6 +26,7 @@ const createRandomTags = (amount: number): Tags => {
   })
 }
 
+/* eslint-disable-next-line react-props-in-state/rules */ // "react-props-in-state" does not recognize UNSAFE
 export default class Performance extends React.PureComponent<Props, State> {
   static defaultProps = {
     amount: 150,
@@ -38,7 +39,7 @@ export default class Performance extends React.PureComponent<Props, State> {
   }
 
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (this.props.amount !== nextProps.amount) {
       this.setState({ tags: createRandomTags(nextProps.amount) })
     }

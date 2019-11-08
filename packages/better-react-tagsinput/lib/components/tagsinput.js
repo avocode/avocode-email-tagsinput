@@ -102,7 +102,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     })
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (
       this._input && (
         this.props.tags !== nextProps.tags ||

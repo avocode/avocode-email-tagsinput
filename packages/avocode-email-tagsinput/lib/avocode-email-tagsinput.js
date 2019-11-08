@@ -49,6 +49,7 @@ type State = {
 
 const ENTER_KEYCODE = 13
 
+/* eslint-disable-next-line react-props-in-state/rules */ // "react-props-in-state" does not recognize UNSAFE
 export default class AvocodeEmailTagsInput extends React.PureComponent<Props, State> {
   static defaultProps = {
     unique: false,
@@ -71,8 +72,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   // $FlowFixMe: Ignoring for now, defs not present in
   //             flowtyped & its causing type checker to
   //             fail when consumed by 3rd party
-
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (
       this.props.query !== nextProps.query ||
       this.props.tags !== nextProps.tags
