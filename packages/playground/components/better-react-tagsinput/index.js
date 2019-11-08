@@ -12,6 +12,7 @@ import Styling from './styling'
 import CustomTag from './custom-tag'
 import Performance from './performance'
 import TestE2E from './test-e2e'
+import TestE2ECollapsible from './test-e2e-collapsible-tagsinput'
 
 type Props = {
   match: {
@@ -50,6 +51,7 @@ export default class BetterReactTagsInputView extends React.PureComponent<Props>
           <Route path={`${url}/custom-tag`} component={CustomTag} />
           <Route path={`${url}/performance`} component={Performance} />
           <Route path={`${url}/test-tagsinput`} component={TestE2E} />
+          <Route path={`${url}/test-collapsible-tagsinput`} component={TestE2ECollapsible} />
         </div>
       </Router>
     )

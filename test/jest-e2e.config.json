@@ -8,14 +8,14 @@
   "testPathIgnorePatterns": [
     "unit/*-*"
   ],
+  "setupFiles": [
+    "<rootDir>/test/__globals__/e2e.globals.js"
+  ],
   "transformIgnorePatterns": [
      "/node_modules/*",
      "/node_modules/jsdom",
      "/node_modules/react-dom",
      "/node_modules/*-*",
      "/dist/*-*"
-   ],
-   "server": {
-     "command": "npm run start"
-   }
+   ]
 }
