@@ -32,13 +32,13 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.6",
-    "slate": "^0.45.0",
-    "slate-react": "^0.21.20"
+    "slate": "^0.47.0",
+    "slate-react": "^0.22.0"
   },
   "peerDependencies": {
     "immutable": "^3.8.1",
-    "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
     "babel-loader": "^8.0.6",
@@ -46,7 +46,7 @@
     "css-loader": "^3.2.0",
     "immutable": "^3.8.1",
     "style-loader": "^1.0.0",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.10"
   },
   "gitHead": "8d36eccdb3954dca3ac91951531d5a447ddcabba"
 }

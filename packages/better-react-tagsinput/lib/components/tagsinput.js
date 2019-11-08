@@ -26,11 +26,13 @@ export type Props = {
   query: string,
   tags: Tags,
   name: string,
+  offset?: number,
   addTagKeyCodes: AddTagKeyCodes,
   plugins?: Array<Plugin>,
   tagComponentFactory?: TagComponentFactory,
   onQueryChangeRequest: (query: Query) => void,
   onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onTagCountUpdateRequest?: ?(count: number) => void,
   onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -232,6 +234,26 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     const value = this._input ? this._input.value : this.state.value
     const isFocused = value.selection.isFocused
 
+    // NOTE: Do not pass library specific props
+    //       to Slate editor to avoid errors
+    const {
+      query,
+      tags,
+      name,
+      offset,
+      addTagKeyCodes,
+      plugins,
+      tagComponentFactory,
+      onQueryChangeRequest,
+      onTagAddRequest,
+      onTagCountUpdateRequest,
+      onTagDeleteRequest,
+      onPasteRequest,
+      setRef,
+      onInitialLoad,
+      ...restProps
+    } = this.props
+
     return (
       <div
         className={classNames('tagsinput', {
@@ -241,7 +263,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
         })}
       >
         <Editor
-          {...this.props}
+          {...restProps}
           ref={this._setRef}
           value={value}
           plugins={this.state.plugins}

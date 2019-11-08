@@ -190,6 +190,18 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   render() {
     const { focused, tagCount } = this.state
 
+    // NOTE: Remove properties not belonging to
+    //       `TagsInput` & `CollapsibleTagsInput`
+    //       components to avoid errors
+    const {
+      collapsible,
+      unique,
+      renderCounter,
+      onSubmitRequest,
+      submitKeyCodes,
+      ...restProps
+    } = this.props
+
     const counterComponent = this.props.renderCounter ?
       this.props.renderCounter({ focused, tagCount }) :
       (!focused && tagCount > 0 &&
@@ -211,7 +223,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
           onClick={this._handleInputClick}
         >
           <CollapsibleTagsInput
-            {...this.props}
+            {...restProps}
             name={this.props.name}
             query={this.state.query}
             setRef={(node) => {
@@ -242,7 +254,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
       })}
       >
         <TagsInput
-          {...this.props}
+          {...restProps}
           name={this.props.name}
           query={this.state.query}
           tags={this.state.tags}
