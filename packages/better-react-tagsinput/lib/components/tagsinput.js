@@ -174,26 +174,6 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     this.props.onTagAddRequest(text, event)
   }
 
-  _handleOnClick = (
-    event: SyntheticMouseEvent<*>,
-    editor: Editor,
-    next: Function
-  ) => {
-    const key = editor.value.selection.start.key
-    const node = editor.value.document.getNode(key)
-
-    if (node instanceof Text && node.text.length === 0) {
-      event.preventDefault()
-
-      editor.moveToEndOfDocument().focus()
-
-      next()
-      return
-    }
-
-    next()
-  }
-
   _handleBlur = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
@@ -270,7 +250,6 @@ export default class TagsInput extends React.PureComponent<Props, State> {
           schema={schema}
           onBlur={this._handleBlur}
           onChange={this._handleChange}
-          onClick={this._handleOnClick}
           onFocus={this._handleFocus}
         />
       </div>
