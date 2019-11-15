@@ -8,6 +8,7 @@ import Controlled from './controlled'
 import Unique from './unique'
 import Collapsible from './collapsible'
 import LongInput from './long-input'
+import SubmitOnEnter from './submit-on-enter'
 
 type Props = {
   match: {
@@ -30,6 +31,7 @@ export default class AvocodeEmailTagsInputView extends React.PureComponent<Props
               <li className='subnav-item'><Link to={`${url}/unique`}>Unique</Link></li>
               <li className='subnav-item'><Link to={`${url}/collapsible`}>Collapsible</Link></li>
               <li className='subnav-item'><Link to={`${url}/long-input`}>LongInput</Link></li>
+              <li className='subnav-item'><Link to={`${url}/submit-on-enter`}>Submit on enter</Link></li>
             </ul>
           </nav>
 
@@ -39,6 +41,7 @@ export default class AvocodeEmailTagsInputView extends React.PureComponent<Props
           <Route path={`${url}/unique`} component={Unique} />
           <Route path={`${url}/collapsible`} component={Collapsible} />
           <Route path={`${url}/long-input`} component={LongInput} />
+          <Route path={`${url}/submit-on-enter`} component={SubmitOnEnter} />
         </div>
       </Router>
     )

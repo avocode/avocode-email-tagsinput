@@ -19,6 +19,8 @@ type Props = {
   unique: boolean,
   collapsible: boolean,
   renderCounter?: (attributes: { focused: boolean, tagCount: number }) => React$Node,
+  submitKeyCodes: Array<number>,
+  onSubmitRequest?: ?(event: SyntheticKeyboardEvent<*>) => void,
   onQueryChangeRequest?: (query: Query) => void,
   onTagAddRequest?: (query: Query, event: SyntheticKeyboardEvent<*>) => void,
   onTagDeleteRequest?: (
@@ -45,6 +47,8 @@ type State = {
   focused: boolean,
 }
 
+const ENTER_KEYCODE = 13
+
 export default class AvocodeEmailTagsInput extends React.PureComponent<Props, State> {
   static defaultProps = {
     unique: false,
@@ -52,6 +56,7 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
     query: '',
     name: '',
     tags: [],
+    submitKeyCodes: [ ENTER_KEYCODE ],
   }
 
   static displayName = 'AvocodeEmailTagsInput'
@@ -92,7 +97,20 @@ export default class AvocodeEmailTagsInput extends React.PureComponent<Props, St
   }
 
   _handleAddTag = (text: Query, event: SyntheticKeyboardEvent<*>) => {
+    const { onSubmitRequest } = this.props
+
     if (!utils.isValueValidEmail(text)) {
+      // NOTE: Submission callback is only triggered
+      //       if submission key was pressed and query
+      //       is empty (to avoid submitting incomplete
+      //       emails etc)
+      if (
+        onSubmitRequest &&
+        this.props.submitKeyCodes.includes(event.keyCode) &&
+        !this.props.query
+      ) {
+        onSubmitRequest(event)
+      }
       return
     }
 

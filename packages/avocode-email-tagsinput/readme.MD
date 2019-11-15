@@ -36,6 +36,14 @@ Pass this factory if you want to override the provided `Counter` component and p
 
 Callback that is triggered when the `collapsible=true` prop is passed, the input is blurred or focused or new tag nodes are received. It allows you to keep track of *hidden* tag nodes.
 
+### `onSubmitRequest`: (event: SyntheticKeyboardEvent<*>) => void`
+
+This callback is triggered when ENTER key is pressed and query (text value) of the input is empty. Use this callback for form submissions.
+
+### `submitKeyCodes`: Array<number>
+
+This enables you to specify submission key code. By default, ENTER key code (13) is the only submission key allowed. You can pass valid key code(s) and they will be used instead to trigger `onSubmitRequest` callback.
+
 ## Utils API
 
 This object has utilities that are also included in `@avocode/better-react-tagsinput` so refer to documentation of that library for more info. These are:
