@@ -12,6 +12,6 @@ global.browserOptions = global.isDevelopment ?
   slowMo: 50,
   devtools: true,
 } : {
-  args: [ '--no-sandbox' ],
+  args: [ '--no-sandbox', '--window-size=1024,768' ],
 }
 
