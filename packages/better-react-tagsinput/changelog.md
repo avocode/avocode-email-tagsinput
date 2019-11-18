@@ -1,3 +1,7 @@
+# 1.2.21-beta
+
+- specify window size for end to end specs
+
 # 1.2.20-beta
 
 - optimize `onChange` callback, text input should feel a bit better

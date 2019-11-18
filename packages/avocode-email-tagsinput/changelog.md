@@ -1,3 +1,7 @@
+# 1.2.21-beta
+
+- add `onSubmitRequest` callback prop and `submitKeyCodes` prop to allow form submission via keyboard
+
 # 1.2.20-beta
 
 -

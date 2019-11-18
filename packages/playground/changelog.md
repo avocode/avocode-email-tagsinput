@@ -1,3 +1,8 @@
+# 1.2.21-beta
+
+- add playground page to demonstrate form submission via callback for `AvocodeEmailTagsInput` component
+- change "Controlled" playground page to include `autoFocus` prop
+
 # 1.2.20-beta
 
 - add playground page for end to end tests for `TagsInput` component
