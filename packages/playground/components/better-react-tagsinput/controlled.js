@@ -88,6 +88,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
           You can override these by passing <code>addTagKeyCodes</code> prop.
         </p>
         <TagsInput
+          autoFocus
           tags={this.state.tags}
           query={this.state.query}
           onQueryChangeRequest={this._handleQueryChange}
