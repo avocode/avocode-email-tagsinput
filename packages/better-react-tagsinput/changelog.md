@@ -1,3 +1,19 @@
+# 2.0.0-beta
+
+- breaking changes - using new dependencies
+- library now works **only with React 16**, this
+  also means using newer version of Slate JS
+- upgraded peer dependencies:
+  * `react@^16.11.0`
+  * `react-dom@^16.11.0`
+- upgraded dependencies:
+  * `slate@^0.47.0`
+  * `slate-react@^0.22.0`
+- tag nodes drop support for using children to render
+  their content as it was causing issues with
+  focus states, use custom tag node if you really
+  need to render custom stuff
+
 # 1.2.21-beta
 
 - specify window size for end to end specs
