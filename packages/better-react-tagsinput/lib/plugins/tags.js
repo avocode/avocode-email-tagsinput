@@ -46,7 +46,7 @@ export default class TagsPlugin implements PluginFactory {
     this._onPasteRequest = options.onPasteRequest
   }
 
-  renderNode = (props: Object, editor: Editor, next: Function) => {
+  renderInline = (props: Object, editor: Editor, next: Function) => {
     const { node, attributes, children } = props
     const data = node.get('data')
 
@@ -194,7 +194,7 @@ export default class TagsPlugin implements PluginFactory {
   initialize() {
     return {
       onKeyDown: this.onKeyDown,
-      renderNode: this.renderNode,
+      renderInline: this.renderInline,
       onPaste: this.onPaste,
       onBeforeInput: this.onBeforeInput,
       commands: {

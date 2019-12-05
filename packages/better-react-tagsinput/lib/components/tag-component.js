@@ -58,7 +58,6 @@ export default class TagComponent extends React.PureComponent<TagComponentProps>
             })}
           >
             {this.props.contents}
-            {this.props.children}
           </span>
           <button
             className={classNames(`${TAG_PLUGIN_NODE_ID}__remove-button`, {

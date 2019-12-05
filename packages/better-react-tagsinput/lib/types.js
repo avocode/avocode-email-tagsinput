@@ -34,7 +34,6 @@ export type TagComponentProps = {
   contents: Query,
   state: string,
   title: string,
-  children?: React$Node,
   data: Object,
   onRemoveButtonClick: (event: SyntheticMouseEvent<*>, id: string) => void,
 }

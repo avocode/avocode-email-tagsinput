@@ -26,11 +26,13 @@ export type Props = {
   query: string,
   tags: Tags,
   name: string,
+  offset?: number,
   addTagKeyCodes: AddTagKeyCodes,
   plugins?: Array<Plugin>,
   tagComponentFactory?: TagComponentFactory,
   onQueryChangeRequest: (query: Query) => void,
   onTagAddRequest: (text: Query, event: SyntheticKeyboardEvent<*>) => void,
+  onTagCountUpdateRequest?: ?(count: number) => void,
   onTagDeleteRequest: (
     indices: Array<number>,
     event: SyntheticMouseEvent<*> | SyntheticKeyboardEvent<*>,
@@ -100,7 +102,7 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     })
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps: Props) {
     if (
       this._input && (
         this.props.tags !== nextProps.tags ||
@@ -172,26 +174,6 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     this.props.onTagAddRequest(text, event)
   }
 
-  _handleOnClick = (
-    event: SyntheticMouseEvent<*>,
-    editor: Editor,
-    next: Function
-  ) => {
-    const key = editor.value.selection.start.key
-    const node = editor.value.document.getNode(key)
-
-    if (node instanceof Text && node.text.length === 0) {
-      event.preventDefault()
-
-      editor.moveToEndOfDocument().focus()
-
-      next()
-      return
-    }
-
-    next()
-  }
-
   _handleBlur = (
     event: SyntheticKeyboardEvent<*> | SyntheticMouseEvent<*>,
     editor: Editor,
@@ -232,6 +214,26 @@ export default class TagsInput extends React.PureComponent<Props, State> {
     const value = this._input ? this._input.value : this.state.value
     const isFocused = value.selection.isFocused
 
+    // NOTE: Do not pass library specific props
+    //       to Slate editor to avoid errors
+    const {
+      query,
+      tags,
+      name,
+      offset,
+      addTagKeyCodes,
+      plugins,
+      tagComponentFactory,
+      onQueryChangeRequest,
+      onTagAddRequest,
+      onTagCountUpdateRequest,
+      onTagDeleteRequest,
+      onPasteRequest,
+      setRef,
+      onInitialLoad,
+      ...restProps
+    } = this.props
+
     return (
       <div
         className={classNames('tagsinput', {
@@ -241,14 +243,13 @@ export default class TagsInput extends React.PureComponent<Props, State> {
         })}
       >
         <Editor
-          {...this.props}
+          {...restProps}
           ref={this._setRef}
           value={value}
           plugins={this.state.plugins}
           schema={schema}
           onBlur={this._handleBlur}
           onChange={this._handleChange}
-          onClick={this._handleOnClick}
           onFocus={this._handleFocus}
         />
       </div>
