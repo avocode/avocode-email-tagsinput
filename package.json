@@ -2,6 +2,7 @@
   "authors": [
     "Ondrej Synacek <ondrejsynacek@fastmail.com>"
   ],
+  "name": "avocode-email-tagsinput-monorepo",
   "scripts": {
     "build": "npm run clean && lerna run build --stream",
     "build:package": "lerna run build --stream --scope",
@@ -17,7 +18,7 @@
     "publish:package": "lerna run publish --stream --scope",
     "publish": "lerna publish from-git --yes && npm run publish:package playground",
     "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --stream --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --stream --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
-    "test:": "npm run test:unit && npm run test:e2e",
+    "test": "lerna run test",
     "test:unit": "jest --config test/jest.config.json",
     "test:e2e": "jest --config test/jest-e2e.config.json --testTimeout=10000",
     "test:e2e:dev:full": "concurrently \"npm run start\" \"sleep 20 && npm run test:e2e:dev\"",

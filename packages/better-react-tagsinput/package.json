@@ -15,7 +15,7 @@
     "pack": "npm pack",
     "prepublish": "npm run build",
     "profile": "webpack --mode=development --profile --json > stats.json",
-    "test": "jest --no-cache --config ../../jest.config.json"
+    "test": "jest --no-cache --config ../../test/jest.config.json"
   },
   "keywords": [
     "react",
@@ -45,6 +45,7 @@
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
     "immutable": "^3.8.1",
+    "jest": "^25.1.0",
     "style-loader": "^1.0.0",
     "webpack-cli": "^3.3.10"
   },

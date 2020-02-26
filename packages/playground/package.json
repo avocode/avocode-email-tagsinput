@@ -10,8 +10,7 @@
     "copy-api-docs": "cp ../better-react-tagsinput/readme.MD static/better-react-tagsinput.md && cp ../avocode-email-tagsinput/readme.MD static/avocode-email-tagsinput.md",
     "prepublish": "npm run build && cp -R static dist",
     "publish": "surge dist/ avocode-email-tagsinput.surge.sh",
-    "start": "npm run copy-api-docs && webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run copy-api-docs && webpack-dev-server"
   },
   "author": "Ondrej Synacek <ondrejsynacek@fastmail.com>",
   "license": "ISC",
