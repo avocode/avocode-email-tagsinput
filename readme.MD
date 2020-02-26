@@ -1,5 +1,7 @@
 # avocode-email-tagsinput
 
+[![Build Status](https://travis-ci.org/avocode/avocode-email-tagsinput.svg?branch=master)](https://travis-ci.org/avocode/avocode-email-tagsinput)
+
 This monorepo contains three packages:
 
 1. `@avocode/avocode-email-tagsinput`
