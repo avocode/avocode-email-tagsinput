@@ -2,6 +2,40 @@
 
 [![Build Status](https://travis-ci.org/avocode/avocode-email-tagsinput.svg?branch=master)](https://travis-ci.org/avocode/avocode-email-tagsinput)
 
+![type email tags to input](docs/avocode-email-tagsinput-1.gif)
+![collapse input with tags and display counter](docs/avocode-email-tagsinput-2.gif)
+
+Rich input for adding tags built on [Slate JS](https://www.slatejs.org). Keyboard and mouse control enabled. Enables copy and pasting, unique email value validation. Includes collapsible input with number indicator.
+
+[Demo](https://avocode-email-tagsinput.surge.sh)
+
+## Quickstart
+
+1. Install the library
+
+    `npm install @avocode/avocode-email-tagsinput`
+
+2. Provide peer dependencies
+
+    `npm install react && npm install react-dom && npm install immutable`
+
+3. Add default styles or refer to [demo page](https://avocode-email-tagsinput.surge.sh) to see source code on how to style the components.
+
+    ```js
+    import AvocodeEmailTagsInput from '@avocode/avocode-email-tagsinput'
+    import '@avocode/avocode-email-tagsinput/dist/main.css'
+    import '@avocode/better-react-tagsinput/dist/main.css'
+    
+    // [...]
+    
+    render() {
+      return (
+        <AvocodeEmailTagsInput />
+      )
+    }
+    
+    ```
+
 This monorepo contains three packages:
 
 1. `@avocode/avocode-email-tagsinput`
