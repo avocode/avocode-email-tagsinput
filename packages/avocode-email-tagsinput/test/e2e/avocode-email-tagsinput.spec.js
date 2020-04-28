@@ -27,7 +27,7 @@ describe('Avocode Email Tags Input', () => {
   describe('Basic Email Tags Input', () => {
     beforeEach(async () => {
       page = await browser.newPage()
-      await page.goto(URLRoot)
+      await page.goto(`${URLRoot}/test-email-tagsinput`)
     })
 
     it('should render editor', async () => {
@@ -117,7 +117,7 @@ describe('Avocode Email Tags Input', () => {
   describe('Unique Email Tags Input', () => {
     beforeEach(async () => {
       page = await browser.newPage()
-      await page.goto(`${URLRoot}/unique`)
+      await page.goto(`${URLRoot}/test-unique-email-tagsinput`)
     })
 
     it('should be allowed to add unique email tags', async () => {
@@ -132,7 +132,7 @@ describe('Avocode Email Tags Input', () => {
       await addEmailTag(page, 'foo@example.com')
       await addEmailTag(page, 'foo@example.com')
       const tagNodes = await getTagNodes(page)
-      
+
       expect(tagNodes).to.have.length(1)
     })
   })
