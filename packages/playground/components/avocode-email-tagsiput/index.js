@@ -9,7 +9,8 @@ import Unique from './unique'
 import Collapsible from './collapsible'
 import LongInput from './long-input'
 import SubmitOnEnter from './submit-on-enter'
-
+import TestE2EEmailTags from './test-e2e-avocode-email-tagsinput'
+import TestE2EUniqueEmailTags from './test-e2e-unique-email-tagsinput'
 type Props = {
   match: {
     url: string,
@@ -42,6 +43,8 @@ export default class AvocodeEmailTagsInputView extends React.PureComponent<Props
           <Route path={`${url}/collapsible`} component={Collapsible} />
           <Route path={`${url}/long-input`} component={LongInput} />
           <Route path={`${url}/submit-on-enter`} component={SubmitOnEnter} />
+          <Route path={`${url}/test-email-tagsinput`} component={TestE2EEmailTags} />
+          <Route path={`${url}/test-unique-email-tagsinput`} component={TestE2EUniqueEmailTags} />
         </div>
       </Router>
     )
