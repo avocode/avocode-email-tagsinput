@@ -1,3 +1,7 @@
+# 2.0.0
+
+- released on Github
+
 # 2.0.0-beta
 
 - breaking changes - using new dependencies
