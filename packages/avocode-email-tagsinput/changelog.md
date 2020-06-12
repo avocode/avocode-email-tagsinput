@@ -1,3 +1,7 @@
+# 2.1.2
+
+- update latest dependency of `@avocode/better-react-tagsinput`
+
 # 2.1.1
 
 - fix Lerna bootstrap because it would overwrite lockfiles

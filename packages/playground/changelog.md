@@ -1,3 +1,9 @@
+# 2.1.2
+
+- create demo pages for `@avocode/styled-avocode-email-tagsinput` package
+- update latest dependency of `@avocode/avocode-email-tagsinput` and
+  `@avocode/better-react-tagsinput`
+
 # 2.1.1
 
 - fix Lerna bootstrap because it would overwrite lockfiles
