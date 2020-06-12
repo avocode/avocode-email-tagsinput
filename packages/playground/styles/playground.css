@@ -1,6 +1,8 @@
 :root {
   --playground-text: 18px;
   --playground-bigger-text: 20px;
+  --version-header-height: 20px;
+  --container-margin: 10px;
 }
 
 html {
@@ -20,15 +22,16 @@ p {
 .app {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .app-container {
-  margin: 10px;
+  margin: var(--container-margin);
   display: flex;
 }
 
 .app-container__header {
-  margin: 10px;
+  margin: var(--container-margin);
   flex: 2;
 }
 
@@ -37,7 +40,7 @@ p {
 }
 
 .app-container__api {
-  margin: 10px;
+  margin: var(--container-margin);
   flex: 1;
 }
 
@@ -48,6 +51,7 @@ p {
   font-family: sans-serif;
   background-color: lightgray;
   margin: 0 auto;
+  height: var(--version-header-height);
 }
 
 .version-header code {
@@ -71,9 +75,15 @@ p {
 }
 
 .api-view {
-  max-height: 100vh;
-  overflow: auto;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-size: var(--playground-text);
+}
+
+.api-view pre {
+  overflow: auto;
+  max-width: 300px;
 }
 
 .state-view {
