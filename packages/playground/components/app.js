@@ -6,12 +6,14 @@ import marked from 'marked'
 
 import AvocodeEmailTagsInputView from './avocode-email-tagsiput/'
 import BetterReactTagsInputView from './better-react-tagsinput/'
+import StyledAvocodeEmailTagsInputView from './styled-avocode-email-tagsinput/'
+
 import ApiView from './api-view'
 import pkg from '../package.json'
 
 import '../styles/index.css'
 
-type Doc = 'avocode-email-tagsinput' | 'better-react-tagsinput'
+type Doc = 'avocode-email-tagsinput' | 'better-react-tagsinput' | 'styled-avocode-email-tagsinput'
 
 type State = {
   apiDocs: {
@@ -29,7 +31,7 @@ export default class App extends React.Component<{}, State> {
   }
 
   _fetchApiDocs = () => {
-    const docs = [ 'avocode-email-tagsinput', 'better-react-tagsinput' ]
+    const docs = [ 'avocode-email-tagsinput', 'better-react-tagsinput', 'styled-avocode-email-tagsinput' ]
 
     docs.forEach((docName: Doc) => {
       fetch(`static/${docName}.md`)
@@ -51,6 +53,7 @@ export default class App extends React.Component<{}, State> {
   render() {
     const avocodeEmailTagsInputDoc = this.state.apiDocs['avocode-email-tagsinput']
     const betterReactTagsInputDoc = this.state.apiDocs['better-react-tagsinput']
+    const styledAvocodeEmailTagsInputDoc = this.state.apiDocs['styled-avocode-email-tagsinput']
 
     return (
       <Router>
@@ -59,18 +62,21 @@ export default class App extends React.Component<{}, State> {
             playground: <code>{pkg.version}</code>{' ◆ '}
             avocode-email-tagsinput: <code>{pkg.dependencies['@avocode/avocode-email-tagsinput']}</code>{' ◆ '}
             better-react-tagsinput: <code>{pkg.dependencies['@avocode/better-react-tagsinput']}</code>
+            styled-avocode-email-tagsinput: <code>{pkg.dependencies['@avocode/styled-avocode-email-tagsinput']}</code>
           </div>
           <div className='app-container'>
             <div className='app-container__header'>
               <nav>
                 <ul className='nav'>
                   <li className='nav-item'><Link to="/avocode-email-tagsinput">Avocode Email TagsInput</Link></li>
+                  <li className='nav-item'><Link to="/styled-avocode-email-tagsinput">Styled Avocode Email TagsInput</Link></li>
                   <li className='nav-item'><Link to="/better-react-tagsinput">Better React TagsInput</Link></li>
                 </ul>
               </nav>
 
               <Route path='/' exact component={AvocodeEmailTagsInputView} />
               <Route path='/avocode-email-tagsinput' component={AvocodeEmailTagsInputView} />
+              <Route path='/styled-avocode-email-tagsinput' component={StyledAvocodeEmailTagsInputView} />
               <Route path='/better-react-tagsinput' component={BetterReactTagsInputView} />
             </div>
             <div className='app-container__api'>
@@ -89,6 +95,15 @@ export default class App extends React.Component<{}, State> {
                 render={() => (
                   <ApiView
                     doc={avocodeEmailTagsInputDoc}
+                    retryApiDocsLoadRequest={this._fetchApiDocs}
+                  />
+                )}
+              />
+              <Route
+                path='/styled-avocode-email-tagsinput'
+                render={() => (
+                  <ApiView
+                    doc={styledAvocodeEmailTagsInputDoc}
                     retryApiDocsLoadRequest={this._fetchApiDocs}
                   />
                 )}

@@ -17,7 +17,7 @@
     "profile:package": "lerna run profile --stream --scope",
     "publish:package": "lerna run publish --stream --scope",
     "publish": "lerna publish from-git --yes && npm run publish:package playground",
-    "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --stream --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --stream --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
+    "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --stream --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --stream --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run build:watch --stream --scope @avocode/styled-avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/styled-avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
     "test": "lerna run test",
     "test:unit": "jest --config test/jest.config.json",
     "test:e2e": "jest --config test/jest-e2e.config.json --testTimeout=10000",

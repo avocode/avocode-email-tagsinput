@@ -7,7 +7,7 @@
     "build": "npm run copy-api-docs && webpack --mode=production .",
     "clean": "rm -rf dist && mkdir dist",
     "flow": "flow",
-    "copy-api-docs": "cp ../better-react-tagsinput/readme.MD static/better-react-tagsinput.md && cp ../avocode-email-tagsinput/readme.MD static/avocode-email-tagsinput.md",
+    "copy-api-docs": "cp ../better-react-tagsinput/readme.MD static/better-react-tagsinput.md && cp ../avocode-email-tagsinput/readme.MD static/avocode-email-tagsinput.md && cp ../styled-avocode-email-tagsinput/README.md static/styled-avocode-email-tagsinput.md",
     "prepublish": "npm run build && cp -R static dist",
     "publish": "surge dist/ avocode-email-tagsinput.surge.sh",
     "start": "npm run copy-api-docs && webpack-dev-server"
@@ -17,6 +17,7 @@
   "dependencies": {
     "@avocode/avocode-email-tagsinput": "^2.1.1",
     "@avocode/better-react-tagsinput": "^2.1.1",
+    "@avocode/styled-avocode-email-tagsinput": "^2.1.1",
     "classnames": "^2.2.6",
     "immutable": "^3.8.1",
     "marked": "^0.7.0",
@@ -32,6 +33,5 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.10"
-  },
-  "gitHead": "36557e41e50994ca102185afcd42b0229c2dbef1"
+  }
 }
