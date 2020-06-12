@@ -1,3 +1,9 @@
+# 2.1.3
+
+- add script for profiling bundle size
+- modify import so stylesheets from `@avocode/avocode-email-tagsinput`
+  are included
+
 # 2.1.2
 
 - fix bad path to stylesheets from `@avocode/avocode-email-tagsinput` package
