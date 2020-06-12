@@ -1,3 +1,8 @@
+# 2.1.3
+
+- modify import so stylesheets from `@avocode/better-react-tagsinput`
+  are included
+
 # 2.1.2
 
 - update latest dependency of `@avocode/better-react-tagsinput`
