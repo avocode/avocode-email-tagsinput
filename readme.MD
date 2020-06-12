@@ -13,7 +13,7 @@ Rich input for adding tags built on [Slate JS](https://www.slatejs.org). Keyboar
 
 1. Install the library
 
-    `npm install @avocode/avocode-email-tagsinput`
+    `npm install @avocode/styled-avocode-email-tagsinput`
 
 2. Provide peer dependencies
 
@@ -22,31 +22,36 @@ Rich input for adding tags built on [Slate JS](https://www.slatejs.org). Keyboar
 3. Add default styles or refer to [demo page](https://avocode-email-tagsinput.surge.sh) to see source code on how to style the components.
 
     ```js
-    import AvocodeEmailTagsInput from '@avocode/avocode-email-tagsinput'
-    import '@avocode/avocode-email-tagsinput/dist/main.css'
-    import '@avocode/better-react-tagsinput/dist/main.css'
+    import StyledAvocodeEmailTagsInput from '@avocode/styled-avocode-email-tagsinput'
+    import '@avocode/styled-avocode-email-tagsinput/dist/main.css'
     
     // [...]
     
     render() {
       return (
-        <AvocodeEmailTagsInput />
+        <StyledAvocodeEmailTagsInput />
       )
     }
     
     ```
 
-This monorepo contains three packages:
+If you do not wish to use default styles, use package `@avocode/avocode-email-tagsinput` to import `AvocodeEmailTagsInput` component and create your own stylesheet.
 
-1. `@avocode/avocode-email-tagsinput`
+This monorepo contains four packages:
+
+1. `@avocode/styled-avocode-email-tagsinput`
+
+    Recommended way to use this library, it exposes `StyledAvocodeEmailTagsInput` component that converts emails into tags. This package contains opinionated CSS styles. [README](packages/styled-avocode-email-tagsinput/README.md)
+
+2. `@avocode/avocode-email-tagsinput`
 
     React input component for typing emails that are converted into tags. It uses base component from `better-react-tagsinput` library. It exposes component `AvocodeEmailTagsInput`. [README](packages/avocode-email-tagsinput/readme.MD)
 
-2. `@avocode/better-react-tagsinput`
+3. `@avocode/better-react-tagsinput`
 
     React input component / editor created with SlateJS library. Its intended usage is to render, create and remove tags inside input. The input can also be collapsible (have overflow via CSS). It is controlled component which must receive `tags` and `query` props, along with callbacks for events that change the input state. [README](packages/better-react-tagsinput/readme.MD)
 
-3. `playground`
+4. `playground`
 
     React app to be used during development of all the packages. [README](packages/playground/readme.MD)
 
