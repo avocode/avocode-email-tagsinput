@@ -1,3 +1,7 @@
+# 2.1.0
+
+- add separate build dependencies (webpack)
+
 # 2.0.0
 
 - released on Github

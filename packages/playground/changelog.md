@@ -1,3 +1,9 @@
+# 2.1.0
+
+- add separate build dependencies (webpack)
+- add testing playground for E2E specs for `@avocode/avocode-email-tagsinput`
+  library
+
 # 2.0.0
 
 - released on Github
