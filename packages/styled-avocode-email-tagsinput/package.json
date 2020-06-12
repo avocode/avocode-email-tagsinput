@@ -38,7 +38,8 @@
     "flow": " npm run flow:libdef && npm run copy-public-flow-types && flow",
     "flow:libdef": "flow-copy-source -v lib/ dist/",
     "flow:libdef:watch": "flow-copy-source -vw lib/ dist/",
-    "copy-public-flow-types": "cp lib/types.js dist/"
+    "copy-public-flow-types": "cp lib/types.js dist/",
+    "prepublish": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
