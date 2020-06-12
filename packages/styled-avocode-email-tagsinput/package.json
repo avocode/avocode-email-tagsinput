@@ -1,6 +1,6 @@
 {
   "name": "@avocode/styled-avocode-email-tagsinput",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "React input component that handles creation and removal of tags based on matching email regex. Includes opinionated styles.",
   "keywords": [
     "react",
@@ -44,7 +44,7 @@
     "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
   },
   "dependencies": {
-    "@avocode/avocode-email-tagsinput": "^2.0.0",
+    "@avocode/avocode-email-tagsinput": "^2.1.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
