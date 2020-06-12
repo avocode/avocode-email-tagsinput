@@ -1,0 +1,14 @@
+@import './variables-light.css';
+@import './variables-dark.css';
+
+.avocode-email-tagsinput--styled-avocode-email-tagsinput--light,
+.avocode-email-tagsinput--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
+  --brand-color: #00bc87; /* NOTE: avocode-ui color `main-color-brand-highlight` */
+  --error-color: #f83a35; /* NOTE: avocode-ui color `error-color-brand` */
+
+  --text-size-1: 1.1rem;
+
+  --counter-min-width: 25px;
+}
