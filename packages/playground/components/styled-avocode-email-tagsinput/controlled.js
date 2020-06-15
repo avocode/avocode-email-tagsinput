@@ -20,6 +20,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
       { value: 'foo@bar.com' },
       { value: 'lorem@ipsum.com', state: 'error' },
       { value: 'dolor@siteamet.com' },
+      { value: 'abcd@xyz.net' },
     ],
     query: '',
   }
