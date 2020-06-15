@@ -2,6 +2,7 @@
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--light,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
+  box-sizing: border-box;
   font-family: Open Sans, open-sans, sans-serif;
   font-weight: 600;
   color: var(--text-color-contrast);
@@ -58,7 +59,6 @@
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light--focused,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark--focused {
   overflow-y: auto;
-  min-height: 35px;
   height: 100%;
   max-height: 110px;
   align-items: flex-start;
@@ -164,6 +164,13 @@
 .avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--light,
 .avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark {
   min-width: var(--counter-min-width);
+}
+
+/* HACK: Unfortunately the node where you type emails (query)
+ *       does not have it's own CSS class */
+.tagsinput > div > div > span:only-child, .tagsinput > div > div > span:last-child {
+  font-size: var(--text-size);
+  margin: 4px 3px;
 }
 
 /* HACK: Firefox has issues with line-height */
