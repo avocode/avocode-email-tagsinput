@@ -8,7 +8,7 @@
   --brand-color: #00bc87; /* NOTE: avocode-ui color `main-color-brand-highlight` */
   --error-color: #f83a35; /* NOTE: avocode-ui color `error-color-brand` */
 
-  --text-size-1: 1.1rem;
+  --text-size: 10px; /* NOTE: Opinionated size so input looks good */
 
   --counter-min-width: 25px;
 }
