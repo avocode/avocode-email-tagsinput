@@ -1,5 +1,7 @@
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--dark,
-.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error {
   --text-color-contrast: #fff;
   --input-border-color: transparent;
   --input-background-color: #171717;
