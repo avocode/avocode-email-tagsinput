@@ -41,6 +41,7 @@
     "react-dom": "^16.11.0"
   },
   "devDependencies": {
+    "@avocode/avocode-email-tagsinput-webpack-config": "^2.1.4",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
