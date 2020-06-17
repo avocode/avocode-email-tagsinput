@@ -11,7 +11,7 @@ Also `utils` object is exposed as well, along Flow type definitions.
 
 ```js
 import StyledAvocodeEmailTagsInput from '@avocode/styled-avocode-email-tagsinput'
-@import '@avocode/styled-avocode-email-tagsinput/dist/main.css';
+import '@avocode/styled-avocode-email-tagsinput/dist/main.css';
 
 // [...]
   render() {
@@ -43,3 +43,7 @@ In short you need to pass at least these props:
 ### `theme?: 'light' | 'dark'`
 
 Sets light or dark theme. This prop can be ommited and default theme is set to light. Variables used with each theme are then applied to given CSS classes.
+
+### `error?: any`
+
+Style component for default error state. If the value evaluates as truthy, it's considered that the input has error. Additionally you can add `state` property with value `"error"` to Tag object to mark specific emails as errored as well (for example validation errors).

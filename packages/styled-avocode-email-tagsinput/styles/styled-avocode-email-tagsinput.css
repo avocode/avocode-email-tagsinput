@@ -1,7 +1,10 @@
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--dark,
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--light,
+.avocode-email-tagsinput--styled-avocode-email-tagsinput--error,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light,
-.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error {
+  box-sizing: border-box;
   font-family: Open Sans, open-sans, sans-serif;
   font-weight: 600;
   color: var(--text-color-contrast);
@@ -12,6 +15,12 @@
 .tagsinput--styled-avocode-email-tagsinput--dark,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
   border-color: transparent;
+}
+
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error,
+.avocode-email-tagsinput--styled-avocode-email-tagsinput--error,
+.tagsinput--styled-avocode-email-tagsinput--error {
+  border-color: var(--error-color);
 }
 
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--dark,
@@ -26,14 +35,22 @@
   width: calc(100% - var(--counter-min-width));
 }
 
+.tagsinput--styled-avocode-email-tagsinput--light,
+.tagsinput--styled-avocode-email-tagsinput--dark,
+.tagsinput--styled-avocode-email-tagsinput--error {
+  font-size: var(--text-size);
+}
+
 .collapsible-tagsinput--styled-avocode-email-tagsinput--light--collapsed .tagsinput--styled-avocode-email-tagsinput--light,
-.collapsible-tagsinput--styled-avocode-email-tagsinput--dark--collapsed .tagsinput--styled-avocode-email-tagsinput--dark {
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark--collapsed .tagsinput--styled-avocode-email-tagsinput--dark,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--error .tagsinput--styled-avocode-email-tagsinput--error {
   border-width: 0;
 }
 
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light,
-.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
-  font-size: var(--text-size-1);
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error {
+  font-size: var(--text-size);
   height: 35px;
   overflow: hidden;
   align-items: flex-end;
@@ -41,7 +58,8 @@
 }
 
 .collapsible-tagsinput--styled-avocode-email-tagsinput--light .tagsinput--styled-avocode-email-tagsinput--light--focused,
-.collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused {
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark--error .tagsinput--styled-avocode-email-tagsinput--dark--error--focused {
   border-width: 0;
 }
 
@@ -51,9 +69,10 @@
 }
 
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--light--focused,
-.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark--focused {
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark--focused,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--light--error--focused,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error--focused {
   overflow-y: auto;
-  min-height: 35px;
   height: 100%;
   max-height: 110px;
   align-items: flex-start;
@@ -62,66 +81,79 @@
 
 .tagsinput--styled-avocode-email-tagsinput--dark,
 .tagsinput--styled-avocode-email-tagsinput--light,
+.tagsinput--styled-avocode-email-tagsinput--error,
 .collapsible-tagsinput--styled-avocode-email-tagsinput--light,
-.collapsible-tagsinput--styled-avocode-email-tagsinput--dark {
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--error {
   height: unset;
 }
 
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--dark,
-.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error {
   background-color: var(--input-background-color);
 }
 
 .tag__container--styled-avocode-email-tagsinput--light--error,
-.tag__container--styled-avocode-email-tagsinput--dark--error {
+.tag__container--styled-avocode-email-tagsinput--dark--error,
+.tag__container--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--light--error--error,
+.tag__container--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error--error {
   box-shadow: 0 0 0 1px var(--error-color);
   border: none;
   border-radius: 3px;
 }
 
 .tag--styled-avocode-email-tagsinput--light,
-.tag--styled-avocode-email-tagsinput--dark {
+.tag--styled-avocode-email-tagsinput--dark,
+.tag--styled-avocode-email-tagsinput--error {
   border-radius: 3px;
   color: #282828;
   border: none;
   cursor: pointer;
 }
 
-.tag--styled-avocode-email-tagsinput--light {
+.tag--styled-avocode-email-tagsinput--light,
+.tag--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--light--error {
   background-color: #f0f0f0;
 }
 
-.tag--styled-avocode-email-tagsinput--dark {
+.tag--styled-avocode-email-tagsinput--dark,
+.tag--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error {
   background-color: #585858;
 }
 
 .tag--styled-avocode-email-tagsinput--light--focused,
-.tag--styled-avocode-email-tagsinput--dark--focused {
+.tag--styled-avocode-email-tagsinput--dark--focused,
+.tag--styled-avocode-email-tagsinput--error.tag--focused {
   border-radius: 3px;
   box-shadow: 0 0 0 1px var(--brand-color);
 }
 
 .tag__label--styled-avocode-email-tagsinput--light,
-.tag__label--styled-avocode-email-tagsinput--dark {
-  font-size: var(--text-size-1);
+.tag__label--styled-avocode-email-tagsinput--dark,
+.tag__label--styled-avocode-email-tagsinput--error {
+  font-size: var(--text-size);
   font-weight: 600;
   background-color: #f0f0f0;
   cursor: pointer;
   user-select: none;
 }
 
-.tag__label--styled-avocode-email-tagsinput--dark {
+.tag__label--styled-avocode-email-tagsinput--dark,
+.tag__label--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error {
   background-color: #585858;
   color: #fff;
 }
 
 .tag__remove-button--styled-avocode-email-tagsinput--light,
-.tag__remove-button--styled-avocode-email-tagsinput--dark {
+.tag__remove-button--styled-avocode-email-tagsinput--dark,
+.tag__remove-button--styled-avocode-email-tagsinput--error {
   margin-right: 5px;
 }
 
 .tag__remove-button--styled-avocode-email-tagsinput--light::before,
-.tag__remove-button--styled-avocode-email-tagsinput--dark::before {
+.tag__remove-button--styled-avocode-email-tagsinput--dark::before,
+.tag__remove-button--styled-avocode-email-tagsinput--error::before {
   position: absolute;
   opacity: 0.3;
   content: "\D7";
@@ -130,7 +162,8 @@
 }
 
 .tag__remove-button--styled-avocode-email-tagsinput--light:hover,
-.tag__remove-button--styled-avocode-email-tagsinput--dark:hover {
+.tag__remove-button--styled-avocode-email-tagsinput--dark:hover,
+.tag__remove-button--styled-avocode-email-tagsinput--error::hover {
   color: #fff;
 }
 
@@ -143,32 +176,52 @@
 }
 
 .avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--light,
-.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--error {
   margin: 0 4px 4px 0;
 }
 
-.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error {
   background-color: #585858;
   color: #fff;
 }
 
-.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark:hover {
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark:hover,
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--error.styled-avocode-email-tagsinput--dark--error:hover {
   border-color: var(--brand-color);
 }
 
 .avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--light,
-.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark {
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--dark,
+.avocode-email-tagsinput-counter--styled-avocode-email-tagsinput--error {
   min-width: var(--counter-min-width);
+}
+
+/* HACK: Unfortunately the node where you type emails (query)
+ *       does not have it's own CSS class */
+.tagsinput--styled-avocode-email-tagsinput--light > div > div > span:only-child,
+.tagsinput--styled-avocode-email-tagsinput--light > div > div > span:last-child,
+.tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:only-child,
+.tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:last-child,
+.tagsinput--styled-avocode-email-tagsinput--error > div > div > span:only-child,
+.tagsinput--styled-avocode-email-tagsinput--error > div > div > span:last-child {
+  font-size: var(--text-size);
+  margin: 4px 3px;
 }
 
 /* HACK: Firefox has issues with line-height */
 @-moz-document url-prefix() {
-  .tagsinput > div > div > span:last-child {
+  .tagsinput--styled-avocode-email-tagsinput--light > div > div > span:last-child,
+  .tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:last-child,
+  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:last-child {
     margin: 5px;
     padding: 5px;
   }
 
-  .tagsinput > div > div > span:only-child {
+  .tagsinput--styled-avocode-email-tagsinput--light > div > div > span:only-child,
+  .tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:only-child,
+  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:only-child {
     margin: 4px;
     padding: 5px;
   }

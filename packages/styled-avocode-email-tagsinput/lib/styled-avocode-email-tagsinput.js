@@ -55,6 +55,7 @@ export default class StyledAvocodeEmailTagsinput extends React.PureComponent<Pro
     const { error } = this.props
     const theme = this._getNormalizedTheme(this.props.theme)
     const name = classNames({
+      'styled-avocode-email-tagsinput--error': Boolean(error),
       'styled-avocode-email-tagsinput--light': (theme === 'light' && !error),
       'styled-avocode-email-tagsinput--light--error': (theme === 'light' && error),
       'styled-avocode-email-tagsinput--dark': (theme === 'dark' && !error),
