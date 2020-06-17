@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@avocode/avocode-email-tagsinput": "^2.1.4",
+    "@avocode/avocode-email-tagsinput-webpack-config": "^2.1.4",
     "@avocode/better-react-tagsinput": "^2.1.4",
     "@avocode/styled-avocode-email-tagsinput": "^2.1.4",
     "classnames": "^2.2.6",
