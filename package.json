@@ -70,10 +70,7 @@
     "react-test-renderer": "^16.11.0",
     "sinon": "^7.5.0",
     "surge": "^0.21.3",
-    "uuid": "^3.3.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "uuid": "^3.3.3"
   },
   "dependencies": {},
   "engines": {
