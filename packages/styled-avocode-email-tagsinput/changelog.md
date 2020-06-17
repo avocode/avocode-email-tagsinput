@@ -1,3 +1,8 @@
+# 2.1.4
+
+- use fixed font size of 10px for UI consistency
+- add error states
+
 # 2.1.3
 
 - add script for profiling bundle size

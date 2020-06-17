@@ -1,0 +1,35 @@
+{
+  "name": "@avocode/avocode-email-tagsinput-webpack-config",
+  "version": "2.1.4",
+  "description": "Shared webpack config for `avocode-email-tagsinput` monorepo packages.",
+  "keywords": [
+    "webpack",
+    "config",
+    "monorepo"
+  ],
+  "author": "Ondřej Synáček <ondrejsynacek@fastmail.com>",
+  "homepage": "https://github.com/avocode/avocode-email-tagsinput",
+  "license": "ISC",
+  "main": "lib/avocode-email-tagsinput-webpack-config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
+  },
+  "scripts": {
+  },
+  "bugs": {
+    "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^1.2.1"
+  }
+}

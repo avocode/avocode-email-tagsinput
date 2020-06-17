@@ -1,3 +1,7 @@
+# 2.1.4
+
+-
+
 # 2.1.3
 
 - modify import so stylesheets from `@avocode/better-react-tagsinput`

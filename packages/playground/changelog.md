@@ -1,3 +1,8 @@
+# 2.1.4
+
+- added section for demo page of `@avocode/styled-avocode-email-tagsinput`
+  to showcase error states
+
 # 2.1.3
 
 -
