@@ -1,6 +1,6 @@
 {
   "name": "@avocode/avocode-email-tagsinput-webpack-config",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Shared webpack config for `avocode-email-tagsinput` monorepo packages.",
   "keywords": [
     "webpack",
