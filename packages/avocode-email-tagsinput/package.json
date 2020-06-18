@@ -15,7 +15,7 @@
     "pack": "npm pack",
     "prepublish": "npm run build",
     "profile": "webpack --mode=development --profile --json > stats.json",
-    "test": "jest --config ../../test/jest-e2e.config.json --testTimeout=10000"
+    "test": "jest --config test/jest.config.js --testTimeout=10000"
   },
   "keywords": [
     "react",
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@avocode/avocode-email-tagsinput-webpack-config": "^2.1.4",
+    "@avocode/avocode-email-tagsinput-test-config": "^2.1.4",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
