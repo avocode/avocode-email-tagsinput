@@ -1,0 +1,38 @@
+{
+  "name": "@avocode/avocode-email-tagsinput-test-config",
+  "version": "2.1.4",
+  "description": "Base configuration package for `avocode-email-tagsinput` components.",
+  "keywords": [
+    "test",
+    "config",
+    "jest"
+  ],
+  "author": "Ondřej Synáček <ondrejsynacek@fastmail.com>",
+  "homepage": "https://github.com/avocode/avocode-email-tagsinput",
+  "license": "ISC",
+  "main": "lib/avocode-email-tagsinput-test-config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
+  },
+  "devDependencies": {
+    "@avocode/avocode-email-tagsinput-babel-config": "^2.1.4",
+    "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "jsdom": "^15.2.1"
+  }
+}

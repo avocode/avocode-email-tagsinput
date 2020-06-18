@@ -1,0 +1,5 @@
+// @flow
+
+declare var isMac: boolean
+declare var isDevelopment: boolean
+declare var browserOptions: Object

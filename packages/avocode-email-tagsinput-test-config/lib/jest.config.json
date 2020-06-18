@@ -1,0 +1,20 @@
+{
+  "transform": {
+    "^.+\\.js$": "<rootDir>/../node_modules/@avocode/avocode-email-tagsinput-test-config/lib/jest.transform.js"
+  },
+  "moduleNameMapper": {
+    "\\.(css|less)$": "<rootDir>/../node_modules/@avocode/avocode-email-tagsinput-test-config/lib/__mocks__/styleMock.js"
+  },
+  "setupFiles": [
+    "<rootDir>/../node_modules/@avocode/avocode-email-tagsinput-test-config/lib/__globals__/dom.globals.js",
+    "<rootDir>/../node_modules/@avocode/avocode-email-tagsinput-test-config/lib/__globals__/e2e.globals.js"
+  ],
+  "testEnvironment": "jsdom",
+  "transformIgnorePatterns": [
+     "/node_modules/*",
+     "/node_modules/jsdom",
+     "/node_modules/react-dom",
+     "/node_modules/*-*",
+     "/dist/*-*"
+   ]
+}
