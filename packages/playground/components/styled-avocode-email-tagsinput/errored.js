@@ -112,7 +112,6 @@ export default class Basic extends React.PureComponent<{}, State> {
             <StyledAvocodeEmailTagsInput
               collapsible={false}
               error={error}
-              error={error}
               theme='dark'
               tags={this.state.tags}
               query={this.state.query}

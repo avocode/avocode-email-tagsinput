@@ -14,7 +14,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            configFile: path.join(__dirname, '..', 'node_modules', '@avocode', 'avocode-email-tagsinput-babel-config'),
+            configFile: path.join(__dirname, 'babel.config.js'),
           },
         },
       },
@@ -31,3 +31,4 @@ module.exports = {
     new MiniCSSExtractPlugin(),
   ],
 }
+

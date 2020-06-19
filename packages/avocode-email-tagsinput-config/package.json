@@ -1,32 +1,44 @@
 {
-  "name": "@avocode/avocode-email-tagsinput-webpack-config",
+  "name": "@avocode/avocode-email-tagsinput-config",
   "version": "2.1.5",
-  "description": "Shared webpack config for `avocode-email-tagsinput` monorepo packages.",
+  "description": "Configuration files for packages for `avocode-email-tagsinput` packages.",
   "keywords": [
-    "webpack",
     "config",
-    "monorepo"
+    "jest",
+    "puppeteer",
+    "enzyme",
+    "webpack",
+    "babel"
   ],
   "author": "Ondřej Synáček <ondrejsynacek@fastmail.com>",
   "homepage": "https://github.com/avocode/avocode-email-tagsinput",
   "license": "ISC",
-  "main": "lib/avocode-email-tagsinput-webpack-config.js",
+  "main": "lib/avocode-email-tagsinput-config.js",
   "directories": {
     "lib": "lib"
   },
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
   },
-  "scripts": {},
+  "scripts": {
+  },
   "bugs": {
     "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
   },
-  "devDependencies": {
-    "@avocode/avocode-email-tagsinput-babel-config": "^2.1.5",
+  "peerDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "mini-css-extract-plugin": "^0.9.0",

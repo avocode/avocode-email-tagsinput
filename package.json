@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && lerna run build --stream",
     "build:package": "lerna run build --stream --scope",
-    "clean:all": "npm run clean && lerna clean",
+    "clean:all": "npm run clean && lerna clean && rm -rf node_modules/",
     "clean": "lerna run clean --stream",
     "clean:package": "lerna run clean --stream --scope",
     "eslint": "eslint .",
@@ -18,7 +18,7 @@
     "publish:package": "lerna run publish --stream --scope",
     "publish": "lerna publish from-git --yes && npm run publish:package playground",
     "start": "concurrently \"lerna run copy-api-docs --scope playground\" \"lerna run build:watch --stream --scope @avocode/better-react-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/better-react-tagsinput\" \"lerna run build:watch --stream --scope @avocode/avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/avocode-email-tagsinput\" \"lerna run build:watch --stream --scope @avocode/styled-avocode-email-tagsinput\" \"lerna run flow:libdef:watch --scope @avocode/styled-avocode-email-tagsinput\" \"lerna run start --scope playground --stream\"",
-    "test": "lerna run test",
+    "test": "lerna run test --stream",
     "test:unit": "jest --config test/jest.config.json",
     "test:e2e": "jest --config test/jest-e2e.config.json --testTimeout=10000",
     "test:e2e:dev:full": "concurrently \"npm run start\" \"sleep 20 && npm run test:e2e:dev\"",
@@ -70,7 +70,9 @@
     "react-test-renderer": "^16.11.0",
     "sinon": "^7.5.0",
     "surge": "^0.21.3",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {},
   "engines": {
