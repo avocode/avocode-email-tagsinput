@@ -1,6 +1,6 @@
 {
   "name": "@avocode/avocode-email-tagsinput-babel-config",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Shared babel config for avocode-email-tagsinput packages.",
   "keywords": [
     "babel",

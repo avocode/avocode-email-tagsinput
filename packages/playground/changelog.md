@@ -1,3 +1,7 @@
+# 2.1.5
+
+-
+
 # 2.1.4
 
 - added section for demo page of `@avocode/styled-avocode-email-tagsinput`
