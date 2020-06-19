@@ -1,6 +1,6 @@
 {
   "name": "@avocode/better-react-tagsinput",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "React input element that allows you to insert and delete tags.",
   "main": "dist/better-react-tagsinput.js",
   "homepage": "https://github.com/avocode/avocode-email-tagsinput",
@@ -46,7 +46,7 @@
     "react-dom": "^16.11.0"
   },
   "devDependencies": {
-    "@avocode/avocode-email-tagsinput-webpack-config": "^2.1.4",
+    "@avocode/avocode-email-tagsinput-webpack-config": "^2.1.5",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "css-loader": "^3.2.0",
