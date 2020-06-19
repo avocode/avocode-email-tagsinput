@@ -1,1 +1,3 @@
-module.exports = require('babel-jest').createTransformer(require('../packages/avocode-email-tagsinput-babel-config/lib/babel.config'))
+const { babelConfig } = require('../packages/avocode-email-tagsinput-config')
+
+module.exports = require('babel-jest').createTransformer(babelConfig)
