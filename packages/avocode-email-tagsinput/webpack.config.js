@@ -1,8 +1,8 @@
 const path = require('path')
-const baseConfig = require('@avocode/avocode-email-tagsinput-webpack-config')
+const { webpackConfig } = require('@avocode/avocode-email-tagsinput-config')
 
 module.exports = {
-  ...baseConfig,
+  ...webpackConfig,
   entry: path.resolve(__dirname, 'lib', 'avocode-email-tagsinput.js'),
   output: {
     library: '@avocode/avocode-email-tagsinput',
