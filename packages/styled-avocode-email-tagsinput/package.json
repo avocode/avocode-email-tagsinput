@@ -26,6 +26,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
+  "homepage": "https://github.com/avocode/avocode-email-tagsinput",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"

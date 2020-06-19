@@ -2,6 +2,11 @@
   "name": "playground",
   "version": "2.1.4",
   "description": "Playground React app to be used with better-tags-input & avocode-email-tagsinput library during development.",
+  "homepage": "https://github.com/avocode/avocode-email-tagsinput",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
+  },
   "main": "index.js",
   "scripts": {
     "build": "npm run copy-api-docs && webpack --mode=production .",
