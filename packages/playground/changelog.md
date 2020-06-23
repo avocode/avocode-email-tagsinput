@@ -1,3 +1,7 @@
+# 2.1.6
+
+- add button for creating random email tags for styled input
+
 # 2.1.5
 
 -
