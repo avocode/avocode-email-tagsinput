@@ -12,6 +12,16 @@
   font-weight: 600;
 }
 
+/* NOTE: Override `avocode-ui/reset.less`. This needs to be
+         done so the editor works correctly in Safari */
+.tagsinput--styled-avocode-email-tagsinput--light *,
+.tagsinput--styled-avocode-email-tagsinput--dark *,
+.tagsinput--styled-avocode-email-tagsinput--error * {
+  user-select: auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+}
+
 .tagsinput--styled-avocode-email-tagsinput--dark,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
   border-color: transparent;
