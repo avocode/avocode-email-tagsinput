@@ -48,7 +48,14 @@
   },
   "dependencies": {
     "@avocode/avocode-email-tagsinput": "^2.1.5",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "react-immutable-proptypes": "2.1.0",
+    "slate-base64-serializer": "0.2.112",
+    "slate-dev-environment": "0.2.2",
+    "slate-hotkeys": "0.2.9",
+    "slate-plain-serializer": "0.7.11",
+    "slate-prop-types": "0.5.42",
+    "tiny-invariant": "1.0.6"
   },
   "peerDependencies": {
     "immutable": "^3.8.1",
