@@ -34,6 +34,17 @@ export default class Controlled extends React.PureComponent<{}, State> {
     })
   }
 
+  _handleRandomTagAdded = () => {
+    const text = `${Date.now().toString().substring(8)}@avcd.cz`
+
+    this.setState((prevState) => {
+      return {
+        tags: [ ...prevState.tags, { value: text } ],
+        query: '',
+      }
+    })
+  }
+
   _handleQueryChange = (query: Query) => {
     this.setState({ query })
   }
@@ -56,6 +67,7 @@ export default class Controlled extends React.PureComponent<{}, State> {
     return (
       <div>
         <StateView tags={this.state.tags} query={this.state.query} />
+        <button onClick={this._handleRandomTagAdded}>Add random email</button>
 
         <div className='theme-container theme-container--light'>
           <StyledAvocodeEmailTagsInput
