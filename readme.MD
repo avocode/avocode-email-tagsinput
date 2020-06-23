@@ -37,7 +37,7 @@ Rich input for adding tags built on [Slate JS](https://www.slatejs.org). Keyboar
 
 If you do not wish to use default styles, use package `@avocode/avocode-email-tagsinput` to import `AvocodeEmailTagsInput` component and create your own stylesheet.
 
-This monorepo contains four packages:
+This monorepo contains four packages (actually five, see below):
 
 1. `@avocode/styled-avocode-email-tagsinput`
 
@@ -54,6 +54,8 @@ This monorepo contains four packages:
 4. `playground`
 
     React app to be used during development of all the packages. [README](packages/playground/readme.MD)
+
+The fifth package is `avocode/avocode-email-tagsinput-config` which is only for development purposes. It sets up configuration for Webpack and Babel.
 
 ## Development
 
@@ -94,7 +96,7 @@ Before publishing make sure you increment version in each package since it's pub
 ## Clean
 
 * `clean:all`
-   Clears `dist/` and `node_modules/` folders in each package
+   Clears `dist/` and `node_modules/` folders in each package, removes root `node_modules/` directory as well
 
 * `clean`
    Clears only `dist/` folders in each package.
@@ -115,16 +117,4 @@ The project uses Flow type library. The libraries are set up to expose type defi
 ## Test
 
 * `test`
-   Runs unit tests for all packages.
-
-* `test:e2e`
-   Runs end-to-end tests for production environment.
-
-* `test:e2e:dev`
-   Runs end-to-end tests for development environment. It needs to
-   have dev server running for `playground` package first.
-
-* `test:e2e:dev:full`
-   Runs end-to-end tests for development environment. It will run dev
-   server first and launch tests after about 20 seconds. Use this command
-   if you simply want to launch the tests.
+   Runs unit and E2E tests for all packages.
