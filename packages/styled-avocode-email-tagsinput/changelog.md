@@ -1,3 +1,10 @@
+# 2.1.6
+
+- use `@avocode/avocode-email-tagsinput-config` with webpack dependencies for builds
+- fix issues with input height when using collapsed variant
+- fix problem in Safari when parent component sets `-webkit-user-select: none` on
+  parent component
+
 # 2.1.5
 
 -
