@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Playground React app to be used with better-tags-input & avocode-email-tagsinput library during development.",
   "homepage": "https://github.com/avocode/avocode-email-tagsinput",
   "repository": {
@@ -21,9 +21,9 @@
   "private": true,
   "license": "ISC",
   "dependencies": {
-    "@avocode/avocode-email-tagsinput": "^2.1.5",
-    "@avocode/better-react-tagsinput": "^2.1.5",
-    "@avocode/styled-avocode-email-tagsinput": "^2.1.5",
+    "@avocode/avocode-email-tagsinput": "^2.1.6",
+    "@avocode/better-react-tagsinput": "^2.1.6",
+    "@avocode/styled-avocode-email-tagsinput": "^2.1.6",
     "classnames": "^2.2.6",
     "immutable": "^3.8.1",
     "marked": "^0.7.0",
@@ -33,7 +33,7 @@
     "slate-react": "^0.22.0"
   },
   "devDependencies": {
-    "@avocode/avocode-email-tagsinput-config": "^2.1.5",
+    "@avocode/avocode-email-tagsinput-config": "^2.1.6",
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/plugin-proposal-class-properties": "^7.7.0",

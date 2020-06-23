@@ -1,6 +1,6 @@
 {
   "name": "@avocode/avocode-email-tagsinput-config",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Configuration files for packages for `avocode-email-tagsinput` packages.",
   "keywords": [
     "config",
@@ -27,8 +27,7 @@
     "type": "git",
     "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/avocode/avocode-email-tagsinput/issues"
   },
