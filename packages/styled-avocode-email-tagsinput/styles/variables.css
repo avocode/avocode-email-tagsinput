@@ -9,6 +9,7 @@
 .avocode-email-tagsinput--styled-avocode-email-tagsinput--error,
 .styled-avocode-email-tagsinput--light--error,
 .styled-avocode-email-tagsinput--dark--error {
+  --input-height: 35px;
   --brand-color: #00bc87; /* NOTE: avocode-ui color `main-color-brand-highlight` */
   --error-color: #f83a35; /* NOTE: avocode-ui color `error-color-brand` */
 

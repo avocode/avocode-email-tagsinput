@@ -12,6 +12,16 @@
   font-weight: 600;
 }
 
+/* NOTE: Override `avocode-ui/reset.less`. This needs to be
+         done so the editor works correctly in Safari */
+.tagsinput--styled-avocode-email-tagsinput--light *,
+.tagsinput--styled-avocode-email-tagsinput--dark *,
+.tagsinput--styled-avocode-email-tagsinput--error * {
+  user-select: auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+}
+
 .tagsinput--styled-avocode-email-tagsinput--dark,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark {
   border-color: transparent;
@@ -51,7 +61,8 @@
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--dark,
 .avocode-email-tagsinput-collapsible--styled-avocode-email-tagsinput--error {
   font-size: var(--text-size);
-  height: 35px;
+  height: var(--input-height);
+  max-height: var(--input-height);
   overflow: hidden;
   align-items: flex-end;
   justify-content: space-between;
@@ -208,21 +219,43 @@
 .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:last-child {
   font-size: var(--text-size);
   margin: 4px 3px;
+  line-height: 1.3;
+}
+
+.collapsible-tagsinput--styled-avocode-email-tagsinput--light .tagsinput--styled-avocode-email-tagsinput--light--focused > div > div > span:only-child,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--light .tagsinput--styled-avocode-email-tagsinput--light--focused > div > div > span:last-child,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused > div > div > span:only-child,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused > div > div > span:last-child,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark--error .tagsinput--styled-avocode-email-tagsinput--dark--error--focused > div > div > span:only-child,
+.collapsible-tagsinput--styled-avocode-email-tagsinput--dark--error .tagsinput--styled-avocode-email-tagsinput--dark--error--focused > div > div > span:last-child {
+  font-size: var(--text-size);
+  margin: 4px 3px;
+  line-height: 1.5;
 }
 
 /* HACK: Firefox has issues with line-height */
 @-moz-document url-prefix() {
   .tagsinput--styled-avocode-email-tagsinput--light > div > div > span:last-child,
   .tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:last-child,
-  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:last-child {
-    margin: 5px;
-    padding: 5px;
+  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:last-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--light .tagsinput--styled-avocode-email-tagsinput--light--focused > div > div > span:last-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused > div > div > span:last-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--dark--error .tagsinput--styled-avocode-email-tagsinput--dark--error--focused > div > div > span:last-child {
+    font-size: var(--text-size);
+    margin: 4px 3px;
+    padding: 4px;
+    line-height: 0.75;
   }
 
   .tagsinput--styled-avocode-email-tagsinput--light > div > div > span:only-child,
   .tagsinput--styled-avocode-email-tagsinput--dark > div > div > span:only-child,
-  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:only-child {
-    margin: 4px;
-    padding: 5px;
+  .tagsinput--styled-avocode-email-tagsinput--error > div > div > span:only-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--light .tagsinput--styled-avocode-email-tagsinput--light--focused > div > div > span:only-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--dark .tagsinput--styled-avocode-email-tagsinput--dark--focused > div > div > span:only-child,
+  .collapsible-tagsinput--styled-avocode-email-tagsinput--dark--error .tagsinput--styled-avocode-email-tagsinput--dark--error--focused > div > div > span:only-child {
+    font-size: var(--text-size);
+    margin: 4px 3px;
+    padding: 4px;
+    line-height: 1.15;
   }
 }
