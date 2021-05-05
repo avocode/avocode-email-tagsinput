@@ -9,7 +9,7 @@
     "url": "git+https://github.com/avocode/avocode-email-tagsinput.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && webpack --mode=production",
+    "build": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && babel  ./lib --out-dir ./dist --config-file ../avocode-email-tagsinput-config/lib/babel.config.js",
     "build:dev": "npm run clean && npm run copy-public-flow-types && npm run flow:libdef && webpack --mode=development",
     "build:watch": "webpack --mode=development --watch",
     "clean": "rm -rf dist && mkdir dist",
