@@ -1,6 +1,6 @@
 # avocode-email-tagsinput
 
-[![Build Status](https://travis-ci.org/avocode/avocode-email-tagsinput.svg?branch=master)](https://travis-ci.org/avocode/avocode-email-tagsinput)
+![main](https://github.com/avocode/avocode-email-tagsinput/actions/workflows/main.yml/badge.svg)
 
 ![type email tags to input](docs/avocode-email-tagsinput-1.gif)
 ![collapse input with tags and display counter](docs/avocode-email-tagsinput-2.gif)
